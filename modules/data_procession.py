@@ -20,12 +20,14 @@ def date_served_and_dining_hall (file_page):
     return date_served, dining_hall
 
 # stores the meal informations of every thing
-def creates_dataframe(file_page, meal_period_codes):
+def creates_dataframe(file_page, mpc):
     with open(file_page, 'r', encoding = 'utf-8') as file:
         container = file.read()
         bs4_parser = BeautifulSoup(container, 'html.parser')
         c_tabs = bs4_parser.find_all('div', class_= 'c-tab__content')
-        
+        c_tabs_menu = bs4_parser.find_all('div', class_= 'c-tabs-nav__link-inner')
+        c_tabs_menu = [item.text.strip() for item in c_tabs_menu]
+
         all_menu_dict = {}
 
         meal_name = []
@@ -44,15 +46,14 @@ def creates_dataframe(file_page, meal_period_codes):
         meal_calcium = []
         meal_iron = []
         meal_vitamin_d = []
-        
-        # change meal_periods
+
         for i, one_c_tab in enumerate(c_tabs):
             li_tags = one_c_tab.find_all('li', class_= 'menu-item-li')
             for one_li in li_tags:
                 a_tag = one_li.find('a')
                 if a_tag:
                     meal_name.append(a_tag.text.strip())
-                    meal_period.append(i)
+                    meal_period.append(mpc[c_tabs_menu[i]])
                 div_tag = one_li.find('div')
                 if div_tag:
                     div_text = div_tag.text
@@ -92,6 +93,7 @@ def creates_dataframe(file_page, meal_period_codes):
         my_df = pd.DataFrame(all_menu_dict)
     
     return my_df
+
 
 # creates schema
 def connect_and_create_schema(meal_period_codes, my_database):
@@ -195,7 +197,8 @@ mpc = {
     "Brekfast":1,
     "Lunch":2,
     "Snack Break":3,
-    "Dinner":4
+    "Dinner":4,
+    "Brunch":5
 }
 
 # dining hall codes
