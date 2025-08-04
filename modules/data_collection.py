@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import json
 def fetch_data(url):
     """
     Fetch data from a given URL.
@@ -64,15 +65,36 @@ def parse_html(load_data):
     
     menu_tabs = [tab.text.strip() for tab in soup.find_all('div', class_="c-tabs-nav__link-inner")]
     time_tabs = []
+    calorie_tabs = []
     for tab in soup.find_all('div', class_="c-tab__content"):
         links = [a.text.replace('\n', '').replace('   ', '').strip() for a in tab.find_all('a', tabindex="0")]
         time_tabs.append(links)
+    
 
-        #[tab.find_all('a', tabindex="0") for tab in soup.find_all('div', class_="c-tabs__content", )]    
+    calorie_tabs = []
+    serving_size_tabs = []    
+            
+    for tab in soup.find_all('div', class_="c-tab__content"):
+        calories = []
+        serving_size = []
+        for tab_1 in tab.find_all('li', class_="menu-item-li"):
+            for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href="#").get('data-recipe'))):
+                item = json.loads(a.text.replace('\n', '').replace('   ', '').strip())
+                calories.append(next((fact['value'] for fact in item['facts'] if fact['label'] == 'Calories'), None))
+                serving_size.append(item.get('serving_size', None))
+        calorie_tabs.append(calories)
+        serving_size_tabs.append(serving_size)
+    
     final_menu = {}
+    calorie_menu = {}
+    serving_size_menu = {}
     for tab in range(len(menu_tabs)):
         final_menu[menu_tabs[tab]] = time_tabs[tab]
-    return final_menu
+        calorie_menu[menu_tabs[tab]] = calorie_tabs[tab]
+        serving_size_menu[menu_tabs[tab]] = serving_size_tabs[tab]  
+    
+
+    return final_menu, calorie_menu, serving_size_menu
 
 def main():
     url = "https://example.com/data"
@@ -94,3 +116,4 @@ def main():
     # Assuming the file already exists and contains valid HTML content
 
     return data
+main()
