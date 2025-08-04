@@ -93,7 +93,6 @@ def creates_dataframe(file_page, meal_period_codes):
     
     return my_df
 
-
 # creates schema
 def connect_and_create_schema(meal_period_codes, my_database):
     with sqlite3.connect(my_database) as con:
@@ -172,7 +171,8 @@ def connect_and_create_schema(meal_period_codes, my_database):
         )
         curs.commit()
 
-def menu_entry_function (date_served, dining_hall_id, df, my_database):
+# inputs menu entry into the database
+def menu_entry(date_served, dining_hall_id, df, my_database):
     with sqlite3.connect(my_database) as con:
         cur = con.cursor()
         num = 0
@@ -189,6 +189,7 @@ def menu_entry_function (date_served, dining_hall_id, df, my_database):
             )
             cur.commit()
 
+# meal period codes
 mpc = {
     "Continental Breakfast":0,
     "Brekfast":1,
@@ -197,6 +198,7 @@ mpc = {
     "Dinner":4
 }
 
+# dining hall codes
 dhc = {
     'Huffman Hall':0,
     'Curtis Hall':1,
@@ -212,7 +214,7 @@ def scraping_function (file_page, database):
     date, dine_hall = date_served_and_dining_hall(file_page)
     created_df = creates_dataframe(file_page, mpc)
     connect_and_create_schema(file_page, database)
-    menu_entry_function (date, dine_hall, created_df, database)
+    menu_entry(date, dine_hall, created_df, database)
 
 # use standard input to get file
 my_database = 'my_database.db'
