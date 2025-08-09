@@ -7,12 +7,12 @@ def collect_data():
     data_dict, date, dine_hall = data_collection.main()
     return data_dict, date, dine_hall
 
-
+# Converts dictionary into dataframe
 def creates_dataframe(data_dict):
     my_df = pd.DataFrame(data_dict)
     return my_df
 
-# creates schema
+# Create SQLite Schema
 def connect_and_create_schema(meal_period_codes, my_database):
     with sqlite3.connect(my_database) as con:
         curs = con.cursor()
@@ -21,19 +21,19 @@ def connect_and_create_schema(meal_period_codes, my_database):
             '''
             DROP TABLE IF EXISTS dining_hall;
             CREATE TABLE IF NOT EXISTS dining_hall (
-                    id TEXT PRIMARY KEY,
+                    id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL
             );
             INSERT INTO dining_hall (id, name) 
             VALUES 
-                    ('00', 'Huffman Hall'),
-                    ('01', 'Curtis Hall'),
-                    ('02', 'Slayter Market'),
-                    ('03', 'Silverstein Hall'),
-                    ('04', 'The Nest'),
-                    ('05','Common Grounds'),
-                    ('06', 'Slayter Alcove Convenience'),
-                    ('07', 'Mitchell Recreation & Athletic Center');
+                    (0, 'Huffman Hall'),
+                    (1, 'Curtis Hall'),
+                    (2, 'Slayter Market'),
+                    (3, 'Silverstein Hall'),
+                    (4, 'The Nest'),
+                    (5,'Common Grounds'),
+                    (6, 'Slayter Alcove Convenience'),
+                    (7, 'Mitchell Recreation & Athletic Center');
             '''
         )
 
@@ -42,7 +42,7 @@ def connect_and_create_schema(meal_period_codes, my_database):
             '''
             DROP TABLE IF EXISTS meal_period;
             CREATE TABLE IF NOT EXISTS meal_period (
-                    id TEXT PRIMARY KEY,
+                    id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL
             );
             '''
@@ -54,7 +54,7 @@ def connect_and_create_schema(meal_period_codes, my_database):
                 '''
                 INSERT INTO meal_period (id, name) VALUES (?,?);
                 '''
-                , (f"{meal_period_codes[item]:02d}", item,)
+                , (meal_period_codes[item], item,)
             )
 
         # Creating the menu entry schemas
@@ -62,7 +62,7 @@ def connect_and_create_schema(meal_period_codes, my_database):
             '''
             DROP TABLE IF EXISTS menu_entry;
             CREATE TABLE IF NOT EXISTS menu_entry (
-                    menu_entry_id TEXT PRIMARY KEY,
+                    id TEXT PRIMARY KEY,
                     dining_hall_id INTEGER,
                     meal_period_id INTEGER,
                     date_served DATE,
@@ -74,7 +74,7 @@ def connect_and_create_schema(meal_period_codes, my_database):
             DROP TABLE IF EXISTS nutritional_info;
             CREATE TABLE nutritional_info ( 
                     id INTEGER PRIMARY KEY, 
-                    menu_entry_id INTEGER, 
+                    menu_entry_id TEXT, 
                     total_fat REAL, 
                     sat_fat REAL, 
                     tran_fat REAL, 
@@ -93,7 +93,6 @@ def connect_and_create_schema(meal_period_codes, my_database):
             );
             '''
         )
-        con.commit()
 
 # inputs menu entry into the database
 def create_menu_entry(date_served, dining_hall_id, df, my_database):
@@ -101,27 +100,45 @@ def create_menu_entry(date_served, dining_hall_id, df, my_database):
         cur = con.cursor()
         num = 0
         for index, row in df.iterrows():
-            num += 1
-            menu_entry_id = f"{num:02}"
+            menu_entry_number = num
             meal_period_id = row['Meal Period']
             meal_name = row['Name']
-            custom_id = f"{meal_period_id:02}-{menu_entry_id:03}-{dining_hall_id:02}"
+            custom_menu_entry_id = f"{meal_period_id:02}-{menu_entry_number:03}-{dining_hall_id:02}"
             cur.execute(
                 '''
-                INSERT INTO menu_entry (menu_entry_id, dining_hall_id, meal_period_id, date_served, name) VALUES (?,?,?,?,?);
+                INSERT INTO menu_entry (id, dining_hall_id, meal_period_id, date_served, name) VALUES (?,?,?,?,?);
                 '''
-                , (custom_id, dining_hall_id, meal_period_id, date_served, meal_name)
+                , (custom_menu_entry_id, dining_hall_id, meal_period_id, date_served, meal_name)
             )
-
-# def inserting_nutritional_info():
-
+            nutritional_info_number = num
+            cur.execute(
+                '''
+                INSERT INTO nutritional_info (id, 
+                    menu_entry_id, 
+                    total_fat, 
+                    sat_fat, 
+                    tran_fat, 
+                    cholesterol, 
+                    sodium, 
+                    total_carbohydrate, 
+                    total_sugars, 
+                    added_sugars, 
+                    diet_fiber, 
+                    protein, 
+                    potassium, 
+                    calcium, 
+                    iron, 
+                    vitamin_d) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                '''
+                , (nutritional_info_number, custom_menu_entry_id, row["Total Fat"], row["Saturated Fat"], row["Trans Fat"], row["Cholesterol"], row["Sodium"], row["Total Carbohydrate"], row["Total Sugars"], row["Added Sugars"], row["Dietary Fiber"], row["Protein"], row["Potassium"], row["Calcium"], row["Iron"], row["Vitamin D"])
+            )
+            num += 1
 
 
 def main ():
     database = 'my_database.db'
     data_dict, date, dine_hall = collect_data()
     created_df = creates_dataframe(data_dict)
-    # print(created_df)
     connect_and_create_schema(data_collection.mpc, database)
     create_menu_entry(date, dine_hall, created_df, database)
 

@@ -3,7 +3,7 @@ import requests
 import json
 import re
 
-# meal period codes
+# Codes for meal periods
 mpc = {
     "Continental Breakfast":0,
     "Breakfast":1,
@@ -13,7 +13,7 @@ mpc = {
     "Brunch":5
 }
 
-# dining hall codes
+# Codes for dining halls
 dhc = {
     'Huffman Hall':0,
     'Curtis Hall':1,
@@ -42,18 +42,25 @@ def load_data_from_file(filename):
         print(f"Error loading data from {filename}: {e}")
         return None
     
-def date_served_and_dining_hall_id (filename):
-    with open(filename, 'r', encoding = 'utf-8') as file:
-        container = file.read()
-        parser = BeautifulSoup(container, 'html.parser')
-        d_s = parser.find('button', id= 'location-selected-date')
-        if d_s:
-            date_served = d_s.text.strip()
-        d_h = parser.find('h2', class_= 'location-header-venue')
-        if d_h:
-            dining_hall_id = dhc.get(d_h.text.strip())
+# Gets the date the menu was served and retrieves the dining hall id based on which
+# dining hall it is served in
+# Parameters:   load_data - the opened webpage file that contains the menu
+# Returns:      date_served - the date the menu was served
+#               dining_hall_id - the code for the particular dining hall based on the dhc
+#               dictionary
+def date_served_and_dining_hall_id (load_data):
+    parser = BeautifulSoup(load_data, 'html.parser')
+    d_s = parser.find('button', id= 'location-selected-date')
+    if d_s:
+        date_served = d_s.text.strip()
+    d_h = parser.find('h2', class_= 'location-header-venue')
+    if d_h:
+        dining_hall_id = dhc.get(d_h.text.strip())
     return date_served, dining_hall_id
 
+# Parses the webpage for the meal name, meal period and then the nutritional information
+# Parameters:   load_data - the opened webpage file that contains the menu
+# Returns:      all_menu_dict - a dictionary which contains all of the relevant information
 def parse_html(load_data):
     bs4_parser = BeautifulSoup(load_data, 'html.parser')
     c_tabs = bs4_parser.find_all('div', class_= 'c-tab__content')
@@ -129,7 +136,7 @@ def parse_html(load_data):
 def main():    
     filename = "page_source.html"
     load_data = load_data_from_file(filename) 
-    date, dine_hall_id = date_served_and_dining_hall_id(filename)
+    date, dine_hall_id = date_served_and_dining_hall_id(load_data)
     if load_data:
         data_dict = parse_html(load_data)
     return data_dict, date, dine_hall_id
