@@ -25,7 +25,7 @@ dhc = {
     'Mitchell Recreation & Athletic Center':7
 }
 
-
+# 
 def save_data_to_file(data, filename):
     try:
         with open(filename, 'w', encoding= 'utf-8') as file:
@@ -33,7 +33,8 @@ def save_data_to_file(data, filename):
         print(f"Data saved to {filename}")
     except IOError as e:
         print(f"Error saving data to {filename}: {e}")
-    
+
+# 
 def load_data_from_file(filename):
     try:
         with open(filename, 'r', encoding='utf-8' ) as file:
@@ -92,13 +93,21 @@ def parse_html(load_data):
         for one_li in li_tags:
             a_tag = one_li.find('a')
             if a_tag:
-                meal_name.append(a_tag.text.strip())
+                meal_name.append(a_tag.text.replace('\n', ' ').replace('  ', '').strip())
                 meal_period_words = c_tabs_nav_inner[c_tabs.index(one_c_tab)]
                 meal_period.append(mpc[meal_period_words])
             div_tag = one_li.find('div')
             if div_tag:
                 div_text = div_tag.text
-                json_ready = json.loads(div_text)
+                safe_text = div_text.strip()
+                safe_text = div_text.replace("\n", "").replace("\r", "")
+                try:
+                    json_ready = json.loads(safe_text)
+                except json.JSONDecodeError as e:
+                    print("JSON decode error:", e)
+                    print("Problematic string:", safe_text)
+                    json_ready = None
+                json_ready = json.loads(safe_text)
                 meal_total_fat.append(json_ready["facts"][1]["value"])
                 meal_sat_fat.append(json_ready["facts"][2]["value"])
                 meal_tran_fat.append(json_ready["facts"][3]["value"])
@@ -133,12 +142,9 @@ def parse_html(load_data):
 
     return all_menu_dict
 
-def main():    
-    filename = "page_source.html"
+def main(filename):    
     load_data = load_data_from_file(filename) 
     date, dine_hall_id = date_served_and_dining_hall_id(load_data)
     if load_data:
         data_dict = parse_html(load_data)
     return data_dict, date, dine_hall_id
-
-main()
