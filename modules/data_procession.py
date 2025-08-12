@@ -17,7 +17,8 @@ def create_menu_entry(date_served, dining_hall_id, df, my_database):
             menu_entry_number = num
             meal_period_id = row['Meal Period']
             meal_name = row['Name']
-            custom_menu_entry_id = f"{meal_period_id:02}-{menu_entry_number:03}-{dining_hall_id:02}"
+            date_clean = date_served.replace('-','')
+            custom_menu_entry_id = f"{dining_hall_id:02}-{meal_period_id:02}-{menu_entry_number:03}-{date_clean}"
             cur.execute(
                 '''
                 INSERT INTO menu_entry (id, dining_hall_id, meal_period_id, date_served, name) VALUES (?,?,?,?,?);
