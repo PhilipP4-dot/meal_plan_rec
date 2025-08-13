@@ -4,24 +4,27 @@ import sqlite3
 
 # Codes for meal periods
 mpc = {
-    "Continental Breakfast":0,
-    "Breakfast":1,
-    "Lunch":2,
-    "Snack Break":3,
-    "Dinner":4,
-    "Brunch":5
+    "continental breakfast":0,
+    "breakfast":1,
+    "lunch":2,
+    "snack break":3,
+    "dinner":4,
+    "brunch":5,
+    "summer breakfast":6,
+    "summer lunch":7
 }
 
 # Codes for dining halls
 dhc = {
-    'Huffman Hall':0,
-    'Curtis Hall':1,
-    'Slayter Market':2,
-    'Silverstein Hall':3,
-    'The Nest':4,
-    'Common Grounds':5,
-    'Slayter Alcove Convenience':6,
-    'Mitchell Recreation & Athletic Center':7
+    'huffman hall':0,
+    'curtis hall':1,
+    'slayter market':2,
+    'silverstein hall':3,
+    'the nest':4,
+    'common grounds':5,
+    'slayter alcove convenience':6,
+    'mitchell recreation & athletic center':7,
+    'slayter hall student union':8
 }
 
 def create_sql_database(my_database):
@@ -76,34 +79,28 @@ def create_sql_database(my_database):
         )
 
 # Create SQLite Schema
-def insert_codes_schema(meal_period_codes, my_database):
+def insert_codes_schema(my_database):
     with sqlite3.connect(my_database) as con:
         curs = con.cursor()
-        curs.executescript(
-            '''
-            INSERT INTO dining_hall (id, name) 
-            VALUES 
-                    (0, 'Huffman Hall'),
-                    (1, 'Curtis Hall'),
-                    (2, 'Slayter Market'),
-                    (3, 'Silverstein Hall'),
-                    (4, 'The Nest'),
-                    (5, 'Common Grounds'),
-                    (6, 'Slayter Alcove Convenience'),
-                    (7, 'Mitchell Recreation & Athletic Center');
-            '''
-        )
+        for item in dhc:
+            curs.execute(
+                '''
+                INSERT INTO dining_hall (id, name)
+                VALUES (?, ?);
+                '''
+                , (dhc[item], item)
+            )
         
         # Import meal codes here
-        for item in meal_period_codes:
+        for item in mpc:
             curs.execute(
                 '''
                 INSERT INTO meal_period (id, name) VALUES (?,?);
                 '''
-                , (meal_period_codes[item], item,)
+                , (mpc[item], item,)
             )
 
 def main(database):
     create_sql_database(database)
-    insert_codes_schema(mpc, database)
+    insert_codes_schema(database)
     

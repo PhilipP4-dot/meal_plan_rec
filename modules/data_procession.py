@@ -1,6 +1,5 @@
 import sqlite3
 import pandas as pd
-import data_collection
 
 # Converts dictionary into dataframe
 def create_dataframe(data_dict):

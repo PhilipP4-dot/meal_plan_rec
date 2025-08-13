@@ -2,28 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import re
-
-# Codes for meal periods
-mpc = {
-    "Continental Breakfast":0,
-    "Breakfast":1,
-    "Lunch":2,
-    "Snack Break":3,
-    "Dinner":4,
-    "Brunch":5
-}
-
-# Codes for dining halls
-dhc = {
-    'Huffman Hall':0,
-    'Curtis Hall':1,
-    'Slayter Market':2,
-    'Silverstein Hall':3,
-    'The Nest':4,
-    'Common Grounds':5,
-    'Slayter Alcove Convenience':6,
-    'Mitchell Recreation & Athletic Center':7
-}
+from database_creation import dhc, mpc
 
 # 
 def save_data_to_file(data, filename):
@@ -37,7 +16,7 @@ def save_data_to_file(data, filename):
 # 
 def load_data_from_file(filename):
     try:
-        with open(filename, 'r', encoding='utf-8' ) as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             return file.read()
     except IOError as e:
         print(f"Error loading data from {filename}: {e}")
@@ -51,12 +30,14 @@ def load_data_from_file(filename):
 #               dictionary
 def date_served_and_dining_hall_id (load_data):
     parser = BeautifulSoup(load_data, 'html.parser')
-    d_s = parser.find('button', id= 'location-selected-date')
+    d_s = parser.find('input', attrs={'name' : '_wp_http_referer'})
     if d_s:
-        date_served = d_s.text.strip()
+        referrer_value = d_s["value"]
+        d_s = referrer_value.split("date=")[-1]
+        date_served = d_s.replace("-", "")
     d_h = parser.find('h2', class_= 'location-header-venue')
     if d_h:
-        dining_hall_id = dhc.get(d_h.text.strip())
+        dining_hall_id = dhc.get(d_h.text.strip().lower())
     return date_served, dining_hall_id
 
 # Parses the webpage for the meal name, meal period and then the nutritional information
@@ -95,7 +76,7 @@ def parse_html(load_data):
             if a_tag:
                 meal_name.append(a_tag.text.replace('\n', ' ').replace('  ', '').strip())
                 meal_period_words = c_tabs_nav_inner[c_tabs.index(one_c_tab)]
-                meal_period.append(mpc[meal_period_words])
+                meal_period.append(mpc[meal_period_words.lower()])
             div_tag = one_li.find('div')
             if div_tag:
                 div_text = div_tag.text
