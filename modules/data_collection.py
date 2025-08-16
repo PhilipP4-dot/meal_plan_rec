@@ -78,7 +78,7 @@ def parse_html(load_data):
         calories = []
         serving_size = []
         for tab_1 in tab.find_all('li', class_="menu-item-li"):
-            for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href="#").get('data-recipe'))):
+            for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href=lambda x: x and x.strip() == "#").get('data-recipe'))):
                 item = json.loads(a.text.replace('\n', '').replace('   ', '').strip())
                 calories.append(next((fact['value'] for fact in item['facts'] if fact['label'] == 'Calories'), None))
                 serving_size.append(item.get('serving_size', None))
@@ -96,9 +96,8 @@ def parse_html(load_data):
 
     return final_menu, calorie_menu, serving_size_menu
 
-def main():
+def main(filename):
     url = "https://example.com/data"
-    filename = "modules\huff.html"
     
     # Fetch data from the URL
     #data = fetch_data(url)
@@ -116,4 +115,3 @@ def main():
     # Assuming the file already exists and contains valid HTML content
 
     return data
-main()
