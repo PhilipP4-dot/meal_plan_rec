@@ -1,133 +1,151 @@
 import pandas as pd
+import data_procession
 
-# Load your menu CSV
-menu_df = pd.read_csv("menu_data.csv")
 
-# Define keyword dictionary
-CATEGORY_KEYWORDS = {
-    "main": ["burger", "chicken", "pasta", "beef", "fish", "tofu", "stew", "omelet", "scrambled", "egg", "sausage", "bacon"],
-    "side": ["rice", "bread", "bun", "fries", "potato", "salad", "vegetable", "beans", "corn", "coleslaw"],
-    "dessert": ["cake", "cookie", "brownie", "pudding", "ice cream", "pie", "muffin", "scone", "donut", "tart"],
-    "beverage": ["milk", "juice", "tea", "coffee", "soda", "water", "smoothie", "lemonade"],
-}
 
-# Categorization function
-def categorize_dish_simple(name):
-    name_lower = name.lower()
-    for category, keywords in CATEGORY_KEYWORDS.items():
-        if any(keyword in name_lower for keyword in keywords):
-            return category
-    return "other"
-
-# Apply categorization
-menu_df["AutoCategory"] = menu_df["Dish"].apply(categorize_dish_simple)
-
-# Save the result
-menu_df.to_csv("menu_data_categorized.csv", index=False)
-
-print("Categorization complete! Saved to menu_data_categorized.csv")
+def _coerce_calories(df):
+    df = df.copy()
+    df["Calories"] = pd.to_numeric(df["Calories"], errors="coerce")
+    df = df.dropna(subset=["Calories"])
+    return df
 
 def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, 
                         meal_ratios=None, preferred_halls=None, top_n=2):
     """
-    Generate a balanced daily meal plan across dining halls.
-    
-    Parameters:
-        menu_df (DataFrame): columns ["Category","Dish","Calories","AutoCategory","Hall"]
-        meal_times (list): e.g. ["Breakfast","Lunch","Dinner"]
-        daily_calorie_limit (int): total daily calories allowed
-        meal_ratios (dict): optional ratio per meal, e.g. {"Breakfast":0.25,"Lunch":0.40,"Dinner":0.35}
-        preferred_halls (dict): optional hall selection per meal, e.g. {"Breakfast":"Curtis"}
-        top_n (int): number of options to return per meal
-    
     Returns:
-        dict with plan and total calories
+      {
+        "Plan": [
+          {
+            "Meal": "Breakfast",
+            "CalBudget": 616,              # per-meal budget used
+            "Options": [
+              {
+                "Hall": "Huff",
+                "Items": [
+                  {"row_id": 123, "Dish":"Diced Turkey Sausage","Calories":90,"Serving Size":"1 patty","FinalCategory":"main","Hall":"Huff"},
+                  {"row_id": 456, "Dish":"Twice Baked Breakfast Potatoes","Calories":330,"Serving Size":"1 serving","FinalCategory":"side","Hall":"Huff"},
+                  ...
+                ],
+                "Calories": 600            # sum of Items' calories (source of truth)
+              },
+              ...
+            ]
+          },
+          ...
+        ],
+        "TotalCalories": 1815              # sum of first options
+      }
     """
-    plan = []
-    chosen_mains = set()
-    total_calories = 0
+    if "FinalCategory" not in menu_df.columns:
+        menu_df = data_procession.apply_overrides(menu_df)
+    df = _coerce_calories(menu_df)
+    plan, chosen_mains, total_calories = [], set(), 0
 
     for meal in meal_times:
-        # Calorie allocation
-        if meal_ratios and meal in meal_ratios:
-            cal_per_meal = daily_calorie_limit * meal_ratios[meal]
-        else:
-            cal_per_meal = daily_calorie_limit / len(meal_times)
+        # per-meal budget
+        cal_per_meal = (daily_calorie_limit * meal_ratios.get(meal)
+                        if meal_ratios and meal in meal_ratios
+                        else daily_calorie_limit / max(1, len(meal_times)))
 
-        # Filter items for this meal
-        meal_options = menu_df[menu_df["Category"].str.contains(meal, case=False)]
-        if meal_options.empty:
+        # filter: meal slot + realistic calories
+        meal_opts = df[df["Category"].str.contains(meal, case=False, na=False)]
+        meal_opts = meal_opts[meal_opts["Calories"].between(10, 2000)]
+        if meal_opts.empty:
             continue
 
-        # Decide which halls to consider
-        if preferred_halls and meal in preferred_halls:
-            halls_to_check = [preferred_halls[meal]]
-        else:
-            halls_to_check = meal_options["Hall"].unique()
+        halls = [preferred_halls[meal]] if (preferred_halls and meal in preferred_halls) \
+                else meal_opts["Hall"].dropna().unique()
 
-        meal_candidates = []
+        candidates = []
 
-        for hall in halls_to_check:
-            hall_items = meal_options[meal_options["Hall"] == hall]
+        for hall in halls:
+            hall_items = meal_opts[meal_opts["Hall"] == hall].copy()
+            if hall_items.empty:
+                continue
 
-            # Mains
-            mains = hall_items[hall_items["AutoCategory"] == "main"]
+            mains = hall_items[hall_items["FinalCategory"] == "main"]
+            # avoid regex bug when chosen_mains is empty
             if chosen_mains:
                 mains = mains[~mains["Dish"].str.lower().str.contains("|".join(chosen_mains), na=False)]
-
             if mains.empty:
                 continue
 
-            for _, main in mains.iterrows():
-                meal_cal = main["Calories"]
-                meal_list = [main["Dish"]]
-                serving_size = [main["Serving Size"]]
-                calorie = [main["Calories"]]
+            # iterate mains
+            for main_idx, main in mains.iterrows():
+                chosen = [{
+                    "row_id": int(main_idx),
+                    "Dish": main["Dish"],
+                    "Calories": float(main["Calories"]),
+                    "Serving Size": main.get("Serving Size", ""),
+                    "FinalCategory": main.get("FinalCategory", ""),
+                    "Hall": main.get("Hall", "")
+                }]
 
+                # sides: max 2, distinct-ish by first token
+                sides = hall_items[hall_items["FinalCategory"] == "side"]
+                added_side_keys = set()
+                for side_idx, side in sides.iterrows():
+                    key = str(side["Dish"]).split()[0].lower() if isinstance(side["Dish"], str) else str(side_idx)
+                    next_total = sum(i["Calories"] for i in chosen) + float(side["Calories"])
+                    if key in added_side_keys or next_total > cal_per_meal:
+                        continue
+                    chosen.append({
+                        "row_id": int(side_idx),
+                        "Dish": side["Dish"],
+                        "Calories": float(side["Calories"]),
+                        "Serving Size": side.get("Serving Size", ""),
+                        "FinalCategory": side.get("FinalCategory", ""),
+                        "Hall": side.get("Hall", "")
+                    })
+                    added_side_keys.add(key)
+                    if len(added_side_keys) >= 2:
+                        break
 
-                # Add sides
-                sides = hall_items[hall_items["AutoCategory"] == "side"]
-                for _, side in sides.iterrows():
-                    if meal_cal + side["Calories"] <= cal_per_meal:
-                        meal_list.append(side["Dish"])
-                        meal_cal += side["Calories"]
-                        serving_size.append(side["Serving Size"])
-                        calorie.append(side["Calories"])
+                # extras: max 1 beverage; ignore zero-cal
+                extras = hall_items[
+                    hall_items["FinalCategory"].isin(["dessert", "beverage"])
+                    & (hall_items["Calories"] > 0)
+                ]
+                beverage_added = False
+                for ex_idx, ex in extras.iterrows():
+                    if ex.get("FinalCategory") == "beverage" and beverage_added:
+                        continue
+                    next_total = sum(i["Calories"] for i in chosen) + float(ex["Calories"])
+                    if next_total > cal_per_meal:
+                        continue
+                    chosen.append({
+                        "row_id": int(ex_idx),
+                        "Dish": ex["Dish"],
+                        "Calories": float(ex["Calories"]),
+                        "Serving Size": ex.get("Serving Size", ""),
+                        "FinalCategory": ex.get("FinalCategory", ""),
+                        "Hall": ex.get("Hall", "")
+                    })
+                    if ex.get("FinalCategory") == "beverage":
+                        beverage_added = True
 
-                # Add extras
-                extras = hall_items[hall_items["AutoCategory"].isin(["dessert","beverage"])]
-                for _, extra in extras.iterrows():
-                    if meal_cal + extra["Calories"] <= cal_per_meal:
-                        meal_list.append(extra["Dish"])
-                        meal_cal += extra["Calories"]
-                        serving_size.append(extra["Serving Size"])
-                        calorie.append(extra["Calories"])
+                # authoritative total from items
+                meal_total = round(sum(i["Calories"] for i in chosen))
+                if meal_total <= cal_per_meal:
+                    candidates.append({
+                        "Meal": meal,
+                        "Hall": hall,
+                        "Items": chosen,
+                        "Calories": meal_total
+                    })
 
-                meal_candidates.append({
-                    "Meal": meal,
-                    "Hall": hall,
-                    "Items": meal_list,
-                    "Calories": meal_cal,
-                    "Serving size": serving_size,
-                    "Calories list": calorie
-                })
+        if candidates:
+            candidates.sort(key=lambda c: c["Calories"], reverse=True)
+            top = candidates[:top_n]
+            plan.append({"Meal": meal, "CalBudget": round(cal_per_meal), "Options": top})
 
-        # Sort and keep top N
-        if meal_candidates:
-            meal_candidates = sorted(meal_candidates, key=lambda x: x["Calories"], reverse=True)[:top_n]
-            plan.append({
-                "Meal": meal,
-                "Options": meal_candidates
-            })
-            # Take the first option as the "chosen" one for variety tracking
-            chosen_mains.update(meal_candidates[0]["Items"][0].lower().split())
-            total_calories += meal_candidates[0]["Calories"]
+            # update variety + running total using first option
+            first = top[0]
+            first_main_words = str(first["Items"][0]["Dish"]).lower().split()
+            chosen_mains.update(first_main_words)
+            total_calories += first["Calories"]
 
-    return {
-        "Plan": plan,
-        "TotalCalories": total_calories
-    }
-
+    return {"Plan": plan, "TotalCalories": total_calories}
 
 #=======================================================================================================================
 # Meal Generation Parameters
@@ -135,22 +153,13 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
 # Adjust Meal times(Breakfast, Lunch, Dinner), Daily Calorie Limit, Meal Ratios(for a total of 100%), Preferred Halls
 # for each meal period and number of options you want made available to you
 #=======================================================================================================================
-meal_times = ["Breakfast", "Lunch", "Dinner"]
-daily_calorie_limit = 2000
+# meal_times = ["Breakfast", "Lunch","Dinner"]
+# daily_calorie_limit = 1850
 
-meal_ratios = {"Breakfast":0.25, "Lunch":0.40, "Dinner":0.35}   # custom split
-preferred_halls = {"Breakfast":"Curtis"}                        # force hall for breakfast
+# meal_ratios = {}   # custom split
+# preferred_halls = {}                        # force hall for breakfast
 
-top_n = 1  # number of options per meal
-#=======================================================================================================================
+# top_n = 1  # number of options per meal
+# #=======================================================================================================================
 
-daily_plan = generate_daily_plan(menu_df, meal_times, daily_calorie_limit, meal_ratios, preferred_halls, top_n)
-
-for meal in daily_plan["Plan"]:
-    print(f"\n{meal['Meal']} Options:")
-    for i, option in enumerate(meal["Options"], 1):
-        print(f"  Option {i} @ {option['Hall']} ({option['Calories']} cal)")
-        for item, serving, cals in zip(option["Items"], option["Serving size"], option["Calories list"]):
-            print(f"   - {item} ({serving}): {cals} cal")
-
-print(f"\nTOTAL DAILY CALORIES (based on chosen first options): {daily_plan['TotalCalories']}")
+# daily_plan = generate_daily_plan(menu_df, meal_times, daily_calorie_limit, meal_ratios, preferred_halls, top_n)

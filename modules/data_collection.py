@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import pandas as pd
+
 def fetch_data(url):
     """
     Fetch data from a given URL.
@@ -96,14 +98,13 @@ def parse_html(load_data):
 
     return final_menu, calorie_menu, serving_size_menu
 
-def main(filename):
-    url = "https://example.com/data"
+def main(filename, url):
     
     # Fetch data from the URL
-    #data = fetch_data(url)
-    #if data:
-        # Save the fetched data to a file
-        #save_data_to_file(data, filename)
+    data = fetch_data(url)
+    if data:
+        #Save the fetched data to a file
+        save_data_to_file(data, filename)
         
         # Load the data back from the file
     load_data = load_data_from_file(filename) 
@@ -115,3 +116,21 @@ def main(filename):
     # Assuming the file already exists and contains valid HTML content
 
     return data
+
+
+data = main("modules\huff.html", "https://denison.nmcfood.com/locations/the-table-at-huffman/")
+df = pd.DataFrame(columns=['Hall', 'Category', 'Time', 'Dish', 'Calories', 'Serving Size'])
+for dishes, calories, serving in zip(data[0], data[1], data[2]):
+    for dish, calorie, serving_size in zip(data[0][dishes], data[1][calories], data[2][serving]):
+        df = df._append({'Hall': 'Huffman', 'Category': dishes.split(' ')[0], 'Time': dishes.split(' ')[1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size}, ignore_index=True)
+
+
+data_1 = main("modules\curtis.html", "https://denison.nmcfood.com/locations/the-table-at-curtis/")
+df1 = pd.DataFrame(columns=['Hall', 'Category', 'Time','Dish', 'Calories', 'Serving Size'])
+for dishes, calories, serving in zip(data_1[0], data_1[1], data_1[2]):
+    for dish, calorie, serving_size in zip(data_1[0][dishes], data_1[1][calories], data_1[2][serving]):
+        df1 = df1._append({'Hall': 'Curtis', 'Category': dishes.split(' ')[0], 'Time': dishes.split(' ')[1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size}, ignore_index=True)
+
+df = pd.concat([df, df1], ignore_index=True)
+df.to_csv('menu_data.csv', index=False)
+print("Data processing complete. Data saved to 'menu_data.csv'.")
