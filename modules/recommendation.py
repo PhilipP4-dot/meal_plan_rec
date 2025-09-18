@@ -42,6 +42,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
     plan, chosen_mains, total_calories = [], set(), 0
 
     for meal in meal_times:
+        meal = ' '.join(meal.split(' ')[0:-1]).strip()
         # per-meal budget
         cal_per_meal = (daily_calorie_limit * meal_ratios.get(meal)
                         if meal_ratios and meal in meal_ratios
@@ -59,10 +60,11 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
         candidates = []
 
         for hall in halls:
+            time = menu_df[menu_df['Category'] == meal][menu_df['Hall'] == hall]['Time'].unique()[0]
             hall_items = meal_opts[meal_opts["Hall"] == hall].copy()
             if hall_items.empty:
                 continue
-
+            
             mains = hall_items[hall_items["FinalCategory"] == "main"]
             # avoid regex bug when chosen_mains is empty
             if chosen_mains:
@@ -131,7 +133,8 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
                         "Meal": meal,
                         "Hall": hall,
                         "Items": chosen,
-                        "Calories": meal_total
+                        "Calories": meal_total,
+                        "Time": time
                     })
 
         if candidates:
