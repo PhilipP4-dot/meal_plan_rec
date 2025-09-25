@@ -84,6 +84,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
                 }]
 
                 # sides: max 2, distinct-ish by first token
+                # soft cap of 2 sides to prevent overfitting to sides
                 sides = hall_items[hall_items["FinalCategory"] == "side"]
                 added_side_keys = set()
                 for side_idx, side in sides.iterrows():
