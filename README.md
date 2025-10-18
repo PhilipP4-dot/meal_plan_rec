@@ -1,6 +1,9 @@
 # meal_plan_rec
  meal plan recommendations
 
+#run streamlit_app.py to launch app
+python -m streamlit run modules/app.py
+
 # to do
  - automatically display each meal period and time (done)
  - display time periods for each dining hall (done)

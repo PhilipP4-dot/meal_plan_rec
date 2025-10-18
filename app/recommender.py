@@ -1,5 +1,5 @@
 import pandas as pd
-import data_procession
+from .overrides import apply_overrides
 
 
 
@@ -37,7 +37,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
       }
     """
     if "FinalCategory" not in menu_df.columns:
-        menu_df = data_procession.apply_overrides(menu_df)
+        menu_df = apply_overrides(menu_df)
     df = _coerce_calories(menu_df)
     plan, chosen_mains, total_calories = [], set(), 0
 
@@ -84,6 +84,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
                 }]
 
                 # sides: max 2, distinct-ish by first token
+                # soft cap of 2 sides to prevent overfitting to sides
                 sides = hall_items[hall_items["FinalCategory"] == "side"]
                 added_side_keys = set()
                 for side_idx, side in sides.iterrows():

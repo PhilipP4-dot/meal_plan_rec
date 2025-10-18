@@ -1,0 +1,725 @@
+Hall,Category,Time,Dish,Calories,Serving Size,AutoCategory,FinalCategory
+Huffman,Continental,(8am-9am),Plain Bagel,230,,other,side
+Huffman,Continental,(8am-9am),Everything Bagel,310,1 each,other,side
+Huffman,Continental,(8am-9am),Cinnamon Raisin Bagel,230,,other,side
+Huffman,Continental,(8am-9am),Whole Wheat Bread,80,,side,side
+Huffman,Continental,(8am-9am),White Bread,150,,side,side
+Huffman,Continental,(8am-9am),English Muffin,110,,dessert,side
+Huffman,Continental,(8am-9am),Made Without Gluten Bread,80,,side,side
+Huffman,Continental,(8am-9am),Made without Gluten Bagel,260,,other,side
+Huffman,Continental,(8am-9am),Cream Cheese,70,1 oz,other,other
+Huffman,Continental,(8am-9am),Sun Butter,100,1 tbsp,other,other
+Huffman,Continental,(8am-9am),Peanut Butter,0,1 each,other,other
+Huffman,Continental,(8am-9am),Grape Jelly,50,1 tbsp,other,other
+Huffman,Continental,(8am-9am),Strawberry Jelly,50,1 tbsp,other,other
+Huffman,Continental,(8am-9am),Butter,100,1 tbsp,other,other
+Huffman,Continental,(8am-9am),2% Milk,130,8 floz,beverage,beverage
+Huffman,Continental,(8am-9am),Chocolate Milk,0,8 floz,beverage,beverage
+Huffman,Continental,(8am-9am),Chocolate Peamilk,140,1 cup,beverage,beverage
+Huffman,Continental,(8am-9am),Oatmilk,130,1 cup,beverage,beverage
+Huffman,Continental,(8am-9am),Soymilk,100,1 cup,beverage,beverage
+Huffman,Continental,(8am-9am),Rice Chex Cereal,120,1 cup,side,side
+Huffman,Continental,(8am-9am),Fruit Loops Cereal,120,,other,side
+Huffman,Continental,(8am-9am),Raisin Bran Cereal,0,1 cup,other,side
+Huffman,Continental,(8am-9am),Apple Jacks Cereal,170,1 cup,other,side
+Huffman,Continental,(8am-9am),Rice Krispies,100,1 cup,side,side
+Huffman,Continental,(8am-9am),Cocoa Puffs,140,1 cup,other,side
+Huffman,Continental,(8am-9am),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Huffman,Continental,(8am-9am),Frosted Flakes,150,,other,side
+Huffman,Continental,(8am-9am),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Huffman,Continental,(8am-9am),Nonfat Plain Greek Yogurt,100,0.75 cup,other,side
+Huffman,Continental,(8am-9am),Nonfat Strawberry Greek Yogurt,180,1 cup,other,side
+Huffman,Continental,(8am-9am),Cottage Cheese,90,0.5 cup,other,side
+Huffman,Continental,(8am-9am),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Huffman,Continental,(8am-9am),Pumpkin Seeds,160,2 tbsp,other,other
+Huffman,Continental,(8am-9am),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Continental,(8am-9am),Red & Green Grapes,60,0.5 cup,other,side
+Huffman,Continental,(8am-9am),Cantaloupe,30,0.5 cup,other,side
+Huffman,Continental,(8am-9am),Pineapple Chunks,70,4 oz,other,side
+Huffman,Continental,(8am-9am),Honeydew Melon,35,0.5 cup,other,side
+Huffman,Continental,(8am-9am),Belgian Waffle,220,1 each,other,dessert
+Huffman,Continental,(8am-9am),Maple Syrup,40,1 tbsp,other,other
+Huffman,Continental,(8am-9am),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Continental,(8am-9am),Mini Marshmallow,20,2 tbsp,other,other
+Huffman,Continental,(8am-9am),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Breakfast,(9am-11am),Pineapple-Spinach Smoothie,35,0.75 cup,beverage,beverage
+Huffman,Breakfast,(9am-11am),Scrambled Eggs,190,0.5 cup,main,main
+Huffman,Breakfast,(9am-11am),Pork Sausage Links,230,2 each,main,main
+Huffman,Breakfast,(9am-11am),Turkey Sausage Patty,90,1 each,main,main
+Huffman,Breakfast,(9am-11am),Hash Brown Patty,160,1 each,other,other
+Huffman,Breakfast,(9am-11am),Buttermilk Biscuit,280,,beverage,beverage
+Huffman,Breakfast,(9am-11am),Country Sausage Gravy,200,2 oz,main,main
+Huffman,Breakfast,(9am-11am),Chalula Hot Sauce,0,,other,other
+Huffman,Breakfast,(9am-11am),Sour Cream,70,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Salsa Roja,10,1 floz,other,other
+Huffman,Breakfast,(9am-11am),Salsa Verde,25,2 floz,other,other
+Huffman,Breakfast,(9am-11am),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Nonfat Plain Greek Yogurt,100,0.75 cup,other,side
+Huffman,Breakfast,(9am-11am),Nonfat Strawberry Greek Yogurt,180,1 cup,other,side
+Huffman,Breakfast,(9am-11am),Cottage Cheese,90,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Huffman,Breakfast,(9am-11am),Pumpkin Seeds,160,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Red & Green Grapes,60,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Cantaloupe,30,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Pineapple Chunks,70,4 oz,other,side
+Huffman,Breakfast,(9am-11am),Honeydew Melon,35,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Chocolate Oatmeal,60,1 serving,other,other
+Huffman,Breakfast,(9am-11am),Brown Sugar,60,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Golden Raisins,130,0.25 cup,other,other
+Huffman,Breakfast,(9am-11am),Dried Cranberries,70,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Cage-Free Eggs,180,0.5 cup,main,main
+Huffman,Breakfast,(9am-11am),Cage Free Egg Whites,280,0.5 cup,main,main
+Huffman,Breakfast,(9am-11am),Shelled Egg,80,1 each,main,main
+Huffman,Breakfast,(9am-11am),Shredded Monterey Jack Cheese,100,0.25 cup,other,side
+Huffman,Breakfast,(9am-11am),Canadian Bacon,50,2 slice,main,main
+Huffman,Breakfast,(9am-11am),Diced Turkey Sausage,90,1 patty,main,main
+Huffman,Breakfast,(9am-11am),Sauteed Spinach,80,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Roasted Tomatoes,180,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Fire Roasted Jalapenos,25,1 oz,other,side
+Huffman,Breakfast,(9am-11am),Roasted Mushrooms,110,0.5 cup,other,side
+Huffman,Breakfast,(9am-11am),Blueberry Muffin,200,1 each,dessert,dessert
+Huffman,Breakfast,(9am-11am),Chocolate Chip Muffin,200,1 each,dessert,dessert
+Huffman,Breakfast,(9am-11am),Strawberry Glazed Donut,430,1 each,dessert,dessert
+Huffman,Breakfast,(9am-11am),Plain Bagel,230,,other,side
+Huffman,Breakfast,(9am-11am),Everything Bagel,310,1 each,other,side
+Huffman,Breakfast,(9am-11am),Cinnamon Raisin Bagel,230,,other,side
+Huffman,Breakfast,(9am-11am),Whole Wheat Bread,80,,side,side
+Huffman,Breakfast,(9am-11am),White Bread,150,,side,side
+Huffman,Breakfast,(9am-11am),English Muffin,110,,dessert,side
+Huffman,Breakfast,(9am-11am),Made Without Gluten Bread,80,,side,side
+Huffman,Breakfast,(9am-11am),Made without Gluten Bagel,260,,other,side
+Huffman,Breakfast,(9am-11am),Cream Cheese,70,1 oz,other,other
+Huffman,Breakfast,(9am-11am),Sun Butter,100,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Peanut Butter,0,1 each,other,other
+Huffman,Breakfast,(9am-11am),Grape Jelly,50,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Strawberry Jelly,50,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Butter,100,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Belgian Waffle,220,1 each,other,dessert
+Huffman,Breakfast,(9am-11am),Maple Syrup,40,1 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Mini Marshmallow,20,2 tbsp,other,other
+Huffman,Breakfast,(9am-11am),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Breakfast,(9am-11am),2% Milk,130,8 floz,beverage,beverage
+Huffman,Breakfast,(9am-11am),Chocolate Milk,0,8 floz,beverage,beverage
+Huffman,Breakfast,(9am-11am),Chocolate Peamilk,140,1 cup,beverage,beverage
+Huffman,Breakfast,(9am-11am),Oatmilk,130,1 cup,beverage,beverage
+Huffman,Breakfast,(9am-11am),Soymilk,100,1 cup,beverage,beverage
+Huffman,Breakfast,(9am-11am),Rice Chex Cereal,120,1 cup,side,side
+Huffman,Breakfast,(9am-11am),Fruit Loops Cereal,120,,other,side
+Huffman,Breakfast,(9am-11am),Raisin Bran Cereal,0,1 cup,other,side
+Huffman,Breakfast,(9am-11am),Apple Jacks Cereal,170,1 cup,other,side
+Huffman,Breakfast,(9am-11am),Rice Krispies,100,1 cup,side,side
+Huffman,Breakfast,(9am-11am),Cocoa Puffs,140,1 cup,other,side
+Huffman,Breakfast,(9am-11am),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Huffman,Breakfast,(9am-11am),Frosted Flakes,150,,other,side
+Huffman,Brunch,(11am-2pm),Romaine Lettuce,15,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Baby Spinach,15,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Chilled Quinoa,130,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Grape Tomatoes,15,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Sliced Cucumber,10,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Shredded Carrots,25,2 oz,other,side
+Huffman,Brunch,(11am-2pm),Sliced Red Onions,15,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Sliced Bell Peppers,10,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Sliced Black Olives,0,2 tbsp,other,side
+Huffman,Brunch,(11am-2pm),Roasted Edamame,170,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Pickled Beets,60,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Fresh Broccoli Florets,20,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Roasted Brussels Sprouts,45,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Crispy Chickpeas,60,0.5 oz,other,side
+Huffman,Brunch,(11am-2pm),Diced Chicken,180,3.75 oz,main,main
+Huffman,Brunch,(11am-2pm),Roasted Tofu,150,3 oz,main,main
+Huffman,Brunch,(11am-2pm),Hard-Boiled Eggs,60,1 egg,main,side
+Huffman,Brunch,(11am-2pm),Shredded Cheddar Cheese,120,0.25 cup,other,side
+Huffman,Brunch,(11am-2pm),House Made Honey Mustard,120,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Herb Ranch Dressing,80,1 floz,other,other
+Huffman,Brunch,(11am-2pm),Raspberry Vinaigrette,0,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Italian Dressing,280,1 serving,other,other
+Huffman,Brunch,(11am-2pm),Herbed Balsamic Vinaigrette,25,1 floz,other,other
+Huffman,Brunch,(11am-2pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Nonfat Plain Greek Yogurt,100,0.75 cup,other,side
+Huffman,Brunch,(11am-2pm),Nonfat Strawberry Greek Yogurt,180,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Cottage Cheese,90,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Huffman,Brunch,(11am-2pm),Pumpkin Seeds,160,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Red & Green Grapes,60,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Cantaloupe,30,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Pineapple Chunks,70,4 oz,other,side
+Huffman,Brunch,(11am-2pm),Honeydew Melon,35,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Cage Free Egg Whites,280,0.5 cup,main,main
+Huffman,Brunch,(11am-2pm),Cage-Free Eggs,180,0.5 cup,main,main
+Huffman,Brunch,(11am-2pm),Shelled Egg,80,1 each,main,main
+Huffman,Brunch,(11am-2pm),Shredded Monterey Jack Cheese,100,0.25 cup,other,side
+Huffman,Brunch,(11am-2pm),Diced Turkey Sausage,90,1 patty,main,main
+Huffman,Brunch,(11am-2pm),Canadian Bacon,50,2 slice,main,main
+Huffman,Brunch,(11am-2pm),Sauteed Spinach,80,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Roasted Tomatoes,180,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Fire Roasted Jalapenos,25,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Roasted Mushrooms,110,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Pepperoni Pizza,260,1 slice,other,main
+Huffman,Brunch,(11am-2pm),Cheese Pizza,240,1 slice,other,main
+Huffman,Brunch,(11am-2pm),Split Pea & Ham Soup,150,6 floz,main,main
+Huffman,Brunch,(11am-2pm),Chocolate Oatmeal,60,1 serving,other,other
+Huffman,Brunch,(11am-2pm),Brown Sugar,60,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Golden Raisins,130,0.25 cup,other,other
+Huffman,Brunch,(11am-2pm),Dried Cranberries,70,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Smash Burger,520,6 oz,main,main
+Huffman,Brunch,(11am-2pm),Seasoned Turkey Burger,30,1 each,main,main
+Huffman,Brunch,(11am-2pm),Grilled Seasoned Chicken Breast,270,1 each,main,main
+Huffman,Brunch,(11am-2pm),Beyond Burger Patty,240,1 patty,main,main
+Huffman,Brunch,(11am-2pm),Black Bean Burger,180,,main,main
+Huffman,Brunch,(11am-2pm),Potato Roll,230,1 each,side,side
+Huffman,Brunch,(11am-2pm),Bacon Onion Jam,130,2 tbsp,main,main
+Huffman,Brunch,(11am-2pm),Roasted Mushrooms,130,0.5 cup,other,side
+Huffman,Brunch,(11am-2pm),Grilled Red Onions,25,0.25 cup,other,other
+Huffman,Brunch,(11am-2pm),Fire Roasted Jalapenos,25,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Crispy Fried Onions,15,0.25 oz,other,other
+Huffman,Brunch,(11am-2pm),Cheddar Cheese,60,1 slice,other,side
+Huffman,Brunch,(11am-2pm),American Cheese,50,1 slice,other,side
+Huffman,Brunch,(11am-2pm),Leaf Lettuce,0,1 leaf,other,side
+Huffman,Brunch,(11am-2pm),Sliced Yellow Onion,15,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Sliced Tomatoes,10,2 slice,other,side
+Huffman,Brunch,(11am-2pm),Dill Pickle Slices,0,1 oz,other,side
+Huffman,Brunch,(11am-2pm),Scrambled Eggs,190,0.5 cup,main,main
+Huffman,Brunch,(11am-2pm),Turkey Sausage Patty,90,1 each,main,main
+Huffman,Brunch,(11am-2pm),Hash Brown Patty,160,1 each,other,other
+Huffman,Brunch,(11am-2pm),Buttermilk Biscuit,280,,beverage,beverage
+Huffman,Brunch,(11am-2pm),Country Sausage Gravy,200,2 oz,main,main
+Huffman,Brunch,(11am-2pm),Sour Cream,70,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Vegan Pasta Bake,290,1 serving,main,main
+Huffman,Brunch,(11am-2pm),Chicken & Tomato Pasta,500,8.5 oz,main,main
+Huffman,Brunch,(11am-2pm),Pork Sausage Links,230,2 each,main,main
+Huffman,Brunch,(11am-2pm),White Rice,120,0.5 cup,side,side
+Huffman,Brunch,(11am-2pm),Brown Rice,110,0.5 cup,side,side
+Huffman,Brunch,(11am-2pm),Togarashi,25,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Tuxedo Sesame Seeds,0,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),MTO Furikake Seasoning,0,0.25 oz,other,other
+Huffman,Brunch,(11am-2pm),Nori Sheets,10,1 serving,other,other
+Huffman,Brunch,(11am-2pm),Chow Mein Noodles,130,0.5 cup,other,other
+Huffman,Brunch,(11am-2pm),Fresh Scallions,0,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Pickled Red Onion,25,0.25 cup,other,other
+Huffman,Brunch,(11am-2pm),Sambal Oelek Chili Sauce,0,1 tsp,other,other
+Huffman,Brunch,(11am-2pm),Sweet Soy Marinade,60,1 floz,other,other
+Huffman,Brunch,(11am-2pm),Tamari Soy Sauce,10,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Chili Oil,140,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Rice Vinegar & Soy Sauce Oil,50,1 floz,side,other
+Huffman,Brunch,(11am-2pm),Blueberry Muffin,200,1 each,dessert,dessert
+Huffman,Brunch,(11am-2pm),Chocolate Chip Muffin,200,1 each,dessert,dessert
+Huffman,Brunch,(11am-2pm),Strawberry Glazed Donut,430,1 each,dessert,dessert
+Huffman,Brunch,(11am-2pm),Chocolate Whoopie Pie,430,1 each,dessert,dessert
+Huffman,Brunch,(11am-2pm),Double Chocolate Chip Cookie,170,1 serving,dessert,dessert
+Huffman,Brunch,(11am-2pm),Oatmeal Raisin Cookie,0,1 each,dessert,dessert
+Huffman,Brunch,(11am-2pm),Plain Bagel,230,,other,side
+Huffman,Brunch,(11am-2pm),Everything Bagel,310,1 each,other,side
+Huffman,Brunch,(11am-2pm),Cinnamon Raisin Bagel,230,,other,side
+Huffman,Brunch,(11am-2pm),Whole Wheat Bread,80,,side,side
+Huffman,Brunch,(11am-2pm),White Bread,150,,side,side
+Huffman,Brunch,(11am-2pm),English Muffin,110,,dessert,side
+Huffman,Brunch,(11am-2pm),Made Without Gluten Bread,80,,side,side
+Huffman,Brunch,(11am-2pm),Made without Gluten Bagel,260,,other,side
+Huffman,Brunch,(11am-2pm),Cream Cheese,70,1 oz,other,other
+Huffman,Brunch,(11am-2pm),Sun Butter,100,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Peanut Butter,0,1 each,other,other
+Huffman,Brunch,(11am-2pm),Grape Jelly,50,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Strawberry Jelly,50,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Butter,100,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Belgian Waffle,220,1 each,other,dessert
+Huffman,Brunch,(11am-2pm),Maple Syrup,40,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Mini Marshmallow,20,2 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Brunch,(11am-2pm),2% Milk,130,8 floz,beverage,beverage
+Huffman,Brunch,(11am-2pm),Chocolate Milk,0,8 floz,beverage,beverage
+Huffman,Brunch,(11am-2pm),Chocolate Peamilk,140,1 cup,beverage,beverage
+Huffman,Brunch,(11am-2pm),Oatmilk,130,1 cup,beverage,beverage
+Huffman,Brunch,(11am-2pm),Soymilk,100,1 cup,beverage,beverage
+Huffman,Brunch,(11am-2pm),Rice Chex Cereal,120,1 cup,side,side
+Huffman,Brunch,(11am-2pm),Fruit Loops Cereal,120,,other,side
+Huffman,Brunch,(11am-2pm),Raisin Bran Cereal,0,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Apple Jacks Cereal,170,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Rice Krispies,100,1 cup,side,side
+Huffman,Brunch,(11am-2pm),Cocoa Puffs,140,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Huffman,Brunch,(11am-2pm),Frosted Flakes,150,,other,side
+Huffman,Brunch,(11am-2pm),Banana Cream Pie Ice Cream,270,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Birthday Cake Ice Cream,280,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Campfire S'mores Ice Cream,340,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Chocolate Ice Cream,0,0.66 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Coffee Ice Cream,240,1 serving,dessert,dessert
+Huffman,Brunch,(11am-2pm),Cookies & Cream Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Cotton Candy Ice,600,0.5 cup,other,dessert
+Huffman,Brunch,(11am-2pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Orange Pineapple Ice Cream,240,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Pumpkin Pie Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Rainbow Sherbet,170,0.5 cup,other,dessert
+Huffman,Brunch,(11am-2pm),Raspberry Fudge Cordial Ice Cream,290,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Strawberry Ice Cream,230,1 serving,dessert,dessert
+Huffman,Brunch,(11am-2pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Summertime Peach Ice Cream,240,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Triple Chocolate Chunk Ice Cream,320,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Vanilla Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Brunch,(11am-2pm),Pretzel Sticks,0,1 serving,other,other
+Huffman,Brunch,(11am-2pm),Graham Cracker Crumbs,30,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Oreo Cookie Crumbs,70,2 tbsp,dessert,dessert
+Huffman,Brunch,(11am-2pm),Rainbow Sprinkles,60,1 tbsp,other,other
+Huffman,Brunch,(11am-2pm),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Brunch,(11am-2pm),Caramel  Sauce,60,1 floz,other,other
+Huffman,Dinner,(5pm-8pm),Romaine Lettuce,15,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Baby Spinach,15,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Chilled Quinoa,130,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Grape Tomatoes,15,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Cucumber,10,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Shredded Carrots,25,2 oz,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Red Onions,15,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Bell Peppers,10,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Black Olives,0,2 tbsp,other,side
+Huffman,Dinner,(5pm-8pm),Roasted Edamame,170,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Pickled Beets,60,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),Fresh Broccoli Florets,20,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Roasted Brussels Sprouts,45,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Crispy Chickpeas,60,0.5 oz,other,side
+Huffman,Dinner,(5pm-8pm),Diced Chicken,180,3.75 oz,main,main
+Huffman,Dinner,(5pm-8pm),Roasted Tofu,150,3 oz,main,main
+Huffman,Dinner,(5pm-8pm),Hard-Boiled Eggs,60,1 egg,main,side
+Huffman,Dinner,(5pm-8pm),Shredded Cheddar Cheese,120,0.25 cup,other,side
+Huffman,Dinner,(5pm-8pm),House Made Honey Mustard,120,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Herb Ranch Dressing,80,1 floz,other,other
+Huffman,Dinner,(5pm-8pm),Raspberry Vinaigrette,0,2 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Italian Dressing,280,1 serving,other,other
+Huffman,Dinner,(5pm-8pm),Herbed Balsamic Vinaigrette,25,1 floz,other,other
+Huffman,Dinner,(5pm-8pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Nonfat Plain Greek Yogurt,100,0.75 cup,other,side
+Huffman,Dinner,(5pm-8pm),Nonfat Strawberry Greek Yogurt,180,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Cottage Cheese,90,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Huffman,Dinner,(5pm-8pm),Pumpkin Seeds,160,2 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Chia Seeds,70,1.5 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Red & Green Grapes,60,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Cantaloupe,30,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Pineapple Chunks,70,4 oz,other,side
+Huffman,Dinner,(5pm-8pm),Honeydew Melon,35,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Grilled Lemon-Rosemary Chicken,170,1 each,main,main
+Huffman,Dinner,(5pm-8pm),Honey Orange Roasted Potatoes,100,0.5 cup,side,side
+Huffman,Dinner,(5pm-8pm),Kale with Caramelized Onions,45,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Zucchini & Yellow Squash Saute,70,0.5 cup,other,other
+Huffman,Dinner,(5pm-8pm),Pepperoni Pizza,260,1 slice,other,main
+Huffman,Dinner,(5pm-8pm),Cheese Pizza,240,1 slice,other,main
+Huffman,Dinner,(5pm-8pm),Flour City Pepperoni &  Mushroom Pizza,190,1 slice,other,other
+Huffman,Dinner,(5pm-8pm),Split Pea & Ham Soup,150,6 floz,main,main
+Huffman,Dinner,(5pm-8pm),Smash Burger,520,6 oz,main,main
+Huffman,Dinner,(5pm-8pm),Seasoned Turkey Burger,30,1 each,main,main
+Huffman,Dinner,(5pm-8pm),Grilled Seasoned Chicken Breast,270,1 each,main,main
+Huffman,Dinner,(5pm-8pm),Beyond Burger Patty,240,1 patty,main,main
+Huffman,Dinner,(5pm-8pm),Black Bean Burger,180,,main,main
+Huffman,Dinner,(5pm-8pm),Potato Roll,230,1 each,side,side
+Huffman,Dinner,(5pm-8pm),Bacon Onion Jam,130,2 tbsp,main,main
+Huffman,Dinner,(5pm-8pm),Roasted Mushrooms,130,0.5 cup,other,side
+Huffman,Dinner,(5pm-8pm),Grilled Red Onions,25,0.25 cup,other,other
+Huffman,Dinner,(5pm-8pm),Fire Roasted Jalapenos,25,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),Crispy Fried Onions,15,0.25 oz,other,other
+Huffman,Dinner,(5pm-8pm),Cheddar Cheese,60,1 slice,other,side
+Huffman,Dinner,(5pm-8pm),American Cheese,50,1 slice,other,side
+Huffman,Dinner,(5pm-8pm),Leaf Lettuce,0,1 leaf,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Yellow Onion,15,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),Sliced Tomatoes,10,2 slice,other,side
+Huffman,Dinner,(5pm-8pm),Dill Pickle Slices,0,1 oz,other,side
+Huffman,Dinner,(5pm-8pm),French Fries,210,0.5 cup,side,side
+Huffman,Dinner,(5pm-8pm),Vegetable Egg Rolls,350,2 each,main,main
+Huffman,Dinner,(5pm-8pm),Sweet Thai Chili Sauce,80,1 oz,other,other
+Huffman,Dinner,(5pm-8pm),Chicken Tenders,180,1 each,main,main
+Huffman,Dinner,(5pm-8pm),Crispy Market Tenders,70,3 each,other,other
+Huffman,Dinner,(5pm-8pm),Loaded Mashed Potatoes,180,0.5 cup,side,side
+Huffman,Dinner,(5pm-8pm),House Made Honey Mustard,120,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Ranch Dressing,150,28 g,other,other
+Huffman,Dinner,(5pm-8pm),Buffalo Sauce,0,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Harissa Roasted Cauliflower,60,0.5 cup,other,other
+Huffman,Dinner,(5pm-8pm),Steamed Green Beans,30,3 oz,side,side
+Huffman,Dinner,(5pm-8pm),White Rice,120,0.5 cup,side,side
+Huffman,Dinner,(5pm-8pm),Togarashi,25,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Tuxedo Sesame Seeds,0,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),MTO Furikake Seasoning,0,0.25 oz,other,other
+Huffman,Dinner,(5pm-8pm),Nori Sheets,10,1 serving,other,other
+Huffman,Dinner,(5pm-8pm),Chow Mein Noodles,130,0.5 cup,other,other
+Huffman,Dinner,(5pm-8pm),Fresh Scallions,0,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Pickled Red Onion,25,0.25 cup,other,other
+Huffman,Dinner,(5pm-8pm),Sambal Oelek Chili Sauce,0,1 tsp,other,other
+Huffman,Dinner,(5pm-8pm),Sweet Soy Marinade,60,1 floz,other,other
+Huffman,Dinner,(5pm-8pm),Tamari Soy Sauce,10,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Chili Oil,140,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Rice Vinegar & Soy Sauce Oil,50,1 floz,side,other
+Huffman,Dinner,(5pm-8pm),Double Chocolate Chip Cookie,170,1 serving,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Oatmeal Raisin Cookie,60,1 each,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Chocolate Whoopie Pie,430,1 each,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Plain Bagel,230,,other,side
+Huffman,Dinner,(5pm-8pm),Everything Bagel,310,1 each,other,side
+Huffman,Dinner,(5pm-8pm),Cinnamon Raisin Bagel,230,,other,side
+Huffman,Dinner,(5pm-8pm),Whole Wheat Bread,80,,side,side
+Huffman,Dinner,(5pm-8pm),White Bread,150,,side,side
+Huffman,Dinner,(5pm-8pm),English Muffin,110,,dessert,side
+Huffman,Dinner,(5pm-8pm),Made Without Gluten Bread,80,,side,side
+Huffman,Dinner,(5pm-8pm),Made without Gluten Bagel,260,,other,side
+Huffman,Dinner,(5pm-8pm),Cream Cheese,70,1 oz,other,other
+Huffman,Dinner,(5pm-8pm),Sun Butter,100,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Peanut Butter,0,1 each,other,other
+Huffman,Dinner,(5pm-8pm),Grape Jelly,50,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Strawberry Jelly,50,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Butter,100,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Belgian Waffle,220,1 each,other,dessert
+Huffman,Dinner,(5pm-8pm),Maple Syrup,40,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Chocolate Chips,100,2 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Mini Marshmallow,20,2 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Dinner,(5pm-8pm),2% Milk,130,8 floz,beverage,beverage
+Huffman,Dinner,(5pm-8pm),Chocolate Milk,0,8 floz,beverage,beverage
+Huffman,Dinner,(5pm-8pm),Chocolate Peamilk,140,1 cup,beverage,beverage
+Huffman,Dinner,(5pm-8pm),Oatmilk,130,1 cup,beverage,beverage
+Huffman,Dinner,(5pm-8pm),Soymilk,100,1 cup,beverage,beverage
+Huffman,Dinner,(5pm-8pm),Rice Chex Cereal,120,1 cup,side,side
+Huffman,Dinner,(5pm-8pm),Fruit Loops Cereal,120,,other,side
+Huffman,Dinner,(5pm-8pm),Raisin Bran Cereal,0,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Apple Jacks Cereal,170,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Rice Krispies,100,1 cup,side,side
+Huffman,Dinner,(5pm-8pm),Cocoa Puffs,140,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Huffman,Dinner,(5pm-8pm),Frosted Flakes,150,,other,side
+Huffman,Dinner,(5pm-8pm),Banana Cream Pie Ice Cream,270,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Birthday Cake Ice Cream,280,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Campfire S'mores Ice Cream,340,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Chocolate Ice Cream,0,0.66 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Coffee Ice Cream,240,1 serving,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Cookies & Cream Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Cotton Candy Ice,600,0.5 cup,other,dessert
+Huffman,Dinner,(5pm-8pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Orange Pineapple Ice Cream,240,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Pumpkin Pie Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Rainbow Sherbet,170,0.5 cup,other,dessert
+Huffman,Dinner,(5pm-8pm),Raspberry Fudge Cordial Ice Cream,290,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Strawberry Ice Cream,230,1 serving,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Summertime Peach Ice Cream,240,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Triple Chocolate Chunk Ice Cream,320,0.5 cup,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Pretzel Sticks,0,1 serving,other,other
+Huffman,Dinner,(5pm-8pm),Graham Cracker Crumbs,30,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Oreo Cookie Crumbs,70,2 tbsp,dessert,dessert
+Huffman,Dinner,(5pm-8pm),Rainbow Sprinkles,60,1 tbsp,other,other
+Huffman,Dinner,(5pm-8pm),Hershey's Chocolate Syrup,190,2 floz,other,other
+Huffman,Dinner,(5pm-8pm),Caramel  Sauce,60,1 floz,other,other
+Curtis,Brunch,(11am-2pm),Grilled Lemon Dijon Chicken Breast,10,4 oz,main,main
+Curtis,Brunch,(11am-2pm),Mashed Gold Potatoes,110,0.5 cup,side,side
+Curtis,Brunch,(11am-2pm),Roasted Brussels Sprouts,45,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Grilled Yellow Squash,60,0.5 cup,other,other
+Curtis,Brunch,(11am-2pm),Scrambled Eggs,190,0.5 cup,main,main
+Curtis,Brunch,(11am-2pm),Roasted Red Potatoes,120,3 oz,side,side
+Curtis,Brunch,(11am-2pm),Chocolate Chip Pancakes,210,1 each,dessert,dessert
+Curtis,Brunch,(11am-2pm),Maple Syrup,40,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Pork Sausage Links,230,2 each,main,main
+Curtis,Brunch,(11am-2pm),Egg,190,0.5 cup,main,main
+Curtis,Brunch,(11am-2pm),Cage Free Egg Whites,100,0.5 cup,main,main
+Curtis,Brunch,(11am-2pm),Shelled Egg,80,1 each,main,main
+Curtis,Brunch,(11am-2pm),Diced Turkey Sausage,90,1 patty,main,main
+Curtis,Brunch,(11am-2pm),Diced Yellow Onion,15,1 oz,other,side
+Curtis,Brunch,(11am-2pm),Diced Mixed Bell Peppers,10,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Mushrooms,0,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Jalapeno Peppers,15,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Diced Tomatoes,0,1 floz,other,side
+Curtis,Brunch,(11am-2pm),Shredded Cheddar Cheese,120,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Baby Spinach,15,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Diced Ham,30,1 oz,other,main
+Curtis,Brunch,(11am-2pm),Bistro Beet Burger Patty,100,1 each,main,main
+Curtis,Brunch,(11am-2pm),Herb-Roasted Potatoes,120,0.5 cup,side,side
+Curtis,Brunch,(11am-2pm),Potato Roll,230,1 each,side,side
+Curtis,Brunch,(11am-2pm),Leaf Lettuce,0,1 leaf,other,side
+Curtis,Brunch,(11am-2pm),Sliced Tomatoes,10,2 slice,other,side
+Curtis,Brunch,(11am-2pm),Vegan Sriracha Mayo,150,1 floz,other,other
+Curtis,Brunch,(11am-2pm),Cheese Pizza,240,1 slice,other,main
+Curtis,Brunch,(11am-2pm),Pepperoni Pizza,270,1 slice,other,main
+Curtis,Brunch,(11am-2pm),"10"" Cauliflower Pizza Crust",510,1 crust,other,side
+Curtis,Brunch,(11am-2pm),Italian Wedding Soup,110,1 serving,main,main
+Curtis,Brunch,(11am-2pm),Tomato Basil Soup,100,8 floz,main,main
+Curtis,Brunch,(11am-2pm),Brown Sugar,60,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Golden Raisins,130,0.25 cup,other,other
+Curtis,Brunch,(11am-2pm),Dried Cranberries,70,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Goldfish (R) Crackers,40,15 pieces,main,other
+Curtis,Brunch,(11am-2pm),Housemade Seasoned Croutons,150,1 oz,other,other
+Curtis,Brunch,(11am-2pm),Romaine Lettuce,15,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Field Greens,15,2 oz,other,side
+Curtis,Brunch,(11am-2pm),Grape Tomatoes,15,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Shredded Carrots,15,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Sliced Red Onions,15,1 oz,other,side
+Curtis,Brunch,(11am-2pm),Sliced Cucumber,10,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Cauliflower Florets,30,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Broccoli Florets,15,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Sliced Bell Peppers,10,1 oz,other,side
+Curtis,Brunch,(11am-2pm),Shredded Cheddar Cheese,120,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Feta Cheese,90,2 tbsp,other,side
+Curtis,Brunch,(11am-2pm),Roasted Tofu,210,4 oz,main,main
+Curtis,Brunch,(11am-2pm),Diced Grilled Chicken,140,3 oz,main,main
+Curtis,Brunch,(11am-2pm),Hard-Boiled Eggs,60,1 egg,main,side
+Curtis,Brunch,(11am-2pm),Ranch Dressing,160,28 g,other,other
+Curtis,Brunch,(11am-2pm),Orange Balsamic Vinaigrette,160,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Italian Vinaigrette,130,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Honey Mustard Dressing,140,2 floz,other,other
+Curtis,Brunch,(11am-2pm),Cantaloupe,30,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Cottage Cheese,90,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Pineapple,25,0.25 cup,other,side
+Curtis,Brunch,(11am-2pm),Red & Green Grapes,60,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Cantaloupe,30,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Curtis,Brunch,(11am-2pm),Pumpkin Seeds,160,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Chia Seeds,70,1.5 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Sliced Turkey Breast,100,3 oz,other,main
+Curtis,Brunch,(11am-2pm),Deli Ham,80,2 oz,other,main
+Curtis,Brunch,(11am-2pm),Sliced Salami,120,3 slice,other,main
+Curtis,Brunch,(11am-2pm),Pepperoni,140,1 serving,other,main
+Curtis,Brunch,(11am-2pm),Cheddar Cheese,60,1 slice,other,side
+Curtis,Brunch,(11am-2pm),Sliced Provolone Cheese,80,1 slice,other,side
+Curtis,Brunch,(11am-2pm),Sliced Pepperjack Cheese,60,1 slice,other,side
+Curtis,Brunch,(11am-2pm),Sliced Swiss Cheese,60,1 serving,other,side
+Curtis,Brunch,(11am-2pm),Leaf Lettuce,0,1 leaf,other,side
+Curtis,Brunch,(11am-2pm),Sliced Tomatoes,10,2 slice,other,side
+Curtis,Brunch,(11am-2pm),Sliced Red Onions,10,0.5 oz,other,side
+Curtis,Brunch,(11am-2pm),Sliced Bell Peppers,10,1 oz,other,side
+Curtis,Brunch,(11am-2pm),Sliced Cucumber,10,0.5 cup,other,side
+Curtis,Brunch,(11am-2pm),Baby Spinach,15,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Bread & Butter Pickles,140,2 oz,side,side
+Curtis,Brunch,(11am-2pm),Kosher Pickle Spears,0,1 each,other,side
+Curtis,Brunch,(11am-2pm),Chipotle Mayonnaise,220,1 floz,other,other
+Curtis,Brunch,(11am-2pm),Pesto Aioli,200,1 floz,other,other
+Curtis,Brunch,(11am-2pm),Dijon Mustard,20,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Mayonnaise,110,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Salt & Pepper Potato Chips,270,1.5 oz,side,side
+Curtis,Brunch,(11am-2pm),White Bread,90,,side,side
+Curtis,Brunch,(11am-2pm),Whole Wheat Bread,80,,side,side
+Curtis,Brunch,(11am-2pm),Ciabatta Roll,380,1 each,other,side
+Curtis,Brunch,(11am-2pm),Flour Tortilla,290,1 each,other,side
+Curtis,Brunch,(11am-2pm),Spinach Wrap,340,1 each,other,side
+Curtis,Brunch,(11am-2pm),Wheat Wrap,290,1 each,other,side
+Curtis,Brunch,(11am-2pm),Udi's Soft White Sandwich Bread,150,1 slice,side,side
+Curtis,Brunch,(11am-2pm),Udi's GF Multigrain Bread,140,1 slice,side,side
+Curtis,Brunch,(11am-2pm),Made without Gluten Tortilla,220,1 each,other,other
+Curtis,Brunch,(11am-2pm),Plain Bagel,230,,other,side
+Curtis,Brunch,(11am-2pm),Everything Bagel,310,1 each,other,side
+Curtis,Brunch,(11am-2pm),Cinnamon Raisin Bagel,230,,other,side
+Curtis,Brunch,(11am-2pm),White Bread,90,,side,side
+Curtis,Brunch,(11am-2pm),English Muffin,110,,dessert,side
+Curtis,Brunch,(11am-2pm),Made Without Gluten Bread,150,,side,side
+Curtis,Brunch,(11am-2pm),Made without Gluten Bagel,260,,other,side
+Curtis,Brunch,(11am-2pm),Cream Cheese,100,1 oz,other,other
+Curtis,Brunch,(11am-2pm),Sun Butter,100,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Peanut Butter,0,1 each,other,other
+Curtis,Brunch,(11am-2pm),Grape Jelly,50,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Strawberry Jelly,50,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Butter,100,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Belgian Waffle,220,1 each,other,dessert
+Curtis,Brunch,(11am-2pm),Maple Syrup,40,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Chocolate Chips,100,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Hershey's Chocolate Syrup,180,2 floz,other,other
+Curtis,Brunch,(11am-2pm),Rainbow Sprinkles,60,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),M&M's Pieces,0,1 oz,dessert,dessert
+Curtis,Brunch,(11am-2pm),Mini Marshmallow,20,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Chocolate Milk,0,8 floz,beverage,beverage
+Curtis,Brunch,(11am-2pm),2% Milk,130,8 floz,beverage,beverage
+Curtis,Brunch,(11am-2pm),Chocolate Peamilk,140,1 cup,beverage,beverage
+Curtis,Brunch,(11am-2pm),Oatmilk,130,1 cup,beverage,beverage
+Curtis,Brunch,(11am-2pm),Soymilk,100,1 cup,beverage,beverage
+Curtis,Brunch,(11am-2pm),Rice Chex Cereal,120,1 cup,side,side
+Curtis,Brunch,(11am-2pm),Fruit Loops Cereal,120,,other,side
+Curtis,Brunch,(11am-2pm),Apple Jacks Cereal,170,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Cocoa Puffs,140,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Curtis,Brunch,(11am-2pm),Frosted Flakes,150,,other,side
+Curtis,Brunch,(11am-2pm),Chocolate Chip Muffin,200,1 each,dessert,dessert
+Curtis,Brunch,(11am-2pm),Double Chocolate Chip Cookie,170,1 serving,dessert,dessert
+Curtis,Brunch,(11am-2pm),Oatmeal Raisin Cookie,60,1 each,dessert,dessert
+Curtis,Brunch,(11am-2pm),Strawberry Glazed Donut,430,1 each,dessert,dessert
+Curtis,Brunch,(11am-2pm),Chocolate Whoopie Pie,430,1 each,dessert,dessert
+Curtis,Brunch,(11am-2pm),Vanilla Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Chocolate Ice Cream,220,0.66 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Cookies & Cream Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Rainbow Sherbet,170,0.5 cup,other,dessert
+Curtis,Brunch,(11am-2pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Orange Pineapple Ice Cream,240,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Birthday Cake Ice Cream,280,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Strawberry Ice Cream,230,1 serving,dessert,dessert
+Curtis,Brunch,(11am-2pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Summertime Peach Ice Cream,240,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Triple Chocolate Chunk Ice Cream,320,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Banana Cream Pie Ice Cream,270,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Coffee Ice Cream,240,1 serving,dessert,dessert
+Curtis,Brunch,(11am-2pm),Pumpkin Pie Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Campfire S'mores Ice Cream,340,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Raspberry Fudge Cordial Ice Cream,290,0.5 cup,dessert,dessert
+Curtis,Brunch,(11am-2pm),Cotton Candy Ice,600,0.5 cup,other,dessert
+Curtis,Brunch,(11am-2pm),Pretzel Sticks,0,1 serving,other,other
+Curtis,Brunch,(11am-2pm),Mini Marshmallow,20,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Rainbow Sprinkles,60,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Chocolate Chips,100,2 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Graham Cracker Crumbs,30,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Oreo Cookie Crumbs,70,2 tbsp,dessert,dessert
+Curtis,Brunch,(11am-2pm),Hershey's Chocolate Syrup,180,2 floz,other,other
+Curtis,Brunch,(11am-2pm),Caramel  Sauce,60,1 floz,other,other
+Curtis,Brunch,(11am-2pm),M&M's Pieces,0,1 oz,dessert,dessert
+Curtis,Brunch,(11am-2pm),Sugar Waffle Cone,0,1 each,other,other
+Curtis,Brunch,(11am-2pm),White Rice,120,0.5 cup,side,side
+Curtis,Brunch,(11am-2pm),Brown Rice,110,0.5 cup,side,side
+Curtis,Brunch,(11am-2pm),Furikake Seasoning,10,1 tsp,other,other
+Curtis,Brunch,(11am-2pm),Togarashi,25,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Tuxedo Sesame Seeds,0,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Nori Sheets,10,1 serving,other,other
+Curtis,Brunch,(11am-2pm),Tamari Soy Sauce,10,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Chili Oil,140,1 tbsp,other,other
+Curtis,Brunch,(11am-2pm),Rice Vinegar & Soy Sauce Oil,50,1 floz,side,other
+Curtis,Dinner,(4:30pm-8pm),Pulled Pork,330,3.5 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),BBQ Onions,40,1 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),Baked Beans,180,0.5 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Roasted Asparagus,45,0.5 cup,other,other
+Curtis,Dinner,(4:30pm-8pm),Salted Caramel Chocolate Cookies,90,1 each,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Beef Burger with Bun,290,1 each,main,main
+Curtis,Dinner,(4:30pm-8pm),Bibb Lettuce,0,1 leaf,other,other
+Curtis,Dinner,(4:30pm-8pm),Sliced Red Onions,15,1 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Cheddar Cheese,60,1 slice,other,side
+Curtis,Dinner,(4:30pm-8pm),Sour Cream & Onion Mashed Potatoes,170,0.5 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Herb Roasted Turkey,160,3 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),Brussels Sprouts & Carrots,40,3 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),Potato Roll,230,1 each,side,side
+Curtis,Dinner,(4:30pm-8pm),Leaf Lettuce,0,1 leaf,other,side
+Curtis,Dinner,(4:30pm-8pm),Vegan Sriracha Mayo,150,1 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),Herb-Roasted Potatoes,120,0.5 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Chipotle Black Bean Burger Patty,240,1 each,main,main
+Curtis,Dinner,(4:30pm-8pm),Cheese Pizza,240,1 slice,other,main
+Curtis,Dinner,(4:30pm-8pm),Pepperoni Pizza,270,1 slice,other,main
+Curtis,Dinner,(4:30pm-8pm),"10"" Cauliflower Pizza Crust",510,1 crust,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Turkey Breast,100,3 oz,other,main
+Curtis,Dinner,(4:30pm-8pm),Cherrywood Ham,110,3 oz,other,main
+Curtis,Dinner,(4:30pm-8pm),Sliced Salami,120,3 slice,other,main
+Curtis,Dinner,(4:30pm-8pm),Pepperoni,140,1 serving,other,main
+Curtis,Dinner,(4:30pm-8pm),Cheddar Cheese,60,1 slice,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Provolone Cheese,80,1 slice,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Pepperjack Cheese,60,1 slice,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Swiss Cheese,60,1 serving,other,side
+Curtis,Dinner,(4:30pm-8pm),Leaf Lettuce,0,1 leaf,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Tomatoes,10,2 slice,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Red Onions,10,0.5 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Cucumber,10,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Bell Peppers,10,1 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Baby Spinach,15,1 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Bread & Butter Pickles,140,2 oz,side,side
+Curtis,Dinner,(4:30pm-8pm),Kosher Pickle Spears,0,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Chipotle Mayonnaise,220,1 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),Pesto Aioli,200,1 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),Dijon Mustard,20,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Mayonnaise,110,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Salt & Pepper Potato Chips,270,1.5 oz,side,side
+Curtis,Dinner,(4:30pm-8pm),White Bread,90,,side,side
+Curtis,Dinner,(4:30pm-8pm),Whole Wheat Bread,80,,side,side
+Curtis,Dinner,(4:30pm-8pm),Ciabatta Roll,380,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Flour Tortilla,290,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Spinach Wrap,340,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Wheat Wrap,290,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Udi's Soft White Sandwich Bread,150,1 slice,side,side
+Curtis,Dinner,(4:30pm-8pm),Udi's GF Multigrain Bread,140,1 slice,side,side
+Curtis,Dinner,(4:30pm-8pm),Made without Gluten Tortilla,220,1 each,other,other
+Curtis,Dinner,(4:30pm-8pm),Golden Raisins,130,0.25 cup,other,other
+Curtis,Dinner,(4:30pm-8pm),Dried Cranberries,70,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Goldfish (R) Crackers,40,15 pieces,main,other
+Curtis,Dinner,(4:30pm-8pm),Housemade Seasoned Croutons,150,1 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),Tomato Basil Soup,100,8 floz,main,main
+Curtis,Dinner,(4:30pm-8pm),Romaine Lettuce,15,1 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Field Greens,15,2 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Grape Tomatoes,15,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Shredded Carrots,15,0.25 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Red Onions,15,1 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Cucumber,10,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cauliflower Florets,30,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Broccoli Florets,15,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Sliced Bell Peppers,10,1 oz,other,side
+Curtis,Dinner,(4:30pm-8pm),Shredded Cheddar Cheese,120,0.25 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Feta Cheese,90,2 tbsp,other,side
+Curtis,Dinner,(4:30pm-8pm),Roasted Tofu,210,4 oz,main,main
+Curtis,Dinner,(4:30pm-8pm),Diced Grilled Chicken,140,3 oz,main,main
+Curtis,Dinner,(4:30pm-8pm),Hard-Boiled Eggs,60,1 egg,main,side
+Curtis,Dinner,(4:30pm-8pm),Ranch Dressing,160,28 g,other,other
+Curtis,Dinner,(4:30pm-8pm),Orange Balsamic Vinaigrette,160,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Italian Vinaigrette,130,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Honey Mustard Dressing,140,2 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),Cantaloupe,30,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cottage Cheese,90,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Pineapple,25,0.25 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Red & Green Grapes,60,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cantaloupe,30,0.5 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cinnamon Brown Sugar Granola,370,0.5 cup,other,other
+Curtis,Dinner,(4:30pm-8pm),Pumpkin Seeds,160,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Chia Seeds,70,1.5 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Plain Bagel,230,,other,side
+Curtis,Dinner,(4:30pm-8pm),Everything Bagel,310,1 each,other,side
+Curtis,Dinner,(4:30pm-8pm),Blueberry Bagel,240,,other,side
+Curtis,Dinner,(4:30pm-8pm),Cinnamon Raisin Bagel,230,,other,side
+Curtis,Dinner,(4:30pm-8pm),Whole Wheat Bread,80,,side,side
+Curtis,Dinner,(4:30pm-8pm),White Bread,90,,side,side
+Curtis,Dinner,(4:30pm-8pm),English Muffin,110,,dessert,side
+Curtis,Dinner,(4:30pm-8pm),Made Without Gluten Bread,150,,side,side
+Curtis,Dinner,(4:30pm-8pm),Made without Gluten Bagel,260,,other,side
+Curtis,Dinner,(4:30pm-8pm),Cream Cheese,100,1 oz,other,other
+Curtis,Dinner,(4:30pm-8pm),Sun Butter,100,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Peanut Butter,0,1 each,other,other
+Curtis,Dinner,(4:30pm-8pm),Grape Jelly,50,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Strawberry Jelly,50,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Butter,100,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Chocolate Milk,0,8 floz,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),2% Milk,130,8 floz,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),Chocolate Milk,0,8 floz,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),Chocolate Peamilk,140,1 cup,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),Oatmilk,130,1 cup,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),Soymilk,100,1 cup,beverage,beverage
+Curtis,Dinner,(4:30pm-8pm),Rice Chex Cereal,120,1 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Fruit Loops Cereal,120,,other,side
+Curtis,Dinner,(4:30pm-8pm),Apple Jacks Cereal,170,1 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cocoa Puffs,140,1 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Cinnamon Toast Crunch Cereal,170,1 cup,other,side
+Curtis,Dinner,(4:30pm-8pm),Frosted Flakes,150,,other,side
+Curtis,Dinner,(4:30pm-8pm),Double Chocolate Chip Cookie,170,1 serving,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Oatmeal Raisin Cookie,60,1 each,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Chocolate Whoopie Pie,430,1 each,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Vanilla Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Chocolate Ice Cream,220,0.66 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Cookies & Cream Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Rainbow Sherbet,170,0.5 cup,other,dessert
+Curtis,Dinner,(4:30pm-8pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Orange Pineapple Ice Cream,240,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Birthday Cake Ice Cream,280,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Strawberry Ice Cream,230,1 serving,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Summertime Peach Ice Cream,240,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Triple Chocolate Chunk Ice Cream,320,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Banana Cream Pie Ice Cream,270,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Coffee Ice Cream,240,1 serving,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Pumpkin Pie Ice Cream,260,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Campfire S'mores Ice Cream,340,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Raspberry Fudge Cordial Ice Cream,290,0.5 cup,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Cotton Candy Ice,600,0.5 cup,other,dessert
+Curtis,Dinner,(4:30pm-8pm),Pretzel Sticks,0,1 serving,other,other
+Curtis,Dinner,(4:30pm-8pm),Mini Marshmallow,20,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Rainbow Sprinkles,60,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Chocolate Chips,100,2 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Graham Cracker Crumbs,30,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Oreo Cookie Crumbs,70,2 tbsp,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Hershey's Chocolate Syrup,180,2 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),Caramel  Sauce,60,1 floz,other,other
+Curtis,Dinner,(4:30pm-8pm),M&M's Pieces,0,1 oz,dessert,dessert
+Curtis,Dinner,(4:30pm-8pm),Sugar Waffle Cone,0,1 each,other,other
+Curtis,Dinner,(4:30pm-8pm),White Rice,120,0.5 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Brown Rice,110,0.5 cup,side,side
+Curtis,Dinner,(4:30pm-8pm),Furikake Seasoning,10,1 tsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Togarashi,25,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Tuxedo Sesame Seeds,0,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Nori Sheets,10,1 serving,other,other
+Curtis,Dinner,(4:30pm-8pm),Tamari Soy Sauce,10,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Chili Oil,140,1 tbsp,other,other
+Curtis,Dinner,(4:30pm-8pm),Rice Vinegar & Soy Sauce Oil,50,1 floz,side,other
