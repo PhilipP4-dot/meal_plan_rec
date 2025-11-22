@@ -1,5 +1,5 @@
 import pandas as pd
-from .overrides import apply_overrides
+from app.overrides import apply_overrides
 
 
 
@@ -42,7 +42,11 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
     plan, chosen_mains, total_calories = [], set(), 0
 
     for meal in meal_times:
-        meal = ' '.join(meal.split(' ')[0:-1]).strip()
+        # normalize meal name
+        if len(meal.split(" ")) > 1:
+            meal = ' '.join(meal.split(' ')[0:-1])
+        meal = meal.strip()
+
         # per-meal budget
         cal_per_meal = (daily_calorie_limit * meal_ratios.get(meal)
                         if meal_ratios and meal in meal_ratios
@@ -60,7 +64,10 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
         candidates = []
 
         for hall in halls:
-            time = menu_df[menu_df['Category'] == meal][menu_df['Hall'] == hall]['Time'].unique()[0]
+            # time = meal_opts[meal_opts["Hall"] == hall]["Time"].mode()
+            # time = time.values[0] if not time.empty else ""
+            # print(f"Evaluating meal '{meal}' at hall '{hall}' during '{time}'")
+            time = menu_df[(menu_df['Category'] == meal) & (menu_df['Hall'] == hall)]['Time'].unique()[0]
             hall_items = meal_opts[meal_opts["Hall"] == hall].copy()
             if hall_items.empty:
                 continue
@@ -157,13 +164,13 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
 # Adjust Meal times(Breakfast, Lunch, Dinner), Daily Calorie Limit, Meal Ratios(for a total of 100%), Preferred Halls
 # for each meal period and number of options you want made available to you
 #=======================================================================================================================
-# meal_times = ["Breakfast", "Lunch","Dinner"]
+# meal_times = ["Breakfast", "Lunch ","Dinner "]
 # daily_calorie_limit = 1850
-
+# menu_df = pd.read_csv("data/menu_data_categorized.csv")
 # meal_ratios = {}   # custom split
 # preferred_halls = {}                        # force hall for breakfast
 
 # top_n = 1  # number of options per meal
-# #=======================================================================================================================
+# # #=======================================================================================================================
 
 # daily_plan = generate_daily_plan(menu_df, meal_times, daily_calorie_limit, meal_ratios, preferred_halls, top_n)
