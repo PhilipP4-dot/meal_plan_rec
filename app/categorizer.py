@@ -1,4 +1,7 @@
 import pandas as pd
+from app.overrides import apply_overrides
+from db.models import Menu
+from db.database import SessionLocal
 
 
 df = pd.read_csv("data/menu_data.csv")
@@ -23,8 +26,23 @@ def categorize_dish_simple(name):
 df["AutoCategory"] = df["Dish"].apply(categorize_dish_simple)
 
 # Save the result
-df.to_csv("data/menu_data_categorized.csv", index=False)
-
-print("Categorization complete! Saved to menu_data_categorized.csv")
+db = SessionLocal()
+db.query(Menu).delete()  # Clear existing entries
+for _, row in df.iterrows():
+    item = Menu(
+        dish=row["Dish"],
+        category=row["Category"],
+        hall=row["Hall"],
+        time=row["Time"],
+        calories=row["Calories"],
+        serving_size=row["Serving Size"],
+        auto_category=row["AutoCategory"],
+        final_category=None  # will fill after overrides
+    )
+    db.add(item)
+db.commit()
+db.close()
+apply_overrides(Menu)
+print("Categorization complete! Saved to menu.db")
 
 

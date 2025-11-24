@@ -1,6 +1,20 @@
 import pandas as pd
-from app.overrides import apply_overrides
+from db.models import Menu
+from db.database import SessionLocal
 
+db = SessionLocal()
+items = db.query(Menu).all()
+df = pd.DataFrame([{
+    "Dish": item.dish,
+    "Category": item.category,
+    "Hall": item.hall,
+    "Time": item.time,
+    "Calories": item.calories,
+    "Serving Size": item.serving_size,
+    "AutoCategory": item.auto_category,
+    "FinalCategory": item.final_category
+} for item in items])
+print(df.head())
 
 
 def _coerce_calories(df):
@@ -36,8 +50,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit,
         "TotalCalories": 1815              # sum of first options
       }
     """
-    if "FinalCategory" not in menu_df.columns:
-        menu_df = apply_overrides(menu_df)
+
     df = _coerce_calories(menu_df)
     plan, chosen_mains, total_calories = [], set(), 0
 
