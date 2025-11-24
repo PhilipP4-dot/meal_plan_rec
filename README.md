@@ -12,3 +12,5 @@ python -m streamlit run webapp.py
  - add option to choose the number of meal options to display
  - add option for dietary restrictions/goals
  
+#new stuff
+ - python -m folder_name.file_name to run files in subfolders. Ex: python -m app.recommender

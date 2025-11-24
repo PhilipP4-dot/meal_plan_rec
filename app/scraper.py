@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import pandas as pd
-import os
+
 def fetch_data(url):
     """
     Fetch data from a given URL.
