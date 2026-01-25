@@ -3,7 +3,7 @@ import pandas as pd
 
 menu_df = pd.read_csv("data/menu_data_categorized.csv")
 
-from app.recommender import generate_daily_plan
+from recommender import generate_daily_plan
 st.title("Meal Plan Recommendation System")
 
 st.sidebar.header("Your Preferences")

@@ -75,28 +75,35 @@ def parse_html(load_data):
 
     calorie_tabs = []
     serving_size_tabs = []    
+    station_tabs = []
             
     for tab in soup.find_all('div', class_="c-tab__content"):
         calories = []
         serving_size = []
-        for tab_1 in tab.find_all('li', class_="menu-item-li"):
-            for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href=lambda x: x and x.strip() == "#").get('data-recipe'))):
-                item = json.loads(a.text.replace('\n', '').replace('   ', '').strip())
-                calories.append(next((fact['value'] for fact in item['facts'] if fact['label'] == 'Calories'), None))
-                serving_size.append(item.get('serving_size', None))
+        stations = []
+        for station in tab.find_all('div', class_="menu-station"):
+            stat = station.find('h4', class_="toggle-menu-station-data")
+            for tab_1 in station.find_all('li', class_="menu-item-li"):
+                for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href=lambda x: x and x.strip() == "#").get('data-recipe'))):
+                    item = json.loads(a.text.replace('\n', '').replace('   ', '').strip())
+                    calories.append(next((fact['value'] for fact in item['facts'] if fact['label'] == 'Calories'), None))
+                    serving_size.append(item.get('serving_size', None))
+                    stations.append(stat.text.replace('\n', '').replace('   ', '').strip().lower())
         calorie_tabs.append(calories)
         serving_size_tabs.append(serving_size)
+        station_tabs.append(stations)
     
     final_menu = {}
     calorie_menu = {}
     serving_size_menu = {}
+    station_menu = {}
     for tab in range(len(menu_tabs)):
         final_menu[menu_tabs[tab]] = time_tabs[tab]
         calorie_menu[menu_tabs[tab]] = calorie_tabs[tab]
         serving_size_menu[menu_tabs[tab]] = serving_size_tabs[tab]  
-    
+        station_menu[menu_tabs[tab]] = station_tabs[tab]
 
-    return final_menu, calorie_menu, serving_size_menu
+    return final_menu, calorie_menu, serving_size_menu, station_menu
 
 def main(filename, url):
     
@@ -119,16 +126,16 @@ def main(filename, url):
 
 
 data = main("data\huff.html", "https://denison.nmcfood.com/locations/the-table-at-huffman/")
-df = pd.DataFrame(columns=['Hall', 'Category', 'Time', 'Dish', 'Calories', 'Serving Size'])
-for dishes, calories, serving in zip(data[0], data[1], data[2]):
-    for dish, calorie, serving_size in zip(data[0][dishes], data[1][calories], data[2][serving]):
-        df = df._append({'Hall': 'Huffman', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size}, ignore_index=True)
+df = pd.DataFrame(columns=['Hall', 'Category', 'Time', 'Dish', 'Calories', 'Serving Size', 'Station'])
+for dishes, calories, serving, stations in zip(data[0], data[1], data[2], data[3]):
+    for dish, calorie, serving_size, station  in zip(data[0][dishes], data[1][calories], data[2][serving], data[3][stations]):
+        df = df._append({'Hall': 'Huffman', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size, 'Station': station}, ignore_index=True)
 
 data_1 = main("data\curtis.html", "https://denison.nmcfood.com/locations/the-table-at-curtis/")
-df1 = pd.DataFrame(columns=['Hall', 'Category', 'Time','Dish', 'Calories', 'Serving Size'])
-for dishes, calories, serving in zip(data_1[0], data_1[1], data_1[2]):
-    for dish, calorie, serving_size in zip(data_1[0][dishes], data_1[1][calories], data_1[2][serving]):
-        df1 = df1._append({'Hall': 'Curtis', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size}, ignore_index=True)
+df1 = pd.DataFrame(columns=['Hall', 'Category', 'Time','Dish', 'Calories', 'Serving Size', 'Station'])
+for dishes, calories, serving, stations in zip(data_1[0], data_1[1], data_1[2], data_1[3]):
+    for dish, calorie, serving_size, station in zip(data_1[0][dishes], data_1[1][calories], data_1[2][serving], data_1[3][stations]):
+        df1 = df1._append({'Hall': 'Curtis', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size, 'Station': station}, ignore_index=True)
 
 df = pd.concat([df, df1], ignore_index=True)
 df.to_csv('data\menu_data.csv', index=False)
