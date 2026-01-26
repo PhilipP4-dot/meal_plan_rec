@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>Meal Plan Recommendation System</title>
+</head>
+
+<body>
+    <h1>Welcome, to my recommendation system</h1>
+    <form method="POST" action="/recommendations">
+        <input type="number" name="daily_calories" value="2000"> Daily Calorie Limit
+        <input type="number" name="top_n" value="2"> Number of Options per Meal
+        <input type="checkbox" name="Breakfast"> Breakfast
+        <input type="checkbox" name="Lunch"> Lunch
+        <input type="checkbox" name="Dinner"> Dinner
+
+        <button type="submit">Get Recommendations</button>
+    </form>
+</body>
+
+</html>

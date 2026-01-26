@@ -175,8 +175,8 @@ Huffman,Lunch,(11:30am-2pm),Chow Mein Noodles,130,0.5 cup,street eats toppings,b
 Huffman,Lunch,(11:30am-2pm),Sambal Oelek Chili Sauce,0,1 tsp,street eats toppings,byo_bowl,sauce
 Huffman,Lunch,(11:30am-2pm),Tamari Soy Sauce,10,1 tbsp,street eats toppings,byo_bowl,sauce
 Huffman,Lunch,(11:30am-2pm),Chili Oil,140,1 tbsp,street eats toppings,byo_bowl,sauce
-Huffman,Lunch,(11:30am-2pm),Baby Spinach,15,1 cup,produce market,byo_salad,greens_base
-Huffman,Lunch,(11:30am-2pm),Field Greens,15,2 oz,produce market,byo_salad,greens_base
+Huffman,Lunch,(11:30am-2pm),Baby Spinach,15,1 cup,produce market,byo_salad,base
+Huffman,Lunch,(11:30am-2pm),Field Greens,15,2 oz,produce market,byo_salad,base
 Huffman,Lunch,(11:30am-2pm),Baby Arugula,5,1 cup,produce market,byo_salad,unknown
 Huffman,Lunch,(11:30am-2pm),Chilled Quinoa,130,0.5 cup,produce market,byo_salad,unknown
 Huffman,Lunch,(11:30am-2pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
@@ -363,10 +363,10 @@ Huffman,Dinner,(5pm-9pm),Pickled Red Onion,25,0.25 cup,street eats toppings,byo_
 Huffman,Dinner,(5pm-9pm),Sambal Oelek Chili Sauce,0,1 tsp,street eats toppings,byo_bowl,sauce
 Huffman,Dinner,(5pm-9pm),Tamari Soy Sauce,10,1 tbsp,street eats toppings,byo_bowl,sauce
 Huffman,Dinner,(5pm-9pm),Chili Oil,140,1 tbsp,street eats toppings,byo_bowl,sauce
-Huffman,Dinner,(5pm-9pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,greens_base
-Huffman,Dinner,(5pm-9pm),Kale Greens Mix,10,1 cup,produce market,byo_salad,greens_base
-Huffman,Dinner,(5pm-9pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,greens_base
-Huffman,Dinner,(5pm-9pm),Baby Spinach,15,1 cup,produce market,byo_salad,greens_base
+Huffman,Dinner,(5pm-9pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-9pm),Kale Greens Mix,10,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-9pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-9pm),Baby Spinach,15,1 cup,produce market,byo_salad,base
 Huffman,Dinner,(5pm-9pm),Chilled Quinoa,130,0.5 cup,produce market,byo_salad,unknown
 Huffman,Dinner,(5pm-9pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
 Huffman,Dinner,(5pm-9pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
@@ -622,8 +622,8 @@ Curtis,Lunch,(11am-2:30pm),Tamari Soy Sauce,10,1 tbsp,rice bar,byo_bowl,sauce
 Curtis,Lunch,(11am-2:30pm),Crushed Red Pepper Flakes,0,1 serving,rice bar,byo_bowl,veg
 Curtis,Lunch,(11am-2:30pm),Sesame Oil,45,1 tsp,rice bar,byo_bowl,sauce
 Curtis,Lunch,(11am-2:30pm),Sriracha Sauce,10,1 tsp,rice bar,byo_bowl,sauce
-Curtis,Lunch,(11am-2:30pm),Field Greens,15,2 oz,produce market,byo_salad,greens_base
-Curtis,Lunch,(11am-2:30pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,greens_base
+Curtis,Lunch,(11am-2:30pm),Field Greens,15,2 oz,produce market,byo_salad,base
+Curtis,Lunch,(11am-2:30pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
 Curtis,Lunch,(11am-2:30pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Lunch,(11am-2:30pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Lunch,(11am-2:30pm),Shredded Carrots,15,0.25 cup,produce market,byo_salad,veg_topping
@@ -690,8 +690,8 @@ Curtis,Lunch,(11am-2:30pm),Diet Coke,0,12 floz,hydration station,dessert_beverag
 Curtis,Lunch,(11am-2:30pm),Fountain Beverage Dr Pepper,0,12 floz,hydration station,dessert_beverage,beverage
 Curtis,Lunch,(11am-2:30pm),Starry,0,12 floz,hydration station,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Lemon-Lime Powerade,0,12 floz,hydration station,dessert_beverage,topping
-Curtis,Light lunch,(2:30pm-4pm),Field Greens,15,2 oz,produce market,byo_salad,greens_base
-Curtis,Light lunch,(2:30pm-4pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,greens_base
+Curtis,Light lunch,(2:30pm-4pm),Field Greens,15,2 oz,produce market,byo_salad,base
+Curtis,Light lunch,(2:30pm-4pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
 Curtis,Light lunch,(2:30pm-4pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Light lunch,(2:30pm-4pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Light lunch,(2:30pm-4pm),Shredded Carrots,15,0.25 cup,produce market,byo_salad,veg_topping
@@ -848,8 +848,8 @@ Curtis,Dinner,(4:30pm-8pm),Tamari Soy Sauce,10,1 tbsp,rice bar,byo_bowl,sauce
 Curtis,Dinner,(4:30pm-8pm),Crushed Red Pepper Flakes,0,1 serving,rice bar,byo_bowl,veg
 Curtis,Dinner,(4:30pm-8pm),Sesame Oil,45,1 tsp,rice bar,byo_bowl,sauce
 Curtis,Dinner,(4:30pm-8pm),Sriracha Sauce,10,1 tsp,rice bar,byo_bowl,sauce
-Curtis,Dinner,(4:30pm-8pm),Field Greens,15,2 oz,produce market,byo_salad,greens_base
-Curtis,Dinner,(4:30pm-8pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,greens_base
+Curtis,Dinner,(4:30pm-8pm),Field Greens,15,2 oz,produce market,byo_salad,base
+Curtis,Dinner,(4:30pm-8pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
 Curtis,Dinner,(4:30pm-8pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Dinner,(4:30pm-8pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
 Curtis,Dinner,(4:30pm-8pm),Shredded Carrots,15,0.25 cup,produce market,byo_salad,veg_topping

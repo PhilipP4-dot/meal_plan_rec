@@ -1,1 +1,9 @@
-data parsing first
+ pandas
+ numpy
+ sqlalchemy
+ streamlit
+ beautifulsoup4
+ requests
+ sentence-transformers
+ pytest
+ flask

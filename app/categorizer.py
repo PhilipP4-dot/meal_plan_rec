@@ -160,7 +160,7 @@ def assign_role(row):
         elif has_any(PROTEIN):
             return "protein"
         elif has_any(GREENS):
-            return "greens_base"
+            return "base"
         elif has_any(VEG):
             return "veg_topping"
         elif has_any(EXTRA):

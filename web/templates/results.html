@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <title>Meal Plan Recommendations</title>
+</head>
+
+<body>
+    <h2>Total Calories: {{ plan.Total_calories }}</h2>
+
+    {% for meal in plan.Plan %}
+    <h3>{{ meal.Meal }}</h3>
+
+    {% for option in meal.Options %}
+    <p>{{ option.Hall }} - {{ option.Calories }} cal</p>
+    {% endfor %}
+    {% endfor %}
+</body>
+
+</html>
