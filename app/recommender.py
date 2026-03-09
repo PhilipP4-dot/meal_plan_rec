@@ -292,7 +292,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
         meal_opts = meal_opts[meal_opts["Calories"].between(10, 2000)]
         if meal_opts.empty:
             continue
-        print(type(preferred_halls))
+     
         halls = [preferred_halls[meal]] if (preferred_halls and meal in preferred_halls) \
                 else meal_opts["Hall"].dropna().unique()
         candidates = []
@@ -484,16 +484,16 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
 # Adjust Meal times(Breakfast, Lunch, Dinner), Daily Calorie Limit, Meal Ratios(for a total of 100%), Preferred Halls
 # for each meal period and number of options you want made available to you
 #=======================================================================================================================
-meal_times = ["Breakfast", "Dinner"]  # options: Breakfast, Lunch, Brunch, Dinner
-daily_calorie_limit = 2500
-meal_ratios = {}   # custom split
-preferred_halls = {}                        # force hall for dinner
+# meal_times = ["Dinner"]  # options: Breakfast, Lunch, Brunch, Dinner
+# daily_calorie_limit = 700
+# meal_ratios = {}   # custom split
+# preferred_halls = {"Dinner": "Curtis"}                        # force hall for dinner
 
-top_n = 2  # number of options per meal
-# # #=======================================================================================================================
+# top_n = 10  # number of options per meal
+# # # #=======================================================================================================================
 # from db.repositories import fetch_items
 # from db.database import SessionLocal
 # db = SessionLocal()
 # df = fetch_items(db, time="2026-01-27")  # dummy db session
-# daily_plan = generate_daily_plan(df, meal_times, daily_calorie_limit, meal_ratios, preferred_halls, top_n)
+# daily_plan = generate_daily_plan(df, meal_times, daily_calorie_limit, top_n=top_n, meal_ratios=meal_ratios, preferred_halls=preferred_halls)
 # print(daily_plan)

@@ -10,7 +10,7 @@ import re
 #==================================================================================================================
 # Categorize by station keywords with manual overrides
 
-df = pd.read_csv("data/menu_data.csv")
+#df = pd.read_csv("data/menu_data.csv")
 
 DESSERT_BEV = ["bakery", "pastries", "pastry", "dessert", "sweets", "treats", "ice cream",
                "beverage", "drink", "coffee", "tea", "juice", "milk", "smoothie", "velvet", "shake", "hydration"]
@@ -69,9 +69,9 @@ def categorize_station(df):
     df['FinalStation'] = df['Station'].apply(lambda x: bars[x])
     return df
 
-df = categorize_station(df)
-unknowns = df[df["FinalStation"] == "unknown"]["Station"].value_counts().head(20)
-print("Top unknown stations:\n", unknowns)
+# df = categorize_station(df)
+# unknowns = df[df["FinalStation"] == "unknown"]["Station"].value_counts().head(20)
+# print("Top unknown stations:\n", unknowns)
 
 
 
@@ -185,35 +185,61 @@ def assign_role(row):
     return "unknown"
 
 
-df["Role"] = df.apply(lambda r: assign_role(r), axis=1)
-print(df[df["Role"]=="unknown"].groupby("FinalStation").size())
+# df["Role"] = df.apply(lambda r: assign_role(r), axis=1)
+# print(df[df["Role"]=="unknown"].groupby("FinalStation").size())
 
-# Save the result
-df.to_csv("data/categorized_menu_data.csv", index=False)
-db = SessionLocal()
-db.query(Menu).delete()  # Clear existing entries
-for _, row in df.iterrows():
-    item = Menu(
-        dish=row["Dish"],
-        category=row["Category"],
-        hall=row["Hall"],
-        time=row["Time"],
-        calories=row["Calories"],
-        serving_size=row["Serving Size"],
-        role=row["Role"],
-        station=row["Station"],
-        final_station=row["FinalStation"]
-    )
-    db.add(item)
-db.commit()
-db.close()
+# # Save the result
+# df.to_csv("data/categorized_menu_data.csv", index=False)
+# db = SessionLocal()
+# db.query(Menu).delete()  # Clear existing entries
+# for _, row in df.iterrows():
+#     item = Menu(
+#         dish=row["Dish"],
+#         category=row["Category"],
+#         hall=row["Hall"],
+#         time=row["Time"],
+#         calories=row["Calories"],
+#         serving_size=row["Serving Size"],
+#         role=row["Role"],
+#         station=row["Station"],
+#         final_station=row["FinalStation"]
+#     )
+#     db.add(item)
+# db.commit()
+# db.close()
 
 #==============================================================================================
 
 
+def categorize_hall_dish():
+    df = pd.read_csv("data/menu_data.csv")
+    df = categorize_station(df)
+    unknowns = df[df["FinalStation"] == "unknown"]["Station"].value_counts().head(20)
+    print("Top unknown stations:\n", unknowns)
 
+    # Save the result
+    df["Role"] = df.apply(lambda r: assign_role(r), axis=1)
+    print(df[df["Role"]=="unknown"].groupby("FinalStation").size())
 
-
+    # Save the result
+    df.to_csv("data/categorized_menu_data.csv", index=False)
+    db = SessionLocal()
+    db.query(Menu).delete()  # Clear existing entries
+    for _, row in df.iterrows():
+        item = Menu(
+            dish=row["Dish"],
+            category=row["Category"],
+            hall=row["Hall"],
+            time=row["Time"],
+            calories=row["Calories"],
+            serving_size=row["Serving Size"],
+            role=row["Role"],
+            station=row["Station"],
+            final_station=row["FinalStation"]
+        )
+        db.add(item)
+    db.commit()
+    db.close()
 
 
 

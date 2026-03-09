@@ -1,9 +1,8 @@
- pandas
+pandas
  numpy
  sqlalchemy
- streamlit
+python-dotenv
  beautifulsoup4
  requests
- sentence-transformers
  pytest
  flask

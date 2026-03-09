@@ -1,20 +1,247 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Plan Recommendation System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .error {
+            background-color: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c33;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .meal-checkbox {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            background: #f7f7f7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .meal-checkbox:hover {
+            background: #e8e8ff;
+        }
+
+        .meal-checkbox input {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .meal-checkbox label {
+            cursor: pointer;
+            font-size: 1.05em;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .meal-options {
+            display: none;
+            background: #f9f9f9;
+            padding: 20px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .meal-options.active {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-text {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Welcome, to my recommendation system</h1>
-    <form method="POST" action="/recommendations">
-        <input type="number" name="daily_calories" value="2000"> Daily Calorie Limit
-        <input type="number" name="top_n" value="2"> Number of Options per Meal
-        <input type="checkbox" name="Breakfast"> Breakfast
-        <input type="checkbox" name="Lunch"> Lunch
-        <input type="checkbox" name="Dinner"> Dinner
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ Meal Plan Recommender</h1>
+            <p>Get personalized meal recommendations based on your preferences</p>
+        </div>
 
-        <button type="submit">Get Recommendations</button>
-    </form>
+        <div class="content">
+            {% if error %}
+            <div class="error">
+                <strong>Error:</strong> {{ error }}
+            </div>
+            {% endif %}
+
+            <form action="/recommendations" method="post" id="mealForm">
+                <div class="form-section">
+                    <h3>Select Meal Times</h3>
+                    {% for meal in meals %}
+                    <div class="meal-checkbox">
+                        <input type="checkbox" name="meal_times" value="{{ meal.label }}" id="meal_{{ loop.index }}"
+                            onchange="toggleMealOptions('{{ loop.index }}')">
+                        <label for="meal_{{ loop.index }}">{{ meal.label }}</label>
+                    </div>
+                    <div class="meal-options" id="options_{{ loop.index }}">
+                        <div class="input-group">
+                            <label>Calorie Split (%):</label>
+                            <input type="number" name="{{ meal.label }}_ratio" min="0" max="100" value="0"
+                                placeholder="Leave at 0 for automatic">
+                            <div class="info-text">Optional: Specify what % of daily calories for this meal (must total
+                                100% across all meals)</div>
+                        </div>
+                        <div class="input-group">
+                            <label>Preferred Dining Hall:</label>
+                            <select name="{{ meal.label }}_hall">
+                                <option value="Any">Any</option>
+                                {% for hall in meal.halls %}
+                                <option value="{{ hall }}">{{ hall }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-section">
+                    <h3>Your Preferences</h3>
+                    <div class="input-group">
+                        <label>Daily Calorie Limit:</label>
+                        <input type="number" name="daily_calories" min="1000" max="4000" value="2000" step="100"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Number of Options per Meal:</label>
+                        <input type="number" name="top_n" min="1" max="5" value="2" required>
+                        <div class="info-text">How many alternative meal plans to generate for each meal</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Generate Meal Plan</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleMealOptions(index) {
+            const checkbox = document.getElementById(`meal_${index}`);
+            const options = document.getElementById(`options_${index}`);
+
+            if (checkbox.checked) {
+                options.classList.add('active');
+            } else {
+                options.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 
 </html>

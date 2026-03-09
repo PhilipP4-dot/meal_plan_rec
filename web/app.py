@@ -1,9 +1,57 @@
-import streamlit as st
-import pandas as pd
+import sys
+import os
+
+# Add project root to Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from flask import Flask, request, jsonify, render_template
-from app.services.recommendations import fetch_plan
+from app.services.recommendations import fetch_plan, fetch_meals
+from app.logger import setup_logging, get_logger
+
+# Setup logging
+setup_logging()
+logger = get_logger(__name__)
 
 app = Flask(__name__)
+
+
+def build_meal_options():
+    df = fetch_meals()[["Category", "Time", "Hall"]].drop_duplicates()
+    df = df.dropna(subset=["Category", "Time", "Hall"])
+    df = df.sort_values(by=["Category", "Time", "Hall"])
+
+    meals = []
+    for meal in df["Category"].unique():
+        meal_df = df[df["Category"] == meal]
+        times = meal_df["Time"].drop_duplicates().tolist()
+        halls = sorted(meal_df["Hall"].drop_duplicates().tolist())
+
+        if len(times) == 1:
+            label = f"{meal} {times[0]}"
+        else:
+            start = ""
+            end = ""
+            for time in times:
+                start_time = time.split("-")[0][1:]
+                end_time = time.split("-")[-1][:-1]
+                # choose the earliest start time and latest end time
+                if "pm" in start and "am" in start_time:
+                    start = start_time
+                if "am" in end and "pm" in end_time:
+                    end = end_time
+                if start == "" or int(start_time[:-2].split(":")[0]) < int(start[:-2].split(":")[0]):
+                    start = start_time
+                elif int(start_time[:-2].split(":")[0]) == int(start[:-2].split(":")[0]) and int(start_time[:-2].split(":")[-1]) < int(start[:-2].split(":")[-1]):
+                    start = start_time
+                if end == "" or int(end_time[:-2].split(":")[0]) > int(end[:-2].split(":")[0]):
+                    end = end_time
+                elif int(end_time[:-2].split(":")[0]) == int(end[:-2].split(":")[0]) and int(end_time[:-2].split(":")[-1]) > int(end[:-2].split(":")[-1]):
+                    end = end_time
+            label = f"{meal} ({start}-{end})"
+
+        meals.append({"label": label, "halls": halls})
+
+    return meals
 
 @app.get("/health")
 def health():
@@ -11,120 +59,62 @@ def health():
 
 @app.get("/")
 def index():
-    return render_template("index.html")
+    meals = build_meal_options()
+    return render_template("index.html", meals=meals)
 
 @app.post("/recommendations")
 def recommendations():
+    meals = build_meal_options()
+
     daily_calories = int(request.form.get("daily_calories", 2000))
     top_n = int(request.form.get("top_n", 2))
 
-    meal_times = request.form.getlist("meal_times", ["Breakfast", "Lunch", "Dinner"])
+    meal_times = request.form.getlist("meal_times")
+    if not meal_times:
+        return render_template("index.html", meals=meals, error="Please select at least one meal time.")
 
-    meal_ratios = None
-    preferred_halls = None
+
+    # Process calorie ratios
+    meal_ratios = {}
+    total_ratio = 0
+    for meal in meal_times:
+        ratio = int(request.form.get(f"{meal}_ratio", 0))
+        meal_ratios[meal] = ratio
+        total_ratio += ratio
+    
+    if total_ratio == 0:
+        meal_ratios = None
+    elif total_ratio != 100:
+        return render_template("index.html", meals=meals, error="Calorie split must total 100% or be all zero.")
+    else:
+        for meal in meal_ratios:
+            meal_ratios[meal] = meal_ratios[meal] / total_ratio
+    
+    # Process preferred halls
+    preferred_halls = {}
+    for meal in meal_times:
+        hall = request.form.get(f"{meal}_hall", "Any")
+        if hall != "Any":
+            preferred_halls[meal] = hall
+
 
     plan = fetch_plan(
         meal_times=meal_times,
         daily_calorie_limit=daily_calories,
-        meal_ratios=meal_ratios,
-        preferred_halls=preferred_halls,
         top_n=top_n,
+        meal_ratios=meal_ratios,
+        preferred_halls=preferred_halls
+        
     )
 
     return render_template("results.html", plan=plan)
 
 
-
-# st.title("Meal Plan Recommendation System")
-
-# st.sidebar.header("Your Preferences")
-
-# meal_time = menu_df[['Category', 'Time']].drop_duplicates().sort_values(by=['Category'])
-# meals = []
-
-# for meal in meal_time['Category'].unique():
-#     times = meal_time[meal_time['Category'] == meal]['Time'].tolist()
-#     if len(times) == 1:
-#         meals.append(f"{meal} {times[0]}")
-#         continue
-#     else:
-#         start = ''
-#         end = ''
-#         for time in times:
-#             start_time = time.split('-')[0][1:]
-#             end_time = time.split('-')[-1][:-1]
-#             # choose the earliest start time and latest end time
-#             if 'pm' in start and 'am' in start_time:
-#                 start = start_time
-#             if 'am' in end and 'pm' in end_time:
-#                 end = end_time   
-#             if start == '' or int(start_time[:-2].split(':')[0]) < int(start[:-2].split(':')[0]):
-#                 start = start_time
-#             elif int(start_time[:-2].split(':')[0]) == int(start[:-2].split(':')[0]) and int(start_time[:-2].split(':')[-1]) < int(start[:-2].split(':')[-1]):
-#                 start = start_time
-#             if end == '' or int(end_time[:-2].split(':')[0]) > int(end[:-2].split(':')[0]):
-#                 end = end_time
-#             elif int(end_time[:-2].split(':')[0]) == int(end[:-2].split(':')[0]) and int(end_time[:-2].split(':')[-1]) > int(end[:-2].split(':')[-1]):
-#                 end = end_time
-#         meals.append(f"{meal} ({start}-{end})")
-
-# meal_times = st.sidebar.multiselect("Select Meal Times", meals)
-
-# #order meal times
-# meal_times.sort()
-# if "Lunch" in meal_times and "Dinner" in meal_times:
-#     meal_times[meal_times.index("Lunch")] = "Dinner"
-#     meal_times[meal_times.index("Dinner")] = "Lunch"
-# daily_calorie_limit = st.sidebar.number_input("Daily Calorie Limit", min_value=1000, max_value=4000, value=2000, step=100)
-
-# st.sidebar.subheader("Calorie Split (optional but should total 100%)")
-# meals = []
-# total_ratio = 0
-# for meal in meal_times:
-#     ratio = st.sidebar.slider(f"{meal} %", 0, 100, 0) / 100
-#     meals.append(ratio)
-#     total_ratio += ratio
-# # breakfast_ratio = st.sidebar.slider("Breakfast %", 0, 100, 0) / 100
-# # lunch_ratio = st.sidebar.slider("Lunch %", 0, 100, 0) / 100
-# # dinner_ratio = st.sidebar.slider("Dinner %", 0, 100, 0) / 100
-
-# #total_ratio = breakfast_ratio + lunch_ratio + dinner_ratio
-# if total_ratio == 0:
-#     meal_ratios = None
-# elif total_ratio != 1 and total_ratio != 0:
-#     st.sidebar.error("Calorie split must total 100% or be all zero.")
-#     st.stop()
-# else:
-#     meal_ratios = {}
-#     for i in range(len(meals)):
-#         meal_ratios[f"ratio_{i}"] = meals[i] / total_ratio
-
-# st.sidebar.subheader("Dining Hall Preferences")
-# preferred_halls = {}
-# for meal in meal_times:
-#     meal = ' '.join(meal.split(" ")[:-1]).strip()
-#     hall = menu_df[menu_df['Category'] == meal]['Hall'].unique()
-
-#     choice  = st.sidebar.selectbox(f"Preferred Hall for {meal}", ["Any"] + hall.tolist(), index=0)
+if __name__ == "__main__":
+    import os
     
-#     if choice != "Any":
-#         preferred_halls[meal] = choice
-
-# if st.sidebar.button("Generate Meal Plan"):
-#     daily_plan = generate_daily_plan(menu_df, meal_times, daily_calorie_limit, meal_ratios, preferred_halls, top_n=2)
+    # Use environment variables for configuration
+    debug_mode = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1", "yes")
+    port = int(os.getenv("FLASK_PORT", "5000"))
     
-#     st.subheader("Your Meal Plan")
-#     for meal in daily_plan["Plan"]:
-#         st.markdown(f"### {meal['Meal']}  •  Budget: {meal['CalBudget']} cal")
-#         for i, opt in enumerate(meal["Options"], 1):
-#             with st.expander(f"Option {i} @ {opt['Hall']}  ({opt['Calories']} cal) ------------ {opt['Time']}"):
-#                 listed_sum = 0
-#                 for it in opt["Items"]:
-#                     st.write(f"- {it['Dish']} ({it['Serving Size'] or '1 serving'}): {int(it['Calories'])} cal")
-#                     listed_sum += it["Calories"]
-#                 # sanity check in UI
-#                 if int(listed_sum) != int(opt["Calories"]):
-#                     st.warning(f"Sum of items = {int(listed_sum)} cal (recomputed). Updating displayed total.")
-
-
-#     st.success(f"✅ Total Calories (first options): {daily_plan['TotalCalories']} kcal")
+    app.run(debug=debug_mode, port=port, host="127.0.0.1")

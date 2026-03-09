@@ -1,7 +1,13 @@
 from db.models import Menu
 import pandas as pd
+from app.scraper import scrape_and_save
+from app.categorizer import categorize_hall_dish
 
-def fetch_items(db, time):
+def fetch_items(db, time, all_data=True):
+    if all_data:
+        scrape_and_save()
+        categorize_hall_dish()
+
     items = db.query(Menu).all()
     df = pd.DataFrame([{
         "Dish": item.dish,
