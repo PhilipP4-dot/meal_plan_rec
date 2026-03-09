@@ -1,1 +1,8 @@
-data parsing first
+pandas
+ numpy
+ sqlalchemy
+python-dotenv
+ beautifulsoup4
+ requests
+ pytest
+ flask
