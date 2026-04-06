@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 
 # Add project root to Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -13,6 +14,15 @@ setup_logging()
 logger = get_logger(__name__)
 
 app = Flask(__name__)
+
+_TIME_SUFFIX_RE = re.compile(
+    r"\s*(\([^)]*\)|\d{1,2}(?::\d{2})?(?:am|pm)\s*-\s*\d{1,2}(?::\d{2})?(?:am|pm))\s*$",
+    re.IGNORECASE,
+)
+
+
+def normalize_meal_label(label):
+    return _TIME_SUFFIX_RE.sub("", (label or "")).strip()
 
 
 def build_meal_options():
@@ -69,17 +79,18 @@ def recommendations():
     daily_calories = int(request.form.get("daily_calories", 2000))
     top_n = int(request.form.get("top_n", 2))
 
-    meal_times = request.form.getlist("meal_times")
-    if not meal_times:
+    selected_meal_labels = request.form.getlist("meal_times")
+    if not selected_meal_labels:
         return render_template("index.html", meals=meals, error="Please select at least one meal time.")
 
+    meal_times = [normalize_meal_label(meal) for meal in selected_meal_labels]
 
     # Process calorie ratios
     meal_ratios = {}
     total_ratio = 0
-    for meal in meal_times:
-        ratio = int(request.form.get(f"{meal}_ratio", 0))
-        meal_ratios[meal] = ratio
+    for raw_meal_label, normalized_meal in zip(selected_meal_labels, meal_times):
+        ratio = int(request.form.get(f"{raw_meal_label}_ratio", 0))
+        meal_ratios[normalized_meal] = meal_ratios.get(normalized_meal, 0) + ratio
         total_ratio += ratio
     
     if total_ratio == 0:
@@ -92,10 +103,10 @@ def recommendations():
     
     # Process preferred halls
     preferred_halls = {}
-    for meal in meal_times:
-        hall = request.form.get(f"{meal}_hall", "Any")
+    for raw_meal_label, normalized_meal in zip(selected_meal_labels, meal_times):
+        hall = request.form.get(f"{raw_meal_label}_hall", "Any")
         if hall != "Any":
-            preferred_halls[meal] = hall
+            preferred_halls[normalized_meal] = hall
 
 
     plan = fetch_plan(

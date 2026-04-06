@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import re
 
 external_calorie_fraction = 0.6
 internal_calorie_fraction = 0.88
@@ -245,6 +246,16 @@ def _coerce_calories(df):
     df = df.dropna(subset=["Calories"])
     return df
 
+
+_TIME_SUFFIX_RE = re.compile(
+    r"\s*(\([^)]*\)|\d{1,2}(?::\d{2})?(?:am|pm)\s*-\s*\d{1,2}(?::\d{2})?(?:am|pm))\s*$",
+    re.IGNORECASE,
+)
+
+
+def _normalize_meal_label(label):
+    return _TIME_SUFFIX_RE.sub("", (label or "")).strip()
+
 def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
                         meal_ratios=None, preferred_halls=None):
     """
@@ -274,18 +285,26 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
     """
 
     df = _coerce_calories(menu_df)
+    normalized_meal_times = [_normalize_meal_label(meal) for meal in meal_times]
+    normalized_meal_ratios = (
+        {_normalize_meal_label(meal): ratio for meal, ratio in meal_ratios.items()}
+        if meal_ratios
+        else None
+    )
+    normalized_preferred_halls = (
+        {_normalize_meal_label(meal): hall for meal, hall in preferred_halls.items()}
+        if preferred_halls
+        else None
+    )
+
     plan, chosen_mains, chosen_proteins, total_calories = [], set(), set(), 0
 
-    for meal in meal_times:
-        # normalize meal name
-        if len(meal.split(" ")) > 1:
-            meal = ' '.join(meal.split(' ')[0:-1])
-        meal = meal.strip()
+    for meal in normalized_meal_times:
 
         # per-meal budget
-        cal_per_meal = (daily_calorie_limit * meal_ratios.get(meal)
-                        if meal_ratios and meal in meal_ratios
-                        else daily_calorie_limit / max(1, len(meal_times)))
+        cal_per_meal = (daily_calorie_limit * normalized_meal_ratios.get(meal)
+                if normalized_meal_ratios and meal in normalized_meal_ratios
+                else daily_calorie_limit / max(1, len(normalized_meal_times)))
 
         # filter: meal slot + realistic calories
         meal_opts = df[df["Category"].str.contains(meal, case=False, na=False)]
@@ -293,7 +312,7 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
         if meal_opts.empty:
             continue
      
-        halls = [preferred_halls[meal]] if (preferred_halls and meal in preferred_halls) \
+        halls = [normalized_preferred_halls[meal]] if (normalized_preferred_halls and meal in normalized_preferred_halls) \
                 else meal_opts["Hall"].dropna().unique()
         candidates = []
 
