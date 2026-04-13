@@ -225,7 +225,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🍽️ Your Meal Plan</h1>
+            <h1>Your Meal Plan</h1>
             <div class="total-calories">
                 Total: {{ plan.Total_calories }} cal
             </div>
@@ -251,7 +251,7 @@
 
                         <div class="option-info">
                             <div class="calories-display">{{ option.Calories }} calories</div>
-                            <div>⏰ {{ option.Time }}</div>
+                            <div>{{ option.Time }}</div>
                         </div>
 
                         <div class="items-list">
@@ -279,7 +279,7 @@
             {% endfor %}
 
             <div class="success-banner">
-                ✅ Meal plan generated successfully!
+                Meal plan generated successfully!
             </div>
         </div>
     </div>

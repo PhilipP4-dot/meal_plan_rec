@@ -25,6 +25,30 @@ def normalize_meal_label(label):
     return _TIME_SUFFIX_RE.sub("", (label or "")).strip()
 
 
+def _parse_clock_time(value):
+    match = re.search(r"(\d{1,2})(?::(\d{2}))?\s*(am|pm)", str(value), re.IGNORECASE)
+    if not match:
+        return None
+
+    hour = int(match.group(1)) % 12
+    minute = int(match.group(2) or 0)
+    meridiem = match.group(3).lower()
+    if meridiem == "pm":
+        hour += 12
+    return hour * 60 + minute
+
+
+def _extract_time_bounds(time_range):
+    parts = str(time_range).replace("(", "").replace(")", "").split("-")
+    if len(parts) < 2:
+        start = _parse_clock_time(time_range)
+        return start, start
+
+    start = _parse_clock_time(parts[0])
+    end = _parse_clock_time(parts[-1])
+    return start, end
+
+
 def build_meal_options():
     df = fetch_meals()[["Category", "Time", "Hall"]].drop_duplicates()
     df = df.dropna(subset=["Category", "Time", "Hall"])
@@ -35,31 +59,35 @@ def build_meal_options():
         meal_df = df[df["Category"] == meal]
         times = meal_df["Time"].drop_duplicates().tolist()
         halls = sorted(meal_df["Hall"].drop_duplicates().tolist())
+        time_bounds = [_extract_time_bounds(time) for time in times]
+
+        start_candidates = [start for start, _ in time_bounds if start is not None]
+        end_candidates = [end for _, end in time_bounds if end is not None]
+
+        earliest_start = min(start_candidates) if start_candidates else 24 * 60
+        latest_end = max(end_candidates) if end_candidates else earliest_start
 
         if len(times) == 1:
             label = f"{meal} {times[0]}"
         else:
-            start = ""
-            end = ""
-            for time in times:
-                start_time = time.split("-")[0][1:]
-                end_time = time.split("-")[-1][:-1]
-                # choose the earliest start time and latest end time
-                if "pm" in start and "am" in start_time:
-                    start = start_time
-                if "am" in end and "pm" in end_time:
-                    end = end_time
-                if start == "" or int(start_time[:-2].split(":")[0]) < int(start[:-2].split(":")[0]):
-                    start = start_time
-                elif int(start_time[:-2].split(":")[0]) == int(start[:-2].split(":")[0]) and int(start_time[:-2].split(":")[-1]) < int(start[:-2].split(":")[-1]):
-                    start = start_time
-                if end == "" or int(end_time[:-2].split(":")[0]) > int(end[:-2].split(":")[0]):
-                    end = end_time
-                elif int(end_time[:-2].split(":")[0]) == int(end[:-2].split(":")[0]) and int(end_time[:-2].split(":")[-1]) > int(end[:-2].split(":")[-1]):
-                    end = end_time
+            earliest_time = min(times, key=lambda t: (_extract_time_bounds(t)[0] is None, _extract_time_bounds(t)[0] or 24 * 60))
+            latest_time = max(times, key=lambda t: (_extract_time_bounds(t)[1] is None, _extract_time_bounds(t)[1] or -1))
+            start = str(earliest_time).replace("(", "").replace(")", "").split("-")[0].strip()
+            end = str(latest_time).replace("(", "").replace(")", "").split("-")[-1].strip()
             label = f"{meal} ({start}-{end})"
 
-        meals.append({"label": label, "halls": halls})
+        meals.append({
+            "label": label,
+            "halls": halls,
+            "sort_start": earliest_start,
+            "sort_end": latest_end,
+        })
+
+    meals.sort(key=lambda m: (m["sort_start"], m["sort_end"], normalize_meal_label(m["label"]).lower()))
+
+    for meal in meals:
+        meal.pop("sort_start", None)
+        meal.pop("sort_end", None)
 
     return meals
 

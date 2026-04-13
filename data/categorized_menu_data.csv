@@ -1,13 +1,13 @@
 Hall,Category,Time,Dish,Calories,Serving Size,Station,FinalStation,Role
-Huffman,Breakfast,(7:30am-10:30am),Mango-Kale Smoothie,45,0.75 cup,smoothie,dessert_beverage,beverage
-Huffman,Breakfast,(7:30am-10:30am),Nonfat Vanilla Greek Yogurt,170,1 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Breakfast,(7:30am-10:30am),Mixed Berry Mojo Smoothie,100,5 oz,smoothie,dessert_beverage,beverage
+Huffman,Breakfast,(7:30am-10:30am),Nonfat Vanilla Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
-Huffman,Breakfast,(7:30am-10:30am),Nonfat Strawberry Greek Yogurt,180,1 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Breakfast,(7:30am-10:30am),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
-Huffman,Breakfast,(7:30am-10:30am),Strawberry Overnight Oats,290,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Breakfast,(7:30am-10:30am),Maple Overnight Oats,290,0.5 cup,fruit & yogurt bar,byo_breakfast,unknown
 Huffman,Breakfast,(7:30am-10:30am),Red & Green Grapes,60,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
 Huffman,Breakfast,(7:30am-10:30am),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Breakfast,(7:30am-10:30am),Fresh Pineapple,60,4 oz,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Breakfast,(7:30am-10:30am),Fresh Pineapple,70,4 oz,fruit & yogurt bar,byo_breakfast,topping
 Huffman,Breakfast,(7:30am-10:30am),Honeydew Melon,35,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
 Huffman,Breakfast,(7:30am-10:30am),Mixed Berries,60,0.5 cup,fruit & yogurt bar,byo_breakfast,unknown
 Huffman,Breakfast,(7:30am-10:30am),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
@@ -15,7 +15,7 @@ Huffman,Breakfast,(7:30am-10:30am),Pumpkin Seeds,0,2 tbsp,fruit & yogurt bar,byo
 Huffman,Breakfast,(7:30am-10:30am),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
 Huffman,Breakfast,(7:30am-10:30am),Toasted Coconut,80,2 tbsp,fruit & yogurt bar,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Old Fashioned Oatmeal,110,0.75 cup,grit and oatmeal bar,byo_breakfast,base
-Huffman,Breakfast,(7:30am-10:30am),Buttered Grits,130,6 floz,grit and oatmeal bar,byo_breakfast,base
+Huffman,Breakfast,(7:30am-10:30am),Cheese Grits,140,0.5 cup,grit and oatmeal bar,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Brown Sugar,60,1 tbsp,grit and oatmeal bar,byo_breakfast,unknown
 Huffman,Breakfast,(7:30am-10:30am),Chia Seeds,70,1.5 tbsp,grit and oatmeal bar,byo_breakfast,extra
 Huffman,Breakfast,(7:30am-10:30am),Chocolate Chips,120,2 tbsp,grit and oatmeal bar,byo_breakfast,unknown
@@ -33,27 +33,23 @@ Huffman,Breakfast,(7:30am-10:30am),Diced Tomatoes,0,1 floz,made to order omelets
 Huffman,Breakfast,(7:30am-10:30am),Diced Red Onions,10,2 tbsp,made to order omelets,byo_breakfast,veg
 Huffman,Breakfast,(7:30am-10:30am),Sliced Mushrooms,0,0.25 cup,made to order omelets,byo_breakfast,veg
 Huffman,Breakfast,(7:30am-10:30am),Diced Deli Ham,35,1 oz,made to order omelets,byo_breakfast,protein
-Huffman,Breakfast,(7:30am-10:30am),Egg & Cheese Burrito,450,1 each,breakfast sandwich,grill,entree
+Huffman,Breakfast,(7:30am-10:30am),"Turkey Bacon, Egg and Cheese Croissant",530,1 each,breakfast sandwich,grill,entree
 Huffman,Breakfast,(7:30am-10:30am),Scrambled Eggs,190,0.5 cup,grill,grill,entree
-Huffman,Breakfast,(7:30am-10:30am),Pork Sausage Patty,180,1 each,grill,grill,entree
-Huffman,Breakfast,(7:30am-10:30am),Turkey Sausage Link,130,2 link,grill,grill,entree
-Huffman,Breakfast,(7:30am-10:30am),Cheesy Hashbrown Casserole,220,3 oz,grill,grill,entree
-Huffman,Breakfast,(7:30am-10:30am),French Toast,3690,2 slice,grill,grill,entree
+Huffman,Breakfast,(7:30am-10:30am),Applewood Bacon,70,3 each,grill,grill,entree
+Huffman,Breakfast,(7:30am-10:30am),Turkey Sausage Patty,90,1 each,grill,grill,entree
+Huffman,Breakfast,(7:30am-10:30am),O'Brien Potatoes,190,0.5 cup,grill,grill,entree
+Huffman,Breakfast,(7:30am-10:30am),Chocolate Chip Pancake Plate,330,3 each,grill,grill,entree
 Huffman,Breakfast,(7:30am-10:30am),Sour Cream,70,2 tbsp,grill,grill,entree
 Huffman,Breakfast,(7:30am-10:30am),Salsa Roja,10,1 floz,grill,grill,addon
 Huffman,Breakfast,(7:30am-10:30am),Salsa Verde,0,2 floz,grill,grill,addon
 Huffman,Breakfast,(7:30am-10:30am),Blueberry Muffin,210,1 each,pastries,dessert_beverage,dessert
-Huffman,Breakfast,(7:30am-10:30am),Chocolate Chip Muffin,200,1 each,pastries,dessert_beverage,dessert
+Huffman,Breakfast,(7:30am-10:30am),Lemon-Poppyseed Muffin,210,1 each,pastries,dessert_beverage,dessert
 Huffman,Breakfast,(7:30am-10:30am),Apple Turnover,360,1 each,pastries,dessert_beverage,topping
 Huffman,Breakfast,(7:30am-10:30am),Plain Bagel,370,,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Everything Bagel,310,1 each,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Cinnamon Raisin Bagel,230,,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Whole Wheat Bread,80,,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),White Bread,150,1 slice,toasted,byo_breakfast,base
-Huffman,Breakfast,(7:30am-10:30am),Marble Rye Bread,220,2 slice,toasted,byo_breakfast,base
-Huffman,Breakfast,(7:30am-10:30am),English Muffin,110,,toasted,byo_breakfast,unknown
-Huffman,Breakfast,(7:30am-10:30am),Marble Rye Bread,220,2 slice,toasted,byo_breakfast,base
-Huffman,Breakfast,(7:30am-10:30am),English Muffin,110,,toasted,byo_breakfast,unknown
 Huffman,Breakfast,(7:30am-10:30am),Made Without Gluten Bread,150,1 slice,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Made without Gluten Bagel,270,,toasted,byo_breakfast,base
 Huffman,Breakfast,(7:30am-10:30am),Whipped Cream Cheese,50,2 tbsp,toasted,byo_breakfast,extra
@@ -101,62 +97,79 @@ Huffman,Breakfast,(7:30am-10:30am),Assorted Sugar Packets,0,,cafe,unknown,unknow
 Huffman,Breakfast,(7:30am-10:30am),Apple Juice,0,8 floz,cafe,unknown,unknown
 Huffman,Breakfast,(7:30am-10:30am),Cranberry Juice,0,8 floz,cafe,unknown,unknown
 Huffman,Breakfast,(7:30am-10:30am),Orange Juice,100,8 floz,cafe,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Herbed and Lemon Grilled Salmon,160,4 oz,fueld,byo_bowl,protein
-Huffman,Lunch,(11:30am-2pm),Roasted Zucchini,30,0.5 cup,fueld,byo_bowl,veg
-Huffman,Lunch,(11:30am-2pm),Roasted Butternut Squash,100,0.5 cup,fueld,byo_bowl,unknown
-Huffman,Lunch,(11:30am-2pm),Brown Rice Pilaf,120,0.5 cup,fueld,byo_bowl,base
-Huffman,Lunch,(11:30am-2pm),Field Greens,15,2 oz,fueld,byo_bowl,unknown
-Huffman,Lunch,(11:30am-2pm),Grape Tomatoes,15,0.5 cup,fueld,byo_bowl,veg
-Huffman,Lunch,(11:30am-2pm),Sliced Cucumbers,10,0.5 cup,fueld,byo_bowl,veg
-Huffman,Lunch,(11:30am-2pm),Shredded Carrots,15,0.25 cup,fueld,byo_bowl,veg
-Huffman,Lunch,(11:30am-2pm),Raspberry Vinaigrette,30,2 tbsp,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Dijon Herb Roast Chicken,150,4 oz,fueld,byo_bowl,protein
+Huffman,Lunch,(11:30am-2pm),Roasted Garlic Salmon,90,1 each,fueld,byo_bowl,protein
+Huffman,Lunch,(11:30am-2pm),Rigatoni,110,0.5 cup,fueld,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Gluten Free Penne Pasta,100,0.5 cup,fueld,byo_bowl,base
+Huffman,Lunch,(11:30am-2pm),Marinara Sauce,15,4 floz,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Alfredo Sauce Bella,370,1 serving,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Pesto Sauce,100,1 floz,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Garlic Oil,240,1 floz,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Lemon Roasted Brussels Sprouts,45,0.5 cup,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Roasted Wild Mushrooms,310,0.5 cup,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Roasted Red Peppers,45,3 oz,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Roasted Grape Tomatoes,170,0.5 cup,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Sauteed Spinach,80,0.5 cup,fueld,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Roasted Yellow Squash & Zucchini,60,4 oz,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Parmesan Roasted Cauliflower,60,0.5 cup,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Caramelized Red Onions,100,2 oz,fueld,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Extra virgin olive oil,130,1 tbsp,fueld,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Garlic Parmesan Seasoning Blend,70,1 serving,fueld,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Herb Toasted Breadcrumbs,60,2 tbsp,fueld,byo_bowl,base
+Huffman,Lunch,(11:30am-2pm),Crushed Red Pepper Flakes,0,1 serving,fueld,byo_bowl,veg
 Huffman,Lunch,(11:30am-2pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
 Huffman,Lunch,(11:30am-2pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
-Huffman,Lunch,(11:30am-2pm),Spinach & Ricotta Pizza,240,1 slice,pizza,pizza,entree
-Huffman,Lunch,(11:30am-2pm),Scratchmade Ranch Dressing,150,28 g,pizza,pizza,addon
+Huffman,Lunch,(11:30am-2pm),Shakshuka Pizza,350,1 slice,pizza,pizza,entree
 Huffman,Lunch,(11:30am-2pm),Grated Parmesan Cheese,60,2 tbsp,pizza,pizza,addon
 Huffman,Lunch,(11:30am-2pm),Italian Seasoning,0,1 tsp,pizza,pizza,entree
 Huffman,Lunch,(11:30am-2pm),Crushed Red Pepper Flakes,0,1 serving,pizza,pizza,addon
-Huffman,Lunch,(11:30am-2pm),Hot Honey,45,1 serving,pizza,pizza,entree
-Huffman,Lunch,(11:30am-2pm),Vegetable Soup with Brown Rice,60,0.75 cup,soup du jour,soup,entree
-Huffman,Lunch,(11:30am-2pm),Matzo Ball Soup,170,1 serving,soup du jour,soup,entree
-Huffman,Lunch,(11:30am-2pm),All American Burger,560,,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Beef Vegetable Soup,60,6 floz,soup du jour,soup,entree
+Huffman,Lunch,(11:30am-2pm),Creamy Corn Chowder,80,6 floz,soup du jour,soup,addon
+Huffman,Lunch,(11:30am-2pm),Smash Burger,290,4 oz,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Seasoned Turkey Burger,260,1 each,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Grilled Seasoned Chicken Breast,240,1 each,grill,grill,entree
 Huffman,Lunch,(11:30am-2pm),Beyond Burger Patty,240,1 patty,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Black Bean Burger,180,,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Grilled Balsamic Portobello Mushroom,45,2.25 oz,grill,grill,addon
 Huffman,Lunch,(11:30am-2pm),Potato Roll,160,1 each,grill,grill,entree
-Huffman,Lunch,(11:30am-2pm),Crispy French Fries,250,4.5 oz,grill,grill,entree
+Huffman,Lunch,(11:30am-2pm),Roasted Mushrooms,130,0.5 cup,grill additions,grill,addon
+Huffman,Lunch,(11:30am-2pm),Grilled Red Onions,25,0.25 cup,grill additions,grill,addon
+Huffman,Lunch,(11:30am-2pm),Fire Roasted Jalapenos,25,1 oz,grill additions,grill,entree
+Huffman,Lunch,(11:30am-2pm),Crispy Fried Onions,15,0.25 oz,grill additions,grill,addon
 Huffman,Lunch,(11:30am-2pm),Sliced Cheddar Cheese,60,1 slice,grill additions,grill,addon
-Huffman,Lunch,(11:30am-2pm),Sliced Swiss Cheese,60,1 serving,grill additions,grill,addon
+Huffman,Lunch,(11:30am-2pm),Sliced Swiss Cheese,60,1 slice,grill additions,grill,addon
 Huffman,Lunch,(11:30am-2pm),Leaf Lettuce,0,1 leaf,grill additions,grill,addon
 Huffman,Lunch,(11:30am-2pm),Sliced Yellow Onion,15,1 oz,grill additions,grill,entree
 Huffman,Lunch,(11:30am-2pm),Sliced Tomatoes,10,2 slice,grill additions,grill,addon
 Huffman,Lunch,(11:30am-2pm),Dill Pickle Slices,0,1 oz,grill additions,grill,entree
-Huffman,Lunch,(11:30am-2pm),Vegan Italian Sausage,160,,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Bulgar with Mushrooms and Feta,190,1 servings,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Roasted Green Beans,90,3 oz,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Roasted Tomatoes,170,0.5 cup,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Honey Roasted Carrots,120,0.5 cup,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Roasted Greek Potatoes,140,0.5 cup,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Chimichurri,90,2 tbsp,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Herbed Yogurt Sauce,710,,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Chipotle Ranch,110,2 floz,plant power,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Shrimp Mac and Cheese Bowl,730,1 serving,entree,byo_bowl,protein
+Huffman,Lunch,(11:30am-2pm),Za'atar Tofu,150,4 oz,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Berry Farro Salad,130,1 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Maple Glazed Brussels Sprouts,120,0.5 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Roasted Curry Cauliflower,80,0.5 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Honey Citrus Pepper Chinese Eggplant,35,0.5 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Ranchero Potatoes,100,0.5 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Chermoula Sauce,260,2 floz,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Fire-Roasted Salsa,20,0.25 cup,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Chili Garlic Ranch Dressing,170,1 floz,plant power,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Ahi Tuna Poke Bowl,630,15.6 oz,entree,byo_bowl,protein
+Huffman,Lunch,(11:30am-2pm),Watermelon Poke Bowl,440,1 each,entree,byo_bowl,unknown
 Huffman,Lunch,(11:30am-2pm),White Rice,120,0.5 cup,street eats,byo_bowl,base
 Huffman,Lunch,(11:30am-2pm),Brown Rice,110,0.5 cup,street eats,byo_bowl,base
 Huffman,Lunch,(11:30am-2pm),Tri-Color Quinoa,140,0.5 cup,street eats,byo_bowl,base
-Huffman,Lunch,(11:30am-2pm),Pickled Watermelon Radish,30,1 oz,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Pickled Beets,15,1 oz,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Spicy Pickles,10,0.25 cup,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Pickled Cauliflower,15,2 oz,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Kimchi,25,0.5 cup,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Pickled Carrot,15,1 oz,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Pickled Turnips,180,,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Tuxedo Sesame Seeds,0,1 tbsp,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Furikake Seasoning,25,0.25 oz,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Nori Sheets,10,1 serving,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Chow Mein Noodles,130,0.5 cup,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Sambal Oelek Chili Sauce,0,1 tsp,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Tamari Soy Sauce,10,1 tbsp,toppings,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Chili Oil,140,1 tbsp,toppings,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Pickled Watermelon Radish,30,1 oz,street eats toppings,byo_bowl,extra
+Huffman,Lunch,(11:30am-2pm),Pickled Beets,15,1 oz,street eats toppings,byo_bowl,extra
+Huffman,Lunch,(11:30am-2pm),Spicy Pickles,10,0.25 cup,street eats toppings,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Pickled Cauliflower,15,2 oz,street eats toppings,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Kimchi,25,0.5 cup,street eats toppings,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Pickled Carrot,15,1 oz,street eats toppings,byo_bowl,veg
+Huffman,Lunch,(11:30am-2pm),Pickled Turnips,180,,street eats toppings,byo_bowl,extra
+Huffman,Lunch,(11:30am-2pm),Tuxedo Sesame Seeds,0,1 tbsp,street eats toppings,byo_bowl,extra
+Huffman,Lunch,(11:30am-2pm),Furikake Seasoning,25,0.25 oz,street eats toppings,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Nori Sheets,10,1 serving,street eats toppings,byo_bowl,unknown
+Huffman,Lunch,(11:30am-2pm),Chow Mein Noodles,130,0.5 cup,street eats toppings,byo_bowl,base
+Huffman,Lunch,(11:30am-2pm),Sambal Oelek Chili Sauce,0,1 tsp,street eats toppings,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Tamari Soy Sauce,10,1 tbsp,street eats toppings,byo_bowl,sauce
+Huffman,Lunch,(11:30am-2pm),Chili Oil,140,1 tbsp,street eats toppings,byo_bowl,sauce
 Huffman,Lunch,(11:30am-2pm),Baby Spinach,15,1 cup,produce market,byo_salad,base
 Huffman,Lunch,(11:30am-2pm),Field Greens,15,2 oz,produce market,byo_salad,base
 Huffman,Lunch,(11:30am-2pm),Baby Arugula,5,1 cup,produce market,byo_salad,unknown
@@ -167,11 +180,9 @@ Huffman,Lunch,(11:30am-2pm),Shredded Carrots,25,2 oz,produce market,byo_salad,ve
 Huffman,Lunch,(11:30am-2pm),Sliced Red Onions,15,1 oz,produce market,byo_salad,veg_topping
 Huffman,Lunch,(11:30am-2pm),Sliced Bell Peppers,10,1 oz,produce market,byo_salad,veg_topping
 Huffman,Lunch,(11:30am-2pm),Sliced Black Olives,0,2 tbsp,produce market,byo_salad,extra
-Huffman,Lunch,(11:30am-2pm),Hot Cherry Peppers,10,1 oz,produce market,byo_salad,veg_topping
-Huffman,Lunch,(11:30am-2pm),Diced Chicken,170,3.75 oz,produce market,byo_salad,protein
-Huffman,Lunch,(11:30am-2pm),Roasted Tofu,120,3 oz,produce market,byo_salad,protein
+Huffman,Lunch,(11:30am-2pm),Diced Chicken,190,3.75 oz,produce market,byo_salad,protein
+Huffman,Lunch,(11:30am-2pm),Steamed Cauliflower,20,0.5 cup,produce market,byo_salad,veg_topping
 Huffman,Lunch,(11:30am-2pm),Roasted Edamame,170,0.5 cup,produce market,byo_salad,unknown
-Huffman,Lunch,(11:30am-2pm),Crispy Chickpeas,60,0.5 oz,produce market,byo_salad,protein
 Huffman,Lunch,(11:30am-2pm),Hard-Boiled Eggs,60,1 egg,produce market,byo_salad,dressing
 Huffman,Lunch,(11:30am-2pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
 Huffman,Lunch,(11:30am-2pm),Feta Cheese Crumbles,80,2 tbsp,produce market,byo_salad,extra
@@ -180,36 +191,33 @@ Huffman,Lunch,(11:30am-2pm),Pumpkin Seeds,0,2 tbsp,produce market,byo_salad,extr
 Huffman,Lunch,(11:30am-2pm),Sunflower Seeds,110,2 tbsp,produce market,byo_salad,extra
 Huffman,Lunch,(11:30am-2pm),Golden Raisins,130,0.25 cup,produce market,byo_salad,unknown
 Huffman,Lunch,(11:30am-2pm),Dried Cranberries,70,2 tbsp,produce market,byo_salad,unknown
-Huffman,Lunch,(11:30am-2pm),Tuna Salad,280,4 oz,produce market special,byo_salad,protein
-Huffman,Lunch,(11:30am-2pm),Roasted Brussels Sprouts,80,0.5 cup,produce market special,byo_salad,veg_topping
+Huffman,Lunch,(11:30am-2pm),Homestyle Macaroni Salad,280,0.5 cup,produce market special,byo_salad,veg_topping
+Huffman,Lunch,(11:30am-2pm),Applesauce,60,4 oz,produce market special,byo_salad,dressing
+Huffman,Lunch,(11:30am-2pm),Roasted Brussels Sprouts,45,0.5 cup,produce market special,byo_salad,veg_topping
 Huffman,Lunch,(11:30am-2pm),House Made Honey Mustard,120,1 tbsp,produce market / dressings,byo_salad,unknown
 Huffman,Lunch,(11:30am-2pm),Herb Ranch Dressing,80,1 floz,produce market / dressings,byo_salad,dressing
 Huffman,Lunch,(11:30am-2pm),Italian Dressing,260,1 serving,produce market / dressings,byo_salad,dressing
 Huffman,Lunch,(11:30am-2pm),Herbed Balsamic Vinaigrette,25,1 floz,produce market / dressings,byo_salad,dressing
 Huffman,Lunch,(11:30am-2pm),Maple Cider Vinaigrette,250,2 floz,produce market / dressings,byo_salad,dressing
 Huffman,Lunch,(11:30am-2pm),Raspberry Vinaigrette,30,2 tbsp,produce market / dressings,byo_salad,dressing
-Huffman,Lunch,(11:30am-2pm),Nonfat Vanilla Greek Yogurt,170,1 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Lunch,(11:30am-2pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Lunch,(11:30am-2pm),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
-Huffman,Lunch,(11:30am-2pm),Fresh Pineapple,60,4 oz,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Lunch,(11:30am-2pm),Peaches,60,0.5 cup,fruit & yogurt bar,byo_breakfast,unknown
-Huffman,Lunch,(11:30am-2pm),Red Grapes,60,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
 Huffman,Lunch,(11:30am-2pm),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
 Huffman,Lunch,(11:30am-2pm),Pumpkin Seeds,0,2 tbsp,fruit & yogurt bar,byo_breakfast,extra
 Huffman,Lunch,(11:30am-2pm),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
 Huffman,Lunch,(11:30am-2pm),Toasted Coconut,80,2 tbsp,fruit & yogurt bar,byo_breakfast,base
-Huffman,Lunch,(11:30am-2pm),Sugar Cookie,130,1 each,sweets & treats,dessert_beverage,dessert
-Huffman,Lunch,(11:30am-2pm),Housemade Chocolate Chip Cookies,150,1 each,sweets & treats,dessert_beverage,dessert
-Huffman,Lunch,(11:30am-2pm),Crunchy S'mores Bar,280,1 each,sweets & treats,dessert_beverage,topping
-Huffman,Lunch,(11:30am-2pm),Chef's Special,0,,sweets & treats,dessert_beverage,topping
+Huffman,Lunch,(11:30am-2pm),Red & Green Grapes,60,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Lunch,(11:30am-2pm),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Lunch,(11:30am-2pm),Double Chocolate Chip Cookie,170,1 serving,sweets & treats,dessert_beverage,dessert
+Huffman,Lunch,(11:30am-2pm),Snickerdoodle Sugar Cookie,170,1 each,sweets & treats,dessert_beverage,dessert
+Huffman,Lunch,(11:30am-2pm),Brownie Oreo Pudding Parfait,420,1 each,sweets & treats,dessert_beverage,dessert
 Huffman,Lunch,(11:30am-2pm),Plain Bagel,370,,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Everything Bagel,310,1 each,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Cinnamon Raisin Bagel,230,,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Whole Wheat Bread,80,,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),White Bread,150,1 slice,toasted,byo_breakfast,base
-Huffman,Lunch,(11:30am-2pm),Marble Rye Bread,220,2 slice,toasted,byo_breakfast,base
-Huffman,Lunch,(11:30am-2pm),English Muffin,110,,toasted,byo_breakfast,unknown
-Huffman,Lunch,(11:30am-2pm),English Muffin,110,,toasted,byo_breakfast,unknown
 Huffman,Lunch,(11:30am-2pm),Made Without Gluten Bread,150,1 slice,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Made without Gluten Bagel,270,,toasted,byo_breakfast,base
 Huffman,Lunch,(11:30am-2pm),Whipped Cream Cheese,50,2 tbsp,toasted,byo_breakfast,extra
@@ -257,8 +265,7 @@ Huffman,Lunch,(11:30am-2pm),Orange Juice,100,8 floz,hydration station,dessert_be
 Huffman,Lunch,(11:30am-2pm),Brewed Coffee,0,8 floz,hydration station,dessert_beverage,beverage
 Huffman,Lunch,(11:30am-2pm),Brewed Decaf Coffee,0,8 floz,hydration station,dessert_beverage,beverage
 Huffman,Lunch,(11:30am-2pm),Hot Tea 12oz,0,,hydration station,dessert_beverage,beverage
-Huffman,Lunch,(11:30am-2pm),Dinner Rolls,130,1 each,breads & spreads,unknown,unknown
-Huffman,Lunch,(11:30am-2pm),Beignets,130,1 each,breads & spreads,unknown,unknown
+Huffman,Lunch,(11:30am-2pm),Dinner Rolls,80,1 each,breads & spreads,unknown,unknown
 Huffman,Lunch,(11:30am-2pm),Whipped Butter,80,1 tbsp,breads & spreads,unknown,unknown
 Huffman,Lunch,(11:30am-2pm),Orange Honey Butter,150,1 serving,breads & spreads,unknown,unknown
 Huffman,Lunch,(11:30am-2pm),Herb Butter,160,1 oz,breads & spreads,unknown,unknown
@@ -285,191 +292,177 @@ Huffman,Lunch,(11:30am-2pm),Rainbow Sprinkles,60,1 tbsp,velvet ice cream bar,des
 Huffman,Lunch,(11:30am-2pm),Strawberry Syrup,60,,velvet ice cream bar,dessert_beverage,topping
 Huffman,Lunch,(11:30am-2pm),Caramel Syrup,0,,velvet ice cream bar,dessert_beverage,topping
 Huffman,Lunch,(11:30am-2pm),Hershey's Chocolate Syrup,190,2 floz,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Baked Cod,240,1 servings,fueld,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Parslied Grape Tomatoes,70,0.5 cup,fueld,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Green Beans & Peppers,90,0.5 cup,fueld,byo_bowl,protein
-Huffman,Dinner,(5pm-8pm),Sweet Potato Hash,80,0.5 cup,fueld,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Field Greens,15,2 oz,fueld,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Grape Tomatoes,15,0.5 cup,fueld,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Sliced Cucumbers,10,0.5 cup,fueld,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Shredded Carrots,15,0.25 cup,fueld,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Raspberry Vinaigrette,30,2 tbsp,fueld,byo_bowl,sauce
-Huffman,Dinner,(5pm-8pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
-Huffman,Dinner,(5pm-8pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
-Huffman,Dinner,(5pm-8pm),Spinach & Ricotta Pizza,240,1 slice,pizza,pizza,entree
-Huffman,Dinner,(5pm-8pm),Spinach & Ricotta Pizza,100,1 slice,pizza,pizza,entree
-Huffman,Dinner,(5pm-8pm),Grated Parmesan Cheese,60,2 tbsp,pizza,pizza,addon
-Huffman,Dinner,(5pm-8pm),Italian Seasoning,0,1 tsp,pizza,pizza,entree
-Huffman,Dinner,(5pm-8pm),Crushed Red Pepper Flakes,0,1 serving,pizza,pizza,addon
-Huffman,Dinner,(5pm-8pm),Matzo Ball Soup,170,1 serving,soup du jour,soup,entree
-Huffman,Dinner,(5pm-8pm),Vegetable Soup with Brown Rice,60,0.75 cup,soup du jour,soup,entree
-Huffman,Dinner,(5pm-8pm),Dinner Rolls,130,1 each,breads & spreads,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Whipped Butter,80,1 tbsp,breads & spreads,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Orange Honey Butter,150,1 serving,breads & spreads,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Herb Butter,160,1 oz,breads & spreads,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Chicken Tinga Quesadilla,660,1 serving,grill special,grill,entree
-Huffman,Dinner,(5pm-8pm),Cheese Quesadilla,530,1 each,grill special,grill,addon
-Huffman,Dinner,(5pm-8pm),Taco Fries,290,1 serving,grill special,grill,entree
-Huffman,Dinner,(5pm-8pm),Vegan Italian Sausage,160,,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Bulgar with Mushrooms and Feta,190,1 servings,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Roasted Green Beans,90,3 oz,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Roasted Tomatoes,170,0.5 cup,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Honey Roasted Carrots,120,0.5 cup,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Roasted Greek Potatoes,140,0.5 cup,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Chimichurri,90,2 tbsp,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Herbed Yogurt Sauce,710,,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Chipotle Ranch,110,2 floz,plant power,unknown,unknown
-Huffman,Dinner,(5pm-8pm),Chipotle Pulled Chicken,320,3 oz,entree,byo_bowl,protein
-Huffman,Dinner,(5pm-8pm),Beyond Sausage Crumble,220,4 oz,entree,byo_bowl,protein
-Huffman,Dinner,(5pm-8pm),Spanish Rice,110,0.5 cup,entree,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Southwest Black Beans,90,0.5 cup,entree,byo_bowl,protein
-Huffman,Dinner,(5pm-8pm),Fajita Vegetables,70,0.5 cup,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Southwest Roasted Corn,120,0.5 cup,entree,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Flour Tortilla,180,1 each,entree,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Crispy Tortilla Chips,510,5 oz,entree,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Power Greens Mix,10,0.5 cup,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Shredded Iceberg Lettuce,0,0.5 cup,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Crumbled Queso Fresco,70,0.25 cup,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Shredded Cheddar Cheese,120,0.25 cup,entree,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Cilantro Onions,15,1 oz,entree,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Cilantro-Lime Chipotle Crema,30,1 floz,entree,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Pico de Gallo,10,2 tbsp,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Salsa Verde,5,1 floz,entree,byo_bowl,sauce
-Huffman,Dinner,(5pm-8pm),Sliced Radish,0,1 oz,entree,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Sliced Black Olives,0,2 tbsp,entree,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Pickled Jalapeno,15,0.5 cup,entree,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Pickled Red Onions,15,1 oz,entree,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),White Rice,120,0.5 cup,street eats,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Brown Rice,110,0.5 cup,street eats,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Tri-Color Quinoa,140,0.5 cup,street eats,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Pickled Watermelon Radish,30,1 oz,street eats toppings,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Pickled Beets,15,1 oz,street eats toppings,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Spicy Pickles,10,0.25 cup,street eats toppings,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Pickled Cauliflower,15,2 oz,street eats toppings,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Kimchi,25,0.5 cup,street eats toppings,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Pickled Carrot,15,1 oz,street eats toppings,byo_bowl,veg
-Huffman,Dinner,(5pm-8pm),Pickled Turnips,180,,street eats toppings,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Tuxedo Sesame Seeds,0,1 tbsp,street eats toppings,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Furikake Seasoning,25,0.25 oz,street eats toppings,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Nori Sheets,10,1 serving,street eats toppings,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Chow Mein Noodles,130,0.5 cup,street eats toppings,byo_bowl,base
-Huffman,Dinner,(5pm-8pm),Fresh Scallions,25,1 tbsp,street eats toppings,byo_bowl,unknown
-Huffman,Dinner,(5pm-8pm),Pickled Red Onion,25,0.25 cup,street eats toppings,byo_bowl,extra
-Huffman,Dinner,(5pm-8pm),Sambal Oelek Chili Sauce,0,1 tsp,street eats toppings,byo_bowl,sauce
-Huffman,Dinner,(5pm-8pm),Tamari Soy Sauce,10,1 tbsp,street eats toppings,byo_bowl,sauce
-Huffman,Dinner,(5pm-8pm),Chili Oil,140,1 tbsp,street eats toppings,byo_bowl,sauce
-Huffman,Dinner,(5pm-8pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
-Huffman,Dinner,(5pm-8pm),Kale Greens Mix,10,1 cup,produce market,byo_salad,base
-Huffman,Dinner,(5pm-8pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
-Huffman,Dinner,(5pm-8pm),Baby Spinach,15,1 cup,produce market,byo_salad,base
-Huffman,Dinner,(5pm-8pm),Chilled Quinoa,130,0.5 cup,produce market,byo_salad,unknown
-Huffman,Dinner,(5pm-8pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Shredded Carrots,25,2 oz,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Sliced Red Onions,15,1 oz,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Sliced Bell Peppers,10,1 oz,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Sliced Black Olives,0,2 tbsp,produce market,byo_salad,extra
-Huffman,Dinner,(5pm-8pm),Roasted Edamame,170,0.5 cup,produce market,byo_salad,unknown
-Huffman,Dinner,(5pm-8pm),Pickled Beets,15,1 oz,produce market,byo_salad,extra
-Huffman,Dinner,(5pm-8pm),Fresh Broccoli Florets,20,0.5 cup,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Roasted Brussels Sprouts,45,0.5 cup,produce market,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Crispy Chickpeas,60,0.5 oz,produce market,byo_salad,protein
-Huffman,Dinner,(5pm-8pm),Diced Chicken,170,3.75 oz,produce market,byo_salad,protein
-Huffman,Dinner,(5pm-8pm),Roasted Tofu,120,3 oz,produce market,byo_salad,protein
-Huffman,Dinner,(5pm-8pm),Hard-Boiled Eggs,60,1 egg,produce market,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
-Huffman,Dinner,(5pm-8pm),Raspberry Vinaigrette,30,2 tbsp,produce market / dressings,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),Maple Cider Vinaigrette,250,2 floz,produce market / dressings,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),Herbed Balsamic Vinaigrette,25,1 floz,produce market / dressings,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),Italian Dressing,260,1 serving,produce market / dressings,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),Herb Ranch Dressing,80,1 floz,produce market / dressings,byo_salad,dressing
-Huffman,Dinner,(5pm-8pm),House Made Honey Mustard,120,1 tbsp,produce market / dressings,byo_salad,unknown
-Huffman,Dinner,(5pm-8pm),Roasted Brussels Sprouts,45,0.5 cup,produce market special,byo_salad,veg_topping
-Huffman,Dinner,(5pm-8pm),Nonfat Vanilla Greek Yogurt,170,1 cup,fruit & yogurt bar,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Nonfat Strawberry Greek Yogurt,180,1 cup,fruit & yogurt bar,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
-Huffman,Dinner,(5pm-8pm),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Pumpkin Seeds,0,2 tbsp,fruit & yogurt bar,byo_breakfast,extra
-Huffman,Dinner,(5pm-8pm),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
-Huffman,Dinner,(5pm-8pm),Red & Green Grapes,60,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Fresh Pineapple,60,4 oz,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Honeydew Melon,35,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Sugar Cookie,130,1 each,sweets & treats,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Housemade Chocolate Chip Cookies,150,1 each,sweets & treats,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Crunchy S'mores Bar,280,1 each,sweets & treats,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Banana Cream Pie Ice Cream,270,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Birthday Cake Ice Cream,280,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Campfire S'mores Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Chocolate Ice Cream,0,0.66 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Coffee Ice Cream,240,1 serving,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Cookies & Cream Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Cotton Candy Ice,600,0.5 cup,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Orange Pineapple Ice Cream,240,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Pumpkin Pie Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Rainbow Sherbet,170,0.5 cup,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Raspberry Fudge Cordial Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Strawberry Ice Cream,0,1 serving,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Summertime Peach Ice Cream,240,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Triple Chocolate Chunk Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Pretzel Sticks,120,1 serving,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Graham Cracker Crumbs,30,1 tbsp,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Oreo Cookie Crumbs,70,2 tbsp,velvet ice cream bar,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Rainbow Sprinkles,60,1 tbsp,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Strawberry Syrup,60,,velvet ice cream bar,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Plain Bagel,370,,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Everything Bagel,310,1 each,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Cinnamon Raisin Bagel,230,,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Whole Wheat Bread,80,,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),White Bread,150,1 slice,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Marble Rye Bread,220,2 slice,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),English Muffin,110,,toasted,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Made Without Gluten Bread,150,1 slice,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Made without Gluten Bagel,270,,toasted,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Cream Cheese,100,1 oz,toasted,byo_breakfast,extra
-Huffman,Dinner,(5pm-8pm),Sun Butter,100,1 tbsp,toasted,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Peanut Butter,0,1 each,toasted,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Grape Jelly,50,1 tbsp,toasted,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Strawberry Jelly,50,1 tbsp,toasted,byo_breakfast,topping
-Huffman,Dinner,(5pm-8pm),Butter,100,1 tbsp,toasted,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Belgian Waffle,200,1 each,waffle bar,byo_breakfast,base
-Huffman,Dinner,(5pm-8pm),Maple Syrup,60,1 tbsp,waffle bar,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Chocolate Chips,120,2 tbsp,waffle bar,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Mini Marshmallow,20,2 tbsp,waffle bar,byo_breakfast,unknown
-Huffman,Dinner,(5pm-8pm),Chocolate Sauce,140,2 floz,waffle bar,byo_breakfast,sauce
-Huffman,Dinner,(5pm-8pm),2% Milk,130,8 floz,milks & cereals,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Chocolate Milk,0,8 floz,milks & cereals,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Chocolate Peamilk,140,1 cup,milks & cereals,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Oatmilk,140,1 cup,milks & cereals,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Soymilk,110,1 cup,milks & cereals,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Rice Chex Cereal,160,1 cup,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Fruit Loops Cereal,850,,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Raisin Bran Cereal,200,1 cup,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Apple Jacks Cereal,170,1 cup,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Rice Krispies,110,1 cup,milks & cereals,dessert_beverage,dessert
-Huffman,Dinner,(5pm-8pm),Cocoa Puffs,140,1 cup,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Cinnamon Toast Crunch Cereal,170,1 cup,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Frosted Flakes,890,,milks & cereals,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Coke,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Starry,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Diet Coke,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Diet Pepsi,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Cherry Pepsi,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Mountain Dew,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Fanta Orange Soda,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Hi-C Fruit Punch,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Mountain Blast Powerade,0,12 floz,hydration station,dessert_beverage,topping
-Huffman,Dinner,(5pm-8pm),Tractor Beverage Peach,10,12 floz,hydration station,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Tractor Beverage Lemonade,170,12 floz,hydration station,dessert_beverage,beverage
-Huffman,Dinner,(5pm-8pm),Tractor Beverage Hibiscus Rose,15,12 floz,hydration station,dessert_beverage,beverage
-Curtis,Breakfast,(7:30am-10:30am),Chocolate Chip Muffin,200,1 each,bakery,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Puttanesca Pork Chop,230,1 serving,fueld,byo_bowl,protein
+Huffman,Dinner,(5pm-10pm),Galinhada Rice,190,0.5 cup,fueld,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Lemon Roasted Brussels Sprouts,45,0.5 cup,fueld,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Garlic Black Beans,100,0.5 cup,fueld,byo_bowl,protein
+Huffman,Dinner,(5pm-10pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
+Huffman,Dinner,(5pm-10pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
+Huffman,Dinner,(5pm-10pm),Shakshuka Pizza,350,1 slice,pizza,pizza,entree
+Huffman,Dinner,(5pm-10pm),Grated Parmesan Cheese,60,2 tbsp,pizza,pizza,addon
+Huffman,Dinner,(5pm-10pm),Italian Seasoning,0,1 tsp,pizza,pizza,entree
+Huffman,Dinner,(5pm-10pm),Crushed Red Pepper Flakes,0,1 serving,pizza,pizza,addon
+Huffman,Dinner,(5pm-10pm),Beef Vegetable Soup,60,6 floz,soup du jour,soup,entree
+Huffman,Dinner,(5pm-10pm),Creamy Corn Chowder,80,6 floz,soup du jour,soup,addon
+Huffman,Dinner,(5pm-10pm),Dinner Rolls,80,1 each,breads & spreads,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Whipped Butter,80,1 tbsp,breads & spreads,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Orange Honey Butter,150,1 serving,breads & spreads,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Herb Butter,160,1 oz,breads & spreads,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Chef's Special,0,,grill special,grill,entree
+Huffman,Dinner,(5pm-10pm),Grilled Seasoned Chicken Breast,240,1 each,grill special,grill,entree
+Huffman,Dinner,(5pm-10pm),Sweet Potato Fries,340,3.25 oz,grill special,grill,entree
+Huffman,Dinner,(5pm-10pm),Crispy French Fries,250,4.5 oz,grill special,grill,entree
+Huffman,Dinner,(5pm-10pm),Za'atar Tofu,150,4 oz,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Berry Farro Salad,130,1 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Maple Glazed Brussels Sprouts,120,0.5 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Roasted Curry Cauliflower,80,0.5 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Honey Citrus Pepper Chinese Eggplant,35,0.5 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Ranchero Potatoes,100,0.5 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Chermoula Sauce,260,2 floz,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Fire-Roasted Salsa,20,0.25 cup,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Chili Garlic Ranch Dressing,170,1 floz,plant power,unknown,unknown
+Huffman,Dinner,(5pm-10pm),Kadai Jhinga Masala,220,1 cup,entree,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Toasted Lemon Parsley Couscous,120,0.5 cup,entree,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Ginger Green Beans,70,3 oz,entree,byo_bowl,protein
+Huffman,Dinner,(5pm-10pm),Roasted Carrots & Parsnips,70,1 serving,entree,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Major Gray Mango Chutney,90,2 tbsp,entree,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Roasted Tomato Ginger Chutney,150,2 floz,entree,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Cucumber Mint Raita,20,1 floz,entree,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Kachumber Salad,30,0.5 cup,entree,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Lime Wedges,0,1 wedge,entree,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Toasted Coconut,80,2 tbsp,entree,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Curried Yogurt,220,,entree,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Golden Raisins,130,0.25 cup,entree,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Cilantro Onions,15,1 oz,entree,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Crispy Chickpeas,60,0.5 oz,entree,byo_bowl,protein
+Huffman,Dinner,(5pm-10pm),White Rice,120,0.5 cup,street eats,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Brown Rice,110,0.5 cup,street eats,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Tri-Color Quinoa,140,0.5 cup,street eats,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Pickled Watermelon Radish,30,1 oz,street eats toppings,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Pickled Beets,15,1 oz,street eats toppings,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Spicy Pickles,10,0.25 cup,street eats toppings,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Pickled Cauliflower,15,2 oz,street eats toppings,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Kimchi,25,0.5 cup,street eats toppings,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Pickled Carrot,15,1 oz,street eats toppings,byo_bowl,veg
+Huffman,Dinner,(5pm-10pm),Pickled Turnips,180,,street eats toppings,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Tuxedo Sesame Seeds,0,1 tbsp,street eats toppings,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Furikake Seasoning,25,0.25 oz,street eats toppings,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Nori Sheets,10,1 serving,street eats toppings,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Chow Mein Noodles,130,0.5 cup,street eats toppings,byo_bowl,base
+Huffman,Dinner,(5pm-10pm),Fresh Scallions,25,1 tbsp,street eats toppings,byo_bowl,unknown
+Huffman,Dinner,(5pm-10pm),Pickled Red Onion,25,0.25 cup,street eats toppings,byo_bowl,extra
+Huffman,Dinner,(5pm-10pm),Sambal Oelek Chili Sauce,0,1 tsp,street eats toppings,byo_bowl,sauce
+Huffman,Dinner,(5pm-10pm),Tamari Soy Sauce,10,1 tbsp,street eats toppings,byo_bowl,sauce
+Huffman,Dinner,(5pm-10pm),Chili Oil,140,1 tbsp,street eats toppings,byo_bowl,sauce
+Huffman,Dinner,(5pm-10pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-10pm),Kale Greens Mix,10,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-10pm),Romaine Lettuce,15,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-10pm),Baby Spinach,15,1 cup,produce market,byo_salad,base
+Huffman,Dinner,(5pm-10pm),Chilled Quinoa,130,0.5 cup,produce market,byo_salad,unknown
+Huffman,Dinner,(5pm-10pm),Grape Tomatoes,15,0.5 cup,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Sliced Cucumber,10,0.5 cup,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Shredded Carrots,25,2 oz,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Sliced Red Onions,15,1 oz,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Sliced Bell Peppers,10,1 oz,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Sliced Black Olives,0,2 tbsp,produce market,byo_salad,extra
+Huffman,Dinner,(5pm-10pm),Roasted Edamame,170,0.5 cup,produce market,byo_salad,unknown
+Huffman,Dinner,(5pm-10pm),Roasted Brussels Sprouts,45,0.5 cup,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Diced Chicken,190,3.75 oz,produce market,byo_salad,protein
+Huffman,Dinner,(5pm-10pm),Hard-Boiled Eggs,60,1 egg,produce market,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
+Huffman,Dinner,(5pm-10pm),Steamed Cauliflower,20,0.5 cup,produce market,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Raspberry Vinaigrette,30,2 tbsp,produce market / dressings,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Maple Cider Vinaigrette,250,2 floz,produce market / dressings,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Herbed Balsamic Vinaigrette,25,1 floz,produce market / dressings,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Italian Dressing,260,1 serving,produce market / dressings,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Herb Ranch Dressing,80,1 floz,produce market / dressings,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),House Made Honey Mustard,120,1 tbsp,produce market / dressings,byo_salad,unknown
+Huffman,Dinner,(5pm-10pm),Homestyle Macaroni Salad,280,0.5 cup,produce market special,byo_salad,veg_topping
+Huffman,Dinner,(5pm-10pm),Applesauce,60,4 oz,produce market special,byo_salad,dressing
+Huffman,Dinner,(5pm-10pm),Nonfat Vanilla Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
+Huffman,Dinner,(5pm-10pm),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Pumpkin Seeds,0,2 tbsp,fruit & yogurt bar,byo_breakfast,extra
+Huffman,Dinner,(5pm-10pm),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
+Huffman,Dinner,(5pm-10pm),Red & Green Grapes,60,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Fresh Pineapple,70,4 oz,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Honeydew Melon,35,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Double Chocolate Chip Cookie,170,1 serving,sweets & treats,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Snickerdoodle Sugar Cookie,170,1 each,sweets & treats,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Mixed Berry Blondie,180,1 serving,sweets & treats,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Banana Cream Pie Ice Cream,270,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Birthday Cake Ice Cream,280,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Campfire S'mores Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Chocolate Ice Cream,0,0.66 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Coffee Ice Cream,240,1 serving,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Cookies & Cream Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Cotton Candy Ice,600,0.5 cup,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Mint Chocolate Chip Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Orange Pineapple Ice Cream,240,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Pumpkin Pie Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Rainbow Sherbet,170,0.5 cup,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Raspberry Fudge Cordial Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Strawberry Ice Cream,0,1 serving,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Strawberry Cheesecake Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Summertime Peach Ice Cream,240,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Triple Chocolate Chunk Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Pretzel Sticks,120,1 serving,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Graham Cracker Crumbs,30,1 tbsp,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Oreo Cookie Crumbs,70,2 tbsp,velvet ice cream bar,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Rainbow Sprinkles,60,1 tbsp,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Strawberry Syrup,60,,velvet ice cream bar,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Plain Bagel,370,,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Everything Bagel,310,1 each,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Cinnamon Raisin Bagel,230,,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Whole Wheat Bread,80,,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),White Bread,150,1 slice,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),English Muffin,110,,toasted,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Made Without Gluten Bread,150,1 slice,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Made without Gluten Bagel,270,,toasted,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Cream Cheese,100,1 oz,toasted,byo_breakfast,extra
+Huffman,Dinner,(5pm-10pm),Sun Butter,100,1 tbsp,toasted,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Peanut Butter,0,1 each,toasted,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Grape Jelly,50,1 tbsp,toasted,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Strawberry Jelly,50,1 tbsp,toasted,byo_breakfast,topping
+Huffman,Dinner,(5pm-10pm),Butter,100,1 tbsp,toasted,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Belgian Waffle,200,1 each,waffle bar,byo_breakfast,base
+Huffman,Dinner,(5pm-10pm),Maple Syrup,60,1 tbsp,waffle bar,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Chocolate Chips,120,2 tbsp,waffle bar,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Mini Marshmallow,20,2 tbsp,waffle bar,byo_breakfast,unknown
+Huffman,Dinner,(5pm-10pm),Chocolate Sauce,140,2 floz,waffle bar,byo_breakfast,sauce
+Huffman,Dinner,(5pm-10pm),2% Milk,130,8 floz,milks & cereals,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Chocolate Milk,0,8 floz,milks & cereals,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Chocolate Peamilk,140,1 cup,milks & cereals,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Oatmilk,140,1 cup,milks & cereals,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Soymilk,110,1 cup,milks & cereals,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Rice Chex Cereal,160,1 cup,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Fruit Loops Cereal,850,,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Raisin Bran Cereal,200,1 cup,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Apple Jacks Cereal,170,1 cup,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Rice Krispies,110,1 cup,milks & cereals,dessert_beverage,dessert
+Huffman,Dinner,(5pm-10pm),Cocoa Puffs,140,1 cup,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Cinnamon Toast Crunch Cereal,170,1 cup,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Frosted Flakes,890,,milks & cereals,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Coke,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Starry,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Diet Coke,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Diet Pepsi,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Cherry Pepsi,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Mountain Dew,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Fanta Orange Soda,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Hi-C Fruit Punch,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Mountain Blast Powerade,0,12 floz,hydration station,dessert_beverage,topping
+Huffman,Dinner,(5pm-10pm),Tractor Beverage Peach,10,12 floz,hydration station,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Tractor Beverage Lemonade,170,12 floz,hydration station,dessert_beverage,beverage
+Huffman,Dinner,(5pm-10pm),Tractor Beverage Hibiscus Rose,15,12 floz,hydration station,dessert_beverage,beverage
 Curtis,Breakfast,(7:30am-10:30am),Blueberry Muffin,210,1 each,bakery,dessert_beverage,dessert
-Curtis,Breakfast,(7:30am-10:30am),Chocolate Glazed Donut,490,1 each,bakery,dessert_beverage,dessert
+Curtis,Breakfast,(7:30am-10:30am),Lemon-Poppyseed Muffin,210,1 each,bakery,dessert_beverage,dessert
+Curtis,Breakfast,(7:30am-10:30am),Apple Turnover,360,1 each,bakery,dessert_beverage,topping
 Curtis,Breakfast,(7:30am-10:30am),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
-Curtis,Breakfast,(7:30am-10:30am),Nonfat Strawberry Greek Yogurt,180,1 cup,fruit & yogurt bar,byo_breakfast,base
+Curtis,Breakfast,(7:30am-10:30am),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),Nonfat Vanilla Yogurt,100,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
 Curtis,Breakfast,(7:30am-10:30am),Pineapple,25,0.25 cup,fruit & yogurt bar,byo_breakfast,topping
@@ -487,14 +480,12 @@ Curtis,Breakfast,(7:30am-10:30am),Flax Seed,60,1 tbsp,oatmeal bar,byo_breakfast,
 Curtis,Breakfast,(7:30am-10:30am),Chia Seeds,70,1.5 tbsp,oatmeal bar,byo_breakfast,extra
 Curtis,Breakfast,(7:30am-10:30am),Golden Raisins,130,0.25 cup,oatmeal bar,byo_breakfast,unknown
 Curtis,Breakfast,(7:30am-10:30am),Dried Cranberries,70,2 tbsp,oatmeal bar,byo_breakfast,unknown
-Curtis,Breakfast,(7:30am-10:30am),Overnight Chia Oats,310,0.5 cup,allgood,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Cranapple Raisin Compote,45,1 floz,allgood,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Warm Mixed Berry Compote,20,1 floz,allgood,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Honey,70,1 tbsp,allgood,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Fruit Salad drizzled with honey,580,0.5 cup,allgood,byo_bowl,veg
-Curtis,Breakfast,(7:30am-10:30am),Fresh Banana,200,1 banana,allgood,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Cheesy Tater Tot Poutine,570,,entree,byo_bowl,unknown
-Curtis,Breakfast,(7:30am-10:30am),Applewood Bacon,70,3 each,entree,byo_bowl,protein
+Curtis,Breakfast,(7:30am-10:30am),Just® Egg & Ham Breakfast Bowl,250,1 serving,allgood,byo_bowl,protein
+Curtis,Breakfast,(7:30am-10:30am),Scrambled Eggs,190,0.5 cup,entree,byo_bowl,protein
+Curtis,Breakfast,(7:30am-10:30am),Smoked Kielbasa,170,2 oz,entree,byo_bowl,protein
+Curtis,Breakfast,(7:30am-10:30am),Crispy Sweet Tater Tots,180,0.5 cup,entree,byo_bowl,unknown
+Curtis,Breakfast,(7:30am-10:30am),Buttermilk Pancake,100,1 each,entree,byo_bowl,base
+Curtis,Breakfast,(7:30am-10:30am),Maple Syrup,50,1 tbsp,entree,byo_bowl,unknown
 Curtis,Breakfast,(7:30am-10:30am),Cage-Free Eggs,180,0.5 cup,made to order omelets,byo_breakfast,protein
 Curtis,Breakfast,(7:30am-10:30am),Cage Free Egg Whites,100,0.5 cup,made to order omelets,byo_breakfast,protein
 Curtis,Breakfast,(7:30am-10:30am),Just Egg,60,0.5 cup,made to order omelets,byo_breakfast,protein
@@ -509,8 +500,9 @@ Curtis,Breakfast,(7:30am-10:30am),Fresh Sliced Jalapenos,10,1 oz,made to order o
 Curtis,Breakfast,(7:30am-10:30am),Whole Wheat Bread,80,,toasted,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),White Bread,90,1 slice,toasted,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),Made Without Gluten Bread,150,1 slice,toasted,byo_breakfast,base
-Curtis,Breakfast,(7:30am-10:30am),Plain Bagel,0,,toasted,byo_breakfast,base
-Curtis,Breakfast,(7:30am-10:30am),Blueberry Bagel,0,,toasted,byo_breakfast,base
+Curtis,Breakfast,(7:30am-10:30am),Plain Bagel,370,,toasted,byo_breakfast,base
+Curtis,Breakfast,(7:30am-10:30am),Blueberry Bagel,230,,toasted,byo_breakfast,base
+Curtis,Breakfast,(7:30am-10:30am),Everything Bagel,310,1 each,toasted,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),Sesame Bagel,0,1 each,toasted,byo_breakfast,base
 Curtis,Breakfast,(7:30am-10:30am),Butter,100,1 tbsp,toasted,byo_breakfast,unknown
 Curtis,Breakfast,(7:30am-10:30am),Sun Butter,100,1 tbsp,toasted,byo_breakfast,unknown
@@ -546,43 +538,39 @@ Curtis,Breakfast,(7:30am-10:30am),Assorted Sugar Packets,0,,cafe,unknown,unknown
 Curtis,Breakfast,(7:30am-10:30am),Vanilla Syrup,0,,cafe,unknown,unknown
 Curtis,Breakfast,(7:30am-10:30am),Caramel Syrup,80,,cafe,unknown,unknown
 Curtis,Breakfast,(7:30am-10:30am),Whole Milk,150,8 floz,cafe,unknown,unknown
-Curtis,Lunch,(11am-2:30pm),Tilapia Bruschetta,180,1 each,entree,byo_bowl,unknown
-Curtis,Lunch,(11am-2:30pm),Tomato Rice,150,0.5 cup,entree,byo_bowl,base
-Curtis,Lunch,(11am-2:30pm),Grilled Italian Vegetables,60,0.5 cup,entree,byo_bowl,unknown
-Curtis,Lunch,(11am-2:30pm),Roasted Green Beans,90,3 oz,entree,byo_bowl,protein
-Curtis,Lunch,(11am-2:30pm),Toasted Crostini,90,1 slice,entree,byo_bowl,base
-Curtis,Lunch,(11am-2:30pm),Tomato Bruschetta Topping,20,1 oz,entree,byo_bowl,veg
-Curtis,Lunch,(11am-2:30pm),Grilled Ancho-Lime Chicken,190,3 oz,allgood,byo_bowl,protein
-Curtis,Lunch,(11am-2:30pm),Cilantro Lime White Rice,120,0.5 cup,allgood,byo_bowl,base
-Curtis,Lunch,(11am-2:30pm),Lemony Sugar Snap Peas,40,0.5 cup,allgood,byo_bowl,extra
-Curtis,Lunch,(11am-2:30pm),Zucchini & Yellow Squash Saute,70,0.5 cup,allgood,byo_bowl,veg
-Curtis,Lunch,(11am-2:30pm),Seasoned Black Beans,110,0.5 cup,allgood,byo_bowl,protein
-Curtis,Lunch,(11am-2:30pm),Corn Tortilla,170,2 each,allgood,byo_bowl,base
-Curtis,Lunch,(11am-2:30pm),Grilled Seasoned Chicken Breast,240,1 each,grill,grill,entree
-Curtis,Lunch,(11am-2:30pm),The OG Burger,710,,grill,grill,entree
-Curtis,Lunch,(11am-2:30pm),Black Bean Burger,120,,grill,grill,entree
-Curtis,Lunch,(11am-2:30pm),Crispy French Fries,250,4.5 oz,grill,grill,entree
+Curtis,Lunch,(11am-2:30pm),Spice-Rubbed Pork Loin,280,3 oz,entree,byo_bowl,protein
+Curtis,Lunch,(11am-2:30pm),Spanish Rice,110,0.5 cup,entree,byo_bowl,base
+Curtis,Lunch,(11am-2:30pm),Zucchini & Tomatoes,45,0.5 cup,entree,byo_bowl,veg
+Curtis,Lunch,(11am-2:30pm),Rosemary & Honey Roasted Parsnips,170,0.5 cup,entree,byo_bowl,unknown
+Curtis,Lunch,(11am-2:30pm),Greek Grilled Chicken,140,3 oz,allgood,byo_bowl,protein
+Curtis,Lunch,(11am-2:30pm),Roasted Greek Potatoes,120,0.5 cup,allgood,byo_bowl,base
+Curtis,Lunch,(11am-2:30pm),Green Beans & Peppers,90,0.5 cup,allgood,byo_bowl,protein
+Curtis,Lunch,(11am-2:30pm),Grilled Balsamic Orange Eggplant,80,3 oz,allgood,byo_bowl,protein
+Curtis,Lunch,(11am-2:30pm),Grilled Chicken Club,2890,1 each,grill,grill,entree
+Curtis,Lunch,(11am-2:30pm),French Fries,210,0.5 cup,grill,grill,entree
+Curtis,Lunch,(11am-2:30pm),Baked Sweet Potato,150,1 each,rooted,byo_bowl,base
+Curtis,Lunch,(11am-2:30pm),Cheese Sauce,170,2 floz,rooted,byo_bowl,sauce
+Curtis,Lunch,(11am-2:30pm),Fried Lentils,20,1 tbsp,rooted,byo_bowl,protein
+Curtis,Lunch,(11am-2:30pm),Roasted Garlic Aioli,170,1 floz,rooted,byo_bowl,sauce
+Curtis,Lunch,(11am-2:30pm),Smoky Corn Salsa,25,1 floz,rooted,byo_bowl,sauce
+Curtis,Lunch,(11am-2:30pm),Shredded Romaine,15,1 cup,rooted,byo_bowl,unknown
+Curtis,Lunch,(11am-2:30pm),Fresh Cilantro,0,1 tbsp,rooted,byo_bowl,extra
+Curtis,Lunch,(11am-2:30pm),Shredded Vegan Mozzarella,80,1 oz,rooted,byo_bowl,unknown
 Curtis,Lunch,(11am-2:30pm),BBQ Jackfruit,160,4 oz,rooted,byo_bowl,unknown
-Curtis,Lunch,(11am-2:30pm),Potato Roll,230,1 each,rooted,byo_bowl,base
-Curtis,Lunch,(11am-2:30pm),Vegan Coleslaw,90,0.5 cup,rooted,byo_bowl,unknown
-Curtis,Lunch,(11am-2:30pm),Crispy Sweet Tater Tots,180,0.5 cup,rooted,byo_bowl,unknown
-Curtis,Lunch,(11am-2:30pm),Matzah Ball Soup,140,8 floz,the soup fix,soup,entree
-Curtis,Lunch,(11am-2:30pm),Minestrone Soup,110,6 floz,the soup fix,soup,entree
+Curtis,Lunch,(11am-2:30pm),Bean & Bacon Soup,100,6 floz,the soup fix,soup,entree
+Curtis,Lunch,(11am-2:30pm),Tomato Basil Soup,80,8 floz,the soup fix,soup,addon
 Curtis,Lunch,(11am-2:30pm),Housemade Seasoned Croutons,150,1 oz,the soup fix,soup,entree
 Curtis,Lunch,(11am-2:30pm),Sunflower Seeds,100,2 tbsp,the soup fix,soup,addon
 Curtis,Lunch,(11am-2:30pm),Goldfish (R) Crackers,40,15 pieces,the soup fix,soup,entree
-Curtis,Lunch,(11am-2:30pm),Matzo Cracker,120,,the soup fix,soup,entree
 Curtis,Lunch,(11am-2:30pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
 Curtis,Lunch,(11am-2:30pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
-Curtis,Lunch,(11am-2:30pm),Greek Pizza,300,1 slice,pizza,pizza,entree
+Curtis,Lunch,(11am-2:30pm),Ham & Feta Pizza,220,1 slice,pizza,pizza,entree
 Curtis,Lunch,(11am-2:30pm),Plant Based Cauliflower Pizza Crust,510,1 each,pizza,pizza,entree
-Curtis,Lunch,(11am-2:30pm),Turkey Sandwich,420,,deli specials,grill,entree
 Curtis,Lunch,(11am-2:30pm),Deli Turkey,70,2 oz,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Deli Ham,80,2 oz,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Sliced Salami,120,3 slice,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Vegan Deli Turkey,120,2 oz,deli,grill,entree
-Curtis,Lunch,(11am-2:30pm),Chicken Salad,260,0.5 cup,deli,grill,entree
-Curtis,Lunch,(11am-2:30pm),Tuna Salad,300,4 oz,deli,grill,entree
+Curtis,Lunch,(11am-2:30pm),Chicken Salad,310,0.5 cup,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Sliced Provolone Cheese,100,1 slice,deli,grill,addon
 Curtis,Lunch,(11am-2:30pm),Sliced Pepperjack Cheese,100,1 slice,deli,grill,addon
 Curtis,Lunch,(11am-2:30pm),Sliced Cheddar Cheese,60,1 slice,deli,grill,addon
@@ -610,6 +598,7 @@ Curtis,Lunch,(11am-2:30pm),Flour Tortilla,290,1 each,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Spinach Wrap,0,1 each,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Wheat Wrap,290,1 each,deli,grill,entree
 Curtis,Lunch,(11am-2:30pm),Made without Gluten Tortilla,220,1 each,deli,grill,entree
+Curtis,Lunch,(11am-2:30pm),Sliced Pepperoni,25,3 pieces,deli,grill,addon
 Curtis,Lunch,(11am-2:30pm),White Rice,120,0.5 cup,rice bar,byo_bowl,base
 Curtis,Lunch,(11am-2:30pm),Brown Rice,110,0.5 cup,rice bar,byo_bowl,base
 Curtis,Lunch,(11am-2:30pm),Sesame Seeds,0,1 tbsp,rice bar,byo_bowl,extra
@@ -630,14 +619,14 @@ Curtis,Lunch,(11am-2:30pm),Edamame,110,0.5 cup,produce market,byo_salad,unknown
 Curtis,Lunch,(11am-2:30pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
 Curtis,Lunch,(11am-2:30pm),Feta Cheese Crumbles,80,2 tbsp,produce market,byo_salad,extra
 Curtis,Lunch,(11am-2:30pm),Roasted Tofu,160,4 oz,produce market,byo_salad,protein
-Curtis,Lunch,(11am-2:30pm),Diced Grilled Chicken,120,3 oz,produce market,byo_salad,protein
+Curtis,Lunch,(11am-2:30pm),Diced Grilled Chicken,180,3 oz,produce market,byo_salad,protein
 Curtis,Lunch,(11am-2:30pm),Scratchmade Ranch Dressing,150,28 g,produce market,byo_salad,dressing
 Curtis,Lunch,(11am-2:30pm),Blue Cheese Dressing,60,2 tbsp,produce market,byo_salad,dressing
 Curtis,Lunch,(11am-2:30pm),Italian Dressing,260,1 serving,produce market,byo_salad,dressing
 Curtis,Lunch,(11am-2:30pm),Honey Mustard Dressing,130,2 floz,produce market,byo_salad,dressing
 Curtis,Lunch,(11am-2:30pm),Orange Balsamic Vinaigrette,160,2 tbsp,produce market,byo_salad,dressing
 Curtis,Lunch,(11am-2:30pm),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
-Curtis,Lunch,(11am-2:30pm),Nonfat Strawberry Greek Yogurt,180,1 cup,fruit & yogurt bar,byo_breakfast,base
+Curtis,Lunch,(11am-2:30pm),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Lunch,(11am-2:30pm),Nonfat Vanilla Yogurt,100,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Lunch,(11am-2:30pm),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
 Curtis,Lunch,(11am-2:30pm),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
@@ -647,10 +636,12 @@ Curtis,Lunch,(11am-2:30pm),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogu
 Curtis,Lunch,(11am-2:30pm),Golden Raisins,130,0.25 cup,fruit & yogurt bar,byo_breakfast,unknown
 Curtis,Lunch,(11am-2:30pm),Dried Cranberries,70,2 tbsp,fruit & yogurt bar,byo_breakfast,unknown
 Curtis,Lunch,(11am-2:30pm),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
-Curtis,Lunch,(11am-2:30pm),Crunchy S'mores Bar,280,1 each,bakery,dessert_beverage,topping
-Curtis,Lunch,(11am-2:30pm),Sugar Cookie,130,1 each,bakery,dessert_beverage,dessert
-Curtis,Lunch,(11am-2:30pm),Housemade Chocolate Chip Cookies,150,1 each,bakery,dessert_beverage,dessert
-Curtis,Lunch,(11am-2:30pm),Chef's Special,0,,bakery,dessert_beverage,topping
+Curtis,Lunch,(11am-2:30pm),Double Chocolate Chip Cookie,170,1 serving,bakery,dessert_beverage,dessert
+Curtis,Lunch,(11am-2:30pm),Snickerdoodle Sugar Cookie,170,1 each,bakery,dessert_beverage,dessert
+Curtis,Lunch,(11am-2:30pm),Rice Krispies® Bar,230,1 each,bakery,dessert_beverage,dessert
+Curtis,Lunch,(11am-2:30pm),Brownie Oreo Pudding Parfait,220,1 each,bakery,dessert_beverage,dessert
+Curtis,Lunch,(11am-2:30pm),Blueberry Muffin,210,1 each,bakery,dessert_beverage,dessert
+Curtis,Lunch,(11am-2:30pm),Apple Turnover,360,1 each,bakery,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Vanilla Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
 Curtis,Lunch,(11am-2:30pm),Chocolate Ice Cream,220,0.66 cup,velvet ice cream bar,dessert_beverage,dessert
 Curtis,Lunch,(11am-2:30pm),Mocha Chip Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
@@ -668,7 +659,7 @@ Curtis,Lunch,(11am-2:30pm),Oreo Cookie Crumbs,70,2 tbsp,velvet ice cream bar,des
 Curtis,Lunch,(11am-2:30pm),Graham Cracker Crumbs,30,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Pretzel Sticks,120,1 serving,velvet ice cream bar,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),White Chocolate Chips,80,1 tbsp,velvet ice cream bar,dessert_beverage,topping
-Curtis,Lunch,(11am-2:30pm),Chocolate Chips,100,2 tbsp,velvet ice cream bar,dessert_beverage,topping
+Curtis,Lunch,(11am-2:30pm),Chocolate Chips,120,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Rainbow Sprinkles,50,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Mini Marshmallow,20,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Lunch,(11am-2:30pm),Chocolate Sauce,110,2 floz,velvet ice cream bar,dessert_beverage,topping
@@ -700,26 +691,25 @@ Curtis,Light lunch,(2:30pm-4pm),Edamame,110,0.5 cup,produce market,byo_salad,unk
 Curtis,Light lunch,(2:30pm-4pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
 Curtis,Light lunch,(2:30pm-4pm),Feta Cheese Crumbles,80,2 tbsp,produce market,byo_salad,extra
 Curtis,Light lunch,(2:30pm-4pm),Roasted Tofu,160,4 oz,produce market,byo_salad,protein
-Curtis,Light lunch,(2:30pm-4pm),Diced Grilled Chicken,120,3 oz,produce market,byo_salad,protein
+Curtis,Light lunch,(2:30pm-4pm),Diced Grilled Chicken,180,3 oz,produce market,byo_salad,protein
 Curtis,Light lunch,(2:30pm-4pm),Scratchmade Ranch Dressing,150,28 g,produce market,byo_salad,dressing
 Curtis,Light lunch,(2:30pm-4pm),Blue Cheese Dressing,60,2 tbsp,produce market,byo_salad,dressing
 Curtis,Light lunch,(2:30pm-4pm),Italian Dressing,260,1 serving,produce market,byo_salad,dressing
 Curtis,Light lunch,(2:30pm-4pm),Honey Mustard Dressing,130,2 floz,produce market,byo_salad,dressing
 Curtis,Light lunch,(2:30pm-4pm),Orange Balsamic Vinaigrette,160,2 tbsp,produce market,byo_salad,dressing
-Curtis,Light lunch,(2:30pm-4pm),Matzah Ball Soup,140,8 floz,the soup fix,soup,entree
+Curtis,Light lunch,(2:30pm-4pm),Bean & Bacon Soup,100,6 floz,the soup fix,soup,entree
+Curtis,Light lunch,(2:30pm-4pm),Tomato Basil Soup,80,8 floz,the soup fix,soup,addon
 Curtis,Light lunch,(2:30pm-4pm),Housemade Seasoned Croutons,150,1 oz,the soup fix,soup,entree
 Curtis,Light lunch,(2:30pm-4pm),Sunflower Seeds,100,2 tbsp,the soup fix,soup,addon
 Curtis,Light lunch,(2:30pm-4pm),Goldfish (R) Crackers,40,15 pieces,the soup fix,soup,entree
 Curtis,Light lunch,(2:30pm-4pm),Dried Cranberries,70,2 tbsp,the soup fix,soup,entree
-Curtis,Light lunch,(2:30pm-4pm),Matzo Cracker,120,,the soup fix,soup,entree
 Curtis,Light lunch,(2:30pm-4pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
 Curtis,Light lunch,(2:30pm-4pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
-Curtis,Light lunch,(2:30pm-4pm),Greek Pizza,300,1 slice,pizza,pizza,entree
 Curtis,Light lunch,(2:30pm-4pm),Deli Turkey,70,2 oz,deli,grill,entree
 Curtis,Light lunch,(2:30pm-4pm),Deli Ham,80,2 oz,deli,grill,entree
 Curtis,Light lunch,(2:30pm-4pm),Sliced Salami,120,3 slice,deli,grill,entree
 Curtis,Light lunch,(2:30pm-4pm),Vegan Deli Turkey,120,2 oz,deli,grill,entree
-Curtis,Light lunch,(2:30pm-4pm),Chicken Salad,260,0.5 cup,deli,grill,entree
+Curtis,Light lunch,(2:30pm-4pm),Chicken Salad,310,0.5 cup,deli,grill,entree
 Curtis,Light lunch,(2:30pm-4pm),Tuna Salad,300,4 oz,deli,grill,entree
 Curtis,Light lunch,(2:30pm-4pm),Sliced Provolone Cheese,100,1 slice,deli,grill,addon
 Curtis,Light lunch,(2:30pm-4pm),Sliced Pepperjack Cheese,100,1 slice,deli,grill,addon
@@ -766,7 +756,7 @@ Curtis,Light lunch,(2:30pm-4pm),Oreo Cookie Crumbs,70,2 tbsp,velvet ice cream ba
 Curtis,Light lunch,(2:30pm-4pm),Graham Cracker Crumbs,30,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),Pretzel Sticks,120,1 serving,velvet ice cream bar,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),White Chocolate Chips,80,1 tbsp,velvet ice cream bar,dessert_beverage,topping
-Curtis,Light lunch,(2:30pm-4pm),Chocolate Chips,100,2 tbsp,velvet ice cream bar,dessert_beverage,topping
+Curtis,Light lunch,(2:30pm-4pm),Chocolate Chips,120,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),Rainbow Sprinkles,50,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),Mini Marshmallow,20,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),Chocolate Sauce,110,2 floz,velvet ice cream bar,dessert_beverage,topping
@@ -785,38 +775,31 @@ Curtis,Light lunch,(2:30pm-4pm),Diet Coke,0,12 floz,hydration station,dessert_be
 Curtis,Light lunch,(2:30pm-4pm),Fountain Beverage Dr Pepper,0,12 floz,hydration station,dessert_beverage,beverage
 Curtis,Light lunch,(2:30pm-4pm),Starry,0,12 floz,hydration station,dessert_beverage,topping
 Curtis,Light lunch,(2:30pm-4pm),Lemon-Lime Powerade,0,12 floz,hydration station,dessert_beverage,topping
-Curtis,Dinner,(4:30pm-8pm),Grilled Lime Chili Cod,340,3 oz,entree,byo_bowl,extra
-Curtis,Dinner,(4:30pm-8pm),White Rice,120,0.5 cup,entree,byo_bowl,base
-Curtis,Dinner,(4:30pm-8pm),Seasoned Black Beans,140,0.5 cup,entree,byo_bowl,protein
-Curtis,Dinner,(4:30pm-8pm),Cumin Roasted Cauliflower,40,0.5 cup,entree,byo_bowl,veg
-Curtis,Dinner,(4:30pm-8pm),Flour Tortilla,180,1 each,entree,byo_bowl,base
-Curtis,Dinner,(4:30pm-8pm),Chunky Salsa,80,2 tbsp,entree,byo_bowl,sauce
-Curtis,Dinner,(4:30pm-8pm),Avocado Crema,40,2 tbsp,entree,byo_bowl,unknown
-Curtis,Dinner,(4:30pm-8pm),BBQ Chicken,190,1 piece,allgood,byo_bowl,protein
-Curtis,Dinner,(4:30pm-8pm),BBQ Pinto Beans,150,0.5 cup,allgood,byo_bowl,protein
-Curtis,Dinner,(4:30pm-8pm),White Rice,120,0.5 cup,allgood,byo_bowl,base
-Curtis,Dinner,(4:30pm-8pm),Grilled Yellow Squash,70,0.5 cup,allgood,byo_bowl,unknown
-Curtis,Dinner,(4:30pm-8pm),Roasted Butternut Squash,100,0.5 cup,allgood,byo_bowl,unknown
-Curtis,Dinner,(4:30pm-8pm),Cheese Quesadilla,410,1 serving,rooted,byo_bowl,extra
-Curtis,Dinner,(4:30pm-8pm),Seasoned Black Beans,110,0.5 cup,rooted,byo_bowl,protein
-Curtis,Dinner,(4:30pm-8pm),Chile-Roasted Corn,140,0.5 cup,rooted,byo_bowl,veg
-Curtis,Dinner,(4:30pm-8pm),Hot Dog on Bun,390,1 serving,grill,grill,entree
-Curtis,Dinner,(4:30pm-8pm),Caramelized Onions,25,1 tbsp,grill,grill,addon
-Curtis,Dinner,(4:30pm-8pm),Sliced Red Onions,10,0.5 oz,grill,grill,addon
-Curtis,Dinner,(4:30pm-8pm),Matzah Ball Soup,140,8 floz,the soup fix,soup,entree
+Curtis,Dinner,(4:30pm-8pm),Chicken Pot Pie,420,1 each,entree,byo_bowl,protein
+Curtis,Dinner,(4:30pm-8pm),Buttery Egg Noodles,240,1 cup,entree,byo_bowl,protein
+Curtis,Dinner,(4:30pm-8pm),Green Peas,40,0.25 cup,entree,byo_bowl,unknown
+Curtis,Dinner,(4:30pm-8pm),Honey Roasted Red Beets,120,0.5 cup,entree,byo_bowl,unknown
+Curtis,Dinner,(4:30pm-8pm),Herb Roasted Chicken,200,1 piece,allgood,byo_bowl,protein
+Curtis,Dinner,(4:30pm-8pm),Gravy,15,1 serving,allgood,byo_bowl,sauce
+Curtis,Dinner,(4:30pm-8pm),Herb Roasted Red Potatoes,90,0.5 cup,allgood,byo_bowl,base
+Curtis,Dinner,(4:30pm-8pm),Balsamic Glazed Roasted Carrots,120,0.5 cup,allgood,byo_bowl,veg
+Curtis,Dinner,(4:30pm-8pm),Mixed Vegetables,20,0.5 cup,allgood,byo_bowl,unknown
+Curtis,Dinner,(4:30pm-8pm),Made without Gluten Mac & Vegan Cheese,820,,rooted,byo_bowl,base
+Curtis,Dinner,(4:30pm-8pm),Crispy Fried Tofu,150,3 oz,rooted,byo_bowl,protein
+Curtis,Dinner,(4:30pm-8pm),Hearty Comfort Chili,90,8 floz,rooted,byo_bowl,unknown
+Curtis,Dinner,(4:30pm-8pm),Pico de Gallo,10,2 tbsp,rooted,byo_bowl,unknown
+Curtis,Dinner,(4:30pm-8pm),Philly Cheesesteak,590,1 sandwich,grill,grill,addon
 Curtis,Dinner,(4:30pm-8pm),Housemade Seasoned Croutons,150,1 oz,the soup fix,soup,entree
 Curtis,Dinner,(4:30pm-8pm),Sunflower Seeds,100,2 tbsp,the soup fix,soup,addon
 Curtis,Dinner,(4:30pm-8pm),Goldfish (R) Crackers,40,15 pieces,the soup fix,soup,entree
-Curtis,Dinner,(4:30pm-8pm),Matzo Cracker,120,,the soup fix,soup,entree
 Curtis,Dinner,(4:30pm-8pm),Cheese Pizza,240,1 slice,pizza,pizza,entree
 Curtis,Dinner,(4:30pm-8pm),Pepperoni Pizza,270,1 slice,pizza,pizza,entree
-Curtis,Dinner,(4:30pm-8pm),Greek Pizza,300,1 slice,pizza,pizza,entree
 Curtis,Dinner,(4:30pm-8pm),Plant Based Cauliflower Pizza Crust,510,1 each,pizza,pizza,entree
 Curtis,Dinner,(4:30pm-8pm),Deli Turkey,70,2 oz,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Deli Ham,80,2 oz,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Sliced Salami,120,3 slice,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Vegan Deli Turkey,120,2 oz,deli,grill,entree
-Curtis,Dinner,(4:30pm-8pm),Chicken Salad,260,0.5 cup,deli,grill,entree
+Curtis,Dinner,(4:30pm-8pm),Chicken Salad,310,0.5 cup,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Tuna Salad,300,4 oz,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Sliced Provolone Cheese,100,1 slice,deli,grill,addon
 Curtis,Dinner,(4:30pm-8pm),Sliced Pepperjack Cheese,100,1 slice,deli,grill,addon
@@ -844,6 +827,7 @@ Curtis,Dinner,(4:30pm-8pm),Udi's GF Multigrain Bread,140,1 slice,deli,grill,addo
 Curtis,Dinner,(4:30pm-8pm),Flour Tortilla,290,1 each,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Spinach Wrap,0,1 each,deli,grill,entree
 Curtis,Dinner,(4:30pm-8pm),Wheat Wrap,290,1 each,deli,grill,entree
+Curtis,Dinner,(4:30pm-8pm),Signature Chips,150,1.5 oz,deli specials,grill,entree
 Curtis,Dinner,(4:30pm-8pm),White Rice,120,0.5 cup,rice bar,byo_bowl,base
 Curtis,Dinner,(4:30pm-8pm),Brown Rice,110,0.5 cup,rice bar,byo_bowl,base
 Curtis,Dinner,(4:30pm-8pm),Sesame Seeds,0,1 tbsp,rice bar,byo_bowl,extra
@@ -864,14 +848,14 @@ Curtis,Dinner,(4:30pm-8pm),Edamame,110,0.5 cup,produce market,byo_salad,unknown
 Curtis,Dinner,(4:30pm-8pm),Shredded Cheddar Cheese,120,0.25 cup,produce market,byo_salad,extra
 Curtis,Dinner,(4:30pm-8pm),Feta Cheese Crumbles,80,2 tbsp,produce market,byo_salad,extra
 Curtis,Dinner,(4:30pm-8pm),Roasted Tofu,160,4 oz,produce market,byo_salad,protein
-Curtis,Dinner,(4:30pm-8pm),Diced Grilled Chicken,120,3 oz,produce market,byo_salad,protein
+Curtis,Dinner,(4:30pm-8pm),Diced Grilled Chicken,180,3 oz,produce market,byo_salad,protein
 Curtis,Dinner,(4:30pm-8pm),Scratchmade Ranch Dressing,150,28 g,produce market,byo_salad,dressing
 Curtis,Dinner,(4:30pm-8pm),Blue Cheese Dressing,60,2 tbsp,produce market,byo_salad,dressing
 Curtis,Dinner,(4:30pm-8pm),Italian Dressing,260,1 serving,produce market,byo_salad,dressing
 Curtis,Dinner,(4:30pm-8pm),Honey Mustard Dressing,130,2 floz,produce market,byo_salad,dressing
 Curtis,Dinner,(4:30pm-8pm),Orange Balsamic Vinaigrette,160,2 tbsp,produce market,byo_salad,dressing
 Curtis,Dinner,(4:30pm-8pm),Nonfat Plain Greek Yogurt,0,0.5 cup,fruit & yogurt bar,byo_breakfast,base
-Curtis,Dinner,(4:30pm-8pm),Nonfat Strawberry Greek Yogurt,180,1 cup,fruit & yogurt bar,byo_breakfast,base
+Curtis,Dinner,(4:30pm-8pm),Nonfat Strawberry Greek Yogurt,90,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Dinner,(4:30pm-8pm),Nonfat Vanilla Yogurt,100,0.5 cup,fruit & yogurt bar,byo_breakfast,base
 Curtis,Dinner,(4:30pm-8pm),Cottage Cheese,90,0.5 cup,fruit & yogurt bar,byo_breakfast,extra
 Curtis,Dinner,(4:30pm-8pm),Cantaloupe,30,0.5 cup,fruit & yogurt bar,byo_breakfast,topping
@@ -881,10 +865,10 @@ Curtis,Dinner,(4:30pm-8pm),Cinnamon Brown Sugar Granola,370,0.5 cup,fruit & yogu
 Curtis,Dinner,(4:30pm-8pm),Golden Raisins,130,0.25 cup,fruit & yogurt bar,byo_breakfast,unknown
 Curtis,Dinner,(4:30pm-8pm),Dried Cranberries,70,2 tbsp,fruit & yogurt bar,byo_breakfast,unknown
 Curtis,Dinner,(4:30pm-8pm),Chia Seeds,70,1.5 tbsp,fruit & yogurt bar,byo_breakfast,extra
-Curtis,Dinner,(4:30pm-8pm),Sugar Cookie,130,1 each,bakery,dessert_beverage,dessert
-Curtis,Dinner,(4:30pm-8pm),Lemon Strawberry Sugar Cookie,7530,,bakery,dessert_beverage,dessert
-Curtis,Dinner,(4:30pm-8pm),Housemade Chocolate Chip Cookies,150,1 each,bakery,dessert_beverage,dessert
-Curtis,Dinner,(4:30pm-8pm),Lucky Charms Cereal Bar,120,1 each,bakery,dessert_beverage,topping
+Curtis,Dinner,(4:30pm-8pm),Double Chocolate Chip Cookie,170,1 serving,bakery,dessert_beverage,dessert
+Curtis,Dinner,(4:30pm-8pm),Snickerdoodle Sugar Cookie,170,1 each,bakery,dessert_beverage,dessert
+Curtis,Dinner,(4:30pm-8pm),Mixed Berry Blondie,180,1 serving,bakery,dessert_beverage,topping
+Curtis,Dinner,(4:30pm-8pm),Chocolate Buttercream Cake,820,1 each,bakery,dessert_beverage,dessert
 Curtis,Dinner,(4:30pm-8pm),Vanilla Ice Cream,260,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
 Curtis,Dinner,(4:30pm-8pm),Chocolate Ice Cream,220,0.66 cup,velvet ice cream bar,dessert_beverage,dessert
 Curtis,Dinner,(4:30pm-8pm),Mocha Chip Ice Cream,0,0.5 cup,velvet ice cream bar,dessert_beverage,dessert
@@ -902,7 +886,7 @@ Curtis,Dinner,(4:30pm-8pm),Oreo Cookie Crumbs,70,2 tbsp,velvet ice cream bar,des
 Curtis,Dinner,(4:30pm-8pm),Graham Cracker Crumbs,30,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Dinner,(4:30pm-8pm),Pretzel Sticks,120,1 serving,velvet ice cream bar,dessert_beverage,topping
 Curtis,Dinner,(4:30pm-8pm),White Chocolate Chips,80,1 tbsp,velvet ice cream bar,dessert_beverage,topping
-Curtis,Dinner,(4:30pm-8pm),Chocolate Chips,100,2 tbsp,velvet ice cream bar,dessert_beverage,topping
+Curtis,Dinner,(4:30pm-8pm),Chocolate Chips,120,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Dinner,(4:30pm-8pm),Rainbow Sprinkles,50,1 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Dinner,(4:30pm-8pm),Mini Marshmallow,20,2 tbsp,velvet ice cream bar,dessert_beverage,topping
 Curtis,Dinner,(4:30pm-8pm),Chocolate Sauce,110,2 floz,velvet ice cream bar,dessert_beverage,topping
