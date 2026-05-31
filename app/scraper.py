@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import pandas as pd
+import re
+from pathlib import Path
 
 def fetch_data(url):
     """
@@ -30,7 +32,7 @@ def save_data_to_file(data, filename):
         filename (str): The name of the file to save the data to.
     """
     try:
-        with open(filename, 'w') as file:
+        with open(filename, 'w', encoding='utf-8') as file:
             file.write(data)
         print(f"Data saved to {filename}")
     except IOError as e:
@@ -53,91 +55,128 @@ def load_data_from_file(filename):
         print(f"Error loading data from {filename}: {e}")
         return None
 
+def clean_text(text):
+    if text is None:
+        return None
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def fact_column_name(label, unit):
+    """
+    Converts nutrition labels into clean DataFrame column names.
+
+    Example:
+        "Total Fat", "g" -> "total_fat_g"
+        "Calories", "" -> "calories"
+    """
+    label = label.lower().replace(" ", "_")
+    label = re.sub(r"[^a-z0-9_]", "", label)
+
+    if unit:
+        unit = unit.lower().replace(" ", "_")
+        unit = re.sub(r"[^a-z0-9_]", "", unit)
+        return f"{label}_{unit}"
+
+    return label
+
+
 def parse_html(load_data):
-    """
-    Parse HTML content and extract relevant data.
-    
-    Args:
-        load_data (str): The HTML content to parse.
-        
-    Returns:
-        list: A list of extracted data.
-    """
-    soup = BeautifulSoup(load_data, 'html.parser')
-    
-    menu_tabs = [tab.text.strip() for tab in soup.find_all('div', class_="c-tabs-nav__link-inner")]
-    time_tabs = []
-    calorie_tabs = []
-    for tab in soup.find_all('div', class_="c-tab__content"):
-        links = [a.text.replace('\n', '').replace('   ', '').strip() for a in tab.find_all('a', tabindex="0")]
-        time_tabs.append(links)
-    
+    soup = BeautifulSoup(load_data, "html.parser")
 
-    calorie_tabs = []
-    serving_size_tabs = []    
-    station_tabs = []
-            
-    for tab in soup.find_all('div', class_="c-tab__content"):
-        calories = []
-        serving_size = []
-        stations = []
-        for station in tab.find_all('div', class_="menu-station"):
-            stat = station.find('h4', class_="toggle-menu-station-data")
-            for tab_1 in station.find_all('li', class_="menu-item-li"):
-                for a in tab_1.find('div', id="recipe-nutrition-"+ str(tab_1.find('a', href=lambda x: x and x.strip() == "#").get('data-recipe'))):
-                    item = json.loads(a.text.replace('\n', '').replace('   ', '').strip())
-                    calories.append(next((fact['value'] for fact in item['facts'] if fact['label'] == 'Calories'), None))
-                    serving_size.append(item.get('serving_size', None))
-                    stations.append(stat.text.replace('\n', '').replace('   ', '').strip().lower())
-        calorie_tabs.append(calories)
-        serving_size_tabs.append(serving_size)
-        station_tabs.append(stations)
-    
-    final_menu = {}
-    calorie_menu = {}
-    serving_size_menu = {}
-    station_menu = {}
-    for tab in range(len(menu_tabs)):
-        final_menu[menu_tabs[tab]] = time_tabs[tab]
-        calorie_menu[menu_tabs[tab]] = calorie_tabs[tab]
-        serving_size_menu[menu_tabs[tab]] = serving_size_tabs[tab]  
-        station_menu[menu_tabs[tab]] = station_tabs[tab]
+    meal_tabs = [
+        clean_text(tab.get_text())
+        for tab in soup.find_all("div", class_="c-tabs-nav__link-inner")
+    ]
 
-    return final_menu, calorie_menu, serving_size_menu, station_menu
+    rows = []
+
+    for tab_index, tab in enumerate(soup.find_all("div", class_="c-tab__content")):
+        meal_period = meal_tabs[tab_index] if tab_index < len(meal_tabs) else None
+
+        for station in tab.find_all("div", class_="menu-station"):
+            station_header = station.find("h4", class_="toggle-menu-station-data")
+            station_name = clean_text(station_header.get_text()).lower() if station_header else None
+
+            for menu_item in station.find_all("li", class_="menu-item-li"):
+                item_link = menu_item.find("a", class_="show-nutrition")
+
+                if not item_link:
+                    continue
+
+                recipe_id = item_link.get("data-recipe")
+                item_name = clean_text(item_link.get_text())
+
+                nutrition_div = menu_item.find(
+                    "div",
+                    id=f"recipe-nutrition-{recipe_id}"
+                )
+
+                if not nutrition_div:
+                    continue
+
+                try:
+                    nutrition_data = json.loads(clean_text(nutrition_div.get_text()))
+                except json.JSONDecodeError:
+                    print(f"Could not parse nutrition JSON for: {item_name}")
+                    continue
+
+                row = {
+                    'category': ' '.join(meal_period.strip().split(' ')[0:-1]).strip().capitalize(), 
+                    'time': meal_period.strip().split(' ')[-1],
+                    "station": station_name,
+                    "item_name": nutrition_data.get("name", item_name),
+                    "description": nutrition_data.get("description"),
+                    "serving_size": nutrition_data.get("serving_size"),
+                    "allergens": nutrition_data.get("allergens_list"),
+                    "dietary_preferences": nutrition_data.get("preferences_list"),
+                }
+
+                for fact in nutrition_data.get("facts", []):
+                    label = fact.get("label")
+                    unit = fact.get("unit")
+                    value = fact.get("value")
+                    percent_drv = fact.get("percent_drv")
+
+                    if not label:
+                        continue
+
+                    column = fact_column_name(label, unit)
+                    row[column] = value
+
+                    if percent_drv is not None:
+                        row[f"{column}_percent_daily_value"] = percent_drv
+
+                rows.append(row)
+
+    return pd.DataFrame(rows)
 
 def main(filename, url):
-    
-    # Fetch data from the URL
     data = fetch_data(url)
-    if data:
-        #Save the fetched data to a file
-        save_data_to_file(data, filename)
-        
-        # Load the data back from the file
-    load_data = load_data_from_file(filename) 
-    # Parse the HTML content and extract relevant data
-    if load_data:
-        data = parse_html(load_data)
-    # For demonstration, we will directly use the filename
-    # Parse the HTML content and extract relevant data
-    # Assuming the file already exists and contains valid HTML content
 
-    return data
+    if data:
+        save_data_to_file(data, filename)
+
+    load_data = load_data_from_file(filename)
+
+    if load_data:
+        df = parse_html(load_data)
+        return df
+
+    return pd.DataFrame()
 
 def scrape_and_save():
-    data = main("data\huff.html", "https://denison.nmcfood.com/locations/the-table-at-huffman/")
-    df = pd.DataFrame(columns=['Hall', 'Category', 'Time', 'Dish', 'Calories', 'Serving Size', 'Station'])
-    for dishes, calories, serving, stations in zip(data[0], data[1], data[2], data[3]):
-        for dish, calorie, serving_size, station  in zip(data[0][dishes], data[1][calories], data[2][serving], data[3][stations]):
-            df = df._append({'Hall': 'Huffman', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size, 'Station': station}, ignore_index=True)
+    data = main(str(Path("data") / "huffman.html"), "https://denison.nmcfood.com/locations/the-table-at-huffman/?date=2026-05-06")
+    #add hall column to data
+    data["hall"] = "Huffman"
+    data_1 = main(str(Path("data") / "curtis.html"), "https://denison.nmcfood.com/locations/the-table-at-curtis/?date=2026-05-06")
+    #add hall column to data_1
+    data_1["hall"] = "Curtis"
 
-    data_1 = main("data\curtis.html", "https://denison.nmcfood.com/locations/the-table-at-curtis/")
-    df1 = pd.DataFrame(columns=['Hall', 'Category', 'Time','Dish', 'Calories', 'Serving Size', 'Station'])
-    for dishes, calories, serving, stations in zip(data_1[0], data_1[1], data_1[2], data_1[3]):
-        for dish, calorie, serving_size, station in zip(data_1[0][dishes], data_1[1][calories], data_1[2][serving], data_1[3][stations]):
-            df1 = df1._append({'Hall': 'Curtis', 'Category': ' '.join(dishes.strip().split(' ')[0:-1]).strip().capitalize(), 'Time': dishes.strip().split(' ')[-1], 'Dish': dish, 'Calories': calorie, 'Serving Size': serving_size, 'Station': station}, ignore_index=True)
-
-    df = pd.concat([df, df1], ignore_index=True)
-    df.to_csv('data\menu_data.csv', index=False)
+    df = pd.concat([data, data_1], ignore_index=True)
+    df.to_csv(str(Path("data") / "menu_data.csv"), index=False)
     print("Data processing complete. Data saved to 'menu_data.csv'.")
     return
+
+
+if __name__ == "__main__":
+    scrape_and_save()

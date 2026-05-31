@@ -130,6 +130,7 @@ The recommendation system uses a multi-stage approach:
 
 ## Future Enhancements
 
+- [ ] Functionality for accepting URLs for custom dining halls
 - [ ] Dietary restriction filters (vegetarian, vegan, gluten-free, etc.)
 - [ ] User accounts and meal history
 - [ ] Nutritional breakdown (macros, vitamins, etc.)
