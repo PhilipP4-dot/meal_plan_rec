@@ -20,3 +20,39 @@ def test_build_meal_options_orders_by_time(monkeypatch):
     assert labels[0].startswith("Breakfast")
     assert labels[1].startswith("Lunch")
     assert labels[2].startswith("Dinner")
+
+
+def test_recommendations_route_forwards_diet_preferences(monkeypatch):
+    fake_meals = pd.DataFrame(
+        [
+            {"Category": "Lunch", "Time": "(11:30am-1:30pm)", "Hall": "Curtis"},
+        ]
+    )
+    captured = {}
+
+    def fake_fetch_plan(**kwargs):
+        captured.update(kwargs)
+        return {"Plan": [], "Total_calories": 0}
+
+    monkeypatch.setattr(web_app, "build_meal_options", lambda: [{"label": "Lunch", "halls": ["Curtis"]}])
+    monkeypatch.setattr(web_app, "fetch_plan", fake_fetch_plan)
+
+    client = web_app.app.test_client()
+    response = client.post(
+        "/recommendations",
+        data={
+            "meal_times": "Lunch",
+            "Lunch_ratio": "100",
+            "Lunch_hall": "Curtis",
+            "daily_calories": "2000",
+            "top_n": "1",
+            "macro_focus": "protein_heavy",
+            "required_preference": "Vegetarian",
+            "exclude_allergens": ["milk", "egg"],
+        },
+    )
+
+    assert response.status_code == 200
+    assert captured["diet_preferences"]["macro_focus"] == "protein_heavy"
+    assert captured["diet_preferences"]["required_preferences"] == ["Vegetarian"]
+    assert set(captured["diet_preferences"]["exclude_allergens"]) == {"milk", "egg"}

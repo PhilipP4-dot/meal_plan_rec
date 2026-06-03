@@ -2,18 +2,14 @@ from db.models import Menu
 import pandas as pd
 from app.scraper import scrape_and_save
 from app.categorizer import categorize_hall_dish
-from db.seed import ensure_schema
 
-def fetch_items(db, time, all_data=True):
-    ensure_schema()
 
-    if all_data or db.query(Menu.id).first() is None:
-        scrape_and_save()
-        categorize_hall_dish()
+_ITEMS_CACHE = {"time": None, "df": None}
 
-    items = db.query(Menu).all()
-    df = pd.DataFrame([{
-        "dish": item.dish,
+
+def _build_items_dataframe(items):
+    return pd.DataFrame([{
+        "item_name": item.item_name,
         "category": item.category,
         "hall": item.hall,
         "time": item.time,
@@ -53,4 +49,19 @@ def fetch_items(db, time, all_data=True):
         "vitamin_d_mcg": item.vitamin_d_mcg,
         "vitamin_d_mcg_percent_daily_value": item.vitamin_d_mcg_percent_daily_value,
     } for item in items])
+
+def fetch_items(db, time):
+    global _ITEMS_CACHE
+
+    if _ITEMS_CACHE["df"] is not None and _ITEMS_CACHE["time"] == time:
+        return _ITEMS_CACHE["df"].copy()
+
+    items = db.query(Menu).all()
+    if not items:
+        scrape_and_save()
+        categorize_hall_dish()
+        items = db.query(Menu).all()
+
+    df = _build_items_dataframe(items)
+    _ITEMS_CACHE = {"time": time, "df": df.copy()}
     return df

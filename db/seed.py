@@ -1,6 +1,6 @@
 import pandas as pd
 from db.database import SessionLocal
-from db.models import Menu, Override, BarOverride
+from db.models import Menu, RoleOverride, StationOverride
 
 
 def seed_menu(csv_path="data/menu_data_categorized.csv"):
@@ -31,7 +31,7 @@ def seed_overrides(csv_path="data/manual_overrides.csv"):
     db = SessionLocal()
 
     for _, row in df.iterrows():
-        override = Override(
+        override = RoleOverride(
             dish = row["Dish"],
             correct_category = row["CorrectCategory"]
 

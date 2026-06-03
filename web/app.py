@@ -50,15 +50,19 @@ def _extract_time_bounds(time_range):
 
 
 def build_meal_options():
-    df = fetch_meals()[["Category", "Time", "Hall"]].drop_duplicates()
-    df = df.dropna(subset=["Category", "Time", "Hall"])
-    df = df.sort_values(by=["Category", "Time", "Hall"])
+    df = fetch_meals().rename(columns={
+        "Category": "category",
+        "Time": "time",
+        "Hall": "hall",
+    })[["category", "time", "hall"]].drop_duplicates()
+    df = df.dropna(subset=["category", "time", "hall"])
+    df = df.sort_values(by=["category", "time", "hall"])
 
     meals = []
-    for meal in df["Category"].unique():
-        meal_df = df[df["Category"] == meal]
-        times = meal_df["Time"].drop_duplicates().tolist()
-        halls = sorted(meal_df["Hall"].drop_duplicates().tolist())
+    for meal in df["category"].unique():
+        meal_df = df[df["category"] == meal]
+        times = meal_df["time"].drop_duplicates().tolist()
+        halls = sorted(meal_df["hall"].drop_duplicates().tolist())
         time_bounds = [_extract_time_bounds(time) for time in times]
 
         start_candidates = [start for start, _ in time_bounds if start is not None]
@@ -106,6 +110,15 @@ def recommendations():
 
     daily_calories = int(request.form.get("daily_calories", 2000))
     top_n = int(request.form.get("top_n", 2))
+    macro_focus = request.form.get("macro_focus", "balanced")
+    # optional tuning parameter for macro scaling (kcal per score unit)
+    macro_scale_raw = request.form.get("macro_scale")
+    try:
+        macro_scale = float(macro_scale_raw) if macro_scale_raw is not None and macro_scale_raw != "" else None
+    except Exception:
+        macro_scale = None
+    required_preference = request.form.get("required_preference", "Any")
+    exclude_allergens = request.form.getlist("exclude_allergens")
 
     selected_meal_labels = request.form.getlist("meal_times")
     if not selected_meal_labels:
@@ -136,6 +149,13 @@ def recommendations():
         if hall != "Any":
             preferred_halls[normalized_meal] = hall
 
+    diet_preferences = {
+        "macro_focus": macro_focus,
+        "exclude_allergens": exclude_allergens,
+        "required_preferences": [] if required_preference == "Any" else [required_preference],
+        "macro_scale": macro_scale,
+    }
+
 
     plan = fetch_plan(
         meal_times=meal_times,
@@ -143,6 +163,7 @@ def recommendations():
         top_n=top_n,
         meal_ratios=meal_ratios,
         preferred_halls=preferred_halls
+        ,diet_preferences=diet_preferences
         
     )
 

@@ -121,8 +121,8 @@ def parse_html(load_data):
                     continue
 
                 row = {
-                    'category': ' '.join(meal_period.strip().split(' ')[0:-1]).strip().capitalize(), 
-                    'time': meal_period.strip().split(' ')[-1],
+                    "category": ' '.join(meal_period.strip().split(' ')[0:-1]).strip().capitalize(),
+                    "time": meal_period.strip().split(' ')[-1],
                     "station": station_name,
                     "item_name": nutrition_data.get("name", item_name),
                     "description": nutrition_data.get("description"),
@@ -176,7 +176,3 @@ def scrape_and_save():
     df.to_csv(str(Path("data") / "menu_data.csv"), index=False)
     print("Data processing complete. Data saved to 'menu_data.csv'.")
     return
-
-
-if __name__ == "__main__":
-    scrape_and_save()

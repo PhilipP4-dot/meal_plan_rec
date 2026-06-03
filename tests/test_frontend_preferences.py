@@ -16,6 +16,10 @@ def _make_test_menu():
                         "Hall": hall,
                         "Serving Size": "1 plate",
                         "Calories": 500,
+                        "protein_g": 30 if hall == "Curtis" else 10,
+                        "total_carbohydrate_g": 20 if hall == "Curtis" else 50,
+                        "allergens": "Milk" if hall == "Curtis" else "",
+                        "dietary_preferences": "",
                         "Role": "entree",
                         "FinalStation": "grill",
                     },
@@ -26,6 +30,10 @@ def _make_test_menu():
                         "Hall": hall,
                         "Serving Size": "1 cup",
                         "Calories": 100,
+                        "protein_g": 0,
+                        "total_carbohydrate_g": 25,
+                        "allergens": "",
+                        "dietary_preferences": "",
                         "Role": "beverage",
                         "FinalStation": "grill",
                     },
@@ -43,7 +51,10 @@ def test_frontend_meal_labels_apply_calorie_ratios(monkeypatch):
     def fake_entree(df_entrees, _bev_pool, calorie_target, *_args, **_kwargs):
         if df_entrees.empty:
             return None
-        hall = df_entrees["Hall"].iloc[0]
+        entree_rows = df_entrees[df_entrees["role"] == "entree"]
+        if entree_rows.empty:
+            return None
+        hall = entree_rows["hall"].iloc[0]
         return {
             "Hall": hall,
             "Station": "entree",
@@ -84,7 +95,10 @@ def test_frontend_meal_labels_apply_preferred_hall(monkeypatch):
     def fake_entree(df_entrees, _bev_pool, calorie_target, *_args, **_kwargs):
         if df_entrees.empty:
             return None
-        hall = df_entrees["Hall"].iloc[0]
+        entree_rows = df_entrees[df_entrees["role"] == "entree"]
+        if entree_rows.empty:
+            return None
+        hall = entree_rows["hall"].iloc[0]
         return {
             "Hall": hall,
             "Station": "entree",
@@ -114,3 +128,91 @@ def test_frontend_meal_labels_apply_preferred_hall(monkeypatch):
     lunch_options = plan["Plan"][0]["Options"]
     assert lunch_options
     assert {option["Hall"] for option in lunch_options} == {"Huffman"}
+
+
+def test_frontend_diet_preferences_exclude_allergens(monkeypatch):
+    df = _make_test_menu()
+
+    def fake_byo(*args, **kwargs):
+        return None
+
+    def fake_entree(df_entrees, _bev_pool, calorie_target, *_args, **_kwargs):
+        if df_entrees.empty:
+            return None
+        entree_rows = df_entrees[df_entrees["role"] == "entree"]
+        if entree_rows.empty:
+            return None
+        hall = entree_rows["hall"].iloc[0]
+        return {
+            "Hall": hall,
+            "Station": "entree",
+            "Calories": int(round(calorie_target)),
+            "Items": [
+                {
+                    "Dish": f"{hall} Entree",
+                    "Calories": int(round(calorie_target)),
+                    "Serving Size": "1 plate",
+                    "Role": "entree",
+                }
+            ],
+        }
+
+    monkeypatch.setattr(recommender, "build_byo_option", fake_byo)
+    monkeypatch.setattr(recommender, "build_entree_option", fake_entree)
+
+    plan = recommender.generate_daily_plan(
+        df,
+        meal_times=["Lunch"],
+        daily_calorie_limit=1200,
+        top_n=1,
+        diet_preferences={"exclude_allergens": ["Milk"]},
+    )
+
+    lunch_options = plan["Plan"][0]["Options"]
+    assert lunch_options
+    assert {option["Hall"] for option in lunch_options} == {"Huffman"}
+
+
+def test_frontend_diet_preferences_macro_focus(monkeypatch):
+    df = _make_test_menu()
+
+    def fake_byo(*args, **kwargs):
+        return None
+
+    def fake_entree(df_entrees, _bev_pool, calorie_target, *_args, **_kwargs):
+        if df_entrees.empty:
+            return None
+        hall = df_entrees["hall"].iloc[0]
+        row = df_entrees.iloc[0]
+        return {
+            "Hall": hall,
+            "Station": "entree",
+            "Calories": int(round(calorie_target)),
+            "Nutrition": {
+                "Protein_g": float(row["protein_g"]),
+                "Carbohydrate_g": float(row["total_carbohydrate_g"]),
+            },
+            "Items": [
+                {
+                    "Dish": f"{hall} Entree",
+                    "Calories": int(round(calorie_target)),
+                    "Serving Size": "1 plate",
+                    "Role": "entree",
+                }
+            ],
+        }
+
+    monkeypatch.setattr(recommender, "build_byo_option", fake_byo)
+    monkeypatch.setattr(recommender, "build_entree_option", fake_entree)
+
+    plan = recommender.generate_daily_plan(
+        df,
+        meal_times=["Lunch"],
+        daily_calorie_limit=1200,
+        top_n=1,
+        diet_preferences={"macro_focus": "protein_heavy"},
+    )
+
+    lunch_options = plan["Plan"][0]["Options"]
+    assert lunch_options
+    assert lunch_options[0]["Hall"] == "Curtis"
