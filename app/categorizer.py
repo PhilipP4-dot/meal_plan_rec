@@ -208,8 +208,44 @@ def assign_role(row):
 #==============================================================================================
 
 
+NUMERIC_COLUMNS = [
+    "calories", "calories_percent_daily_value",
+    "total_fat_g", "total_fat_g_percent_daily_value",
+    "saturated_fat_g", "saturated_fat_g_percent_daily_value",
+    "trans_fat_g", "trans_fat_g_percent_daily_value",
+    "cholesterol_mg", "cholesterol_mg_percent_daily_value",
+    "sodium_mg", "sodium_mg_percent_daily_value",
+    "total_carbohydrate_g", "total_carbohydrate_g_percent_daily_value",
+    "total_sugars_g", "added_sugars_g", "added_sugars_g_percent_daily_value",
+    "dietary_fiber_g", "dietary_fiber_g_percent_daily_value",
+    "protein_g", "protein_g_percent_daily_value",
+    "potassium_mg", "potassium_mg_percent_daily_value",
+    "calcium_mg", "calcium_mg_percent_daily_value",
+    "iron_mg", "iron_mg_percent_daily_value",
+    "vitamin_d_mcg", "vitamin_d_mcg_percent_daily_value",
+]
+
+def safe_float(value, default=0.0):
+    try:
+        if value is None:
+            return default
+        f = float(value)
+        if pd.isna(f):
+            return default
+        return f
+    except (TypeError, ValueError):
+        return default
+
 def categorize_hall_dish():
     df = pd.read_csv("data/menu_data.csv")
+
+    # Explicitly convert all numeric Float columns to float type.
+    # Values that fail to convert (e.g. "5 oz", NaN, None) become NaN,
+    # which is then coerced to 0.0 when the Menu model instances are built.
+    for column in NUMERIC_COLUMNS:
+        if column in df.columns:
+            df[column] = pd.to_numeric(df[column], errors="coerce")
+
     df = categorize_station(df)
     unknowns = df[df["final_station"] == "unknown"]["station"].value_counts().head(20)
     print("Top unknown stations:\n", unknowns)
@@ -228,7 +264,7 @@ def categorize_hall_dish():
             category=row["category"],
             hall=row["hall"],
             time=row["time"],
-            calories=row["calories"],
+            calories=safe_float(row["calories"]),
             serving_size=row["serving_size"],
             role=row["role"],
             station=row["station"],
@@ -236,34 +272,34 @@ def categorize_hall_dish():
             description = row["description"],
             allergens = row["allergens"],
             dietary_preferences = row["dietary_preferences"],
-            calories_percent_daily_value = row["calories_percent_daily_value"],
-            total_fat_g = row["total_fat_g"],
-            total_fat_g_percent_daily_value = row["total_fat_g_percent_daily_value"],
-            saturated_fat_g = row["saturated_fat_g"],
-            saturated_fat_g_percent_daily_value = row["saturated_fat_g_percent_daily_value"],
-            trans_fat_g = row["trans_fat_g"],
-            trans_fat_g_percent_daily_value = row["trans_fat_g_percent_daily_value"],
-            cholesterol_mg = row["cholesterol_mg"],
-            cholesterol_mg_percent_daily_value = row["cholesterol_mg_percent_daily_value"],
-            sodium_mg = row["sodium_mg"],
-            sodium_mg_percent_daily_value = row["sodium_mg_percent_daily_value"],
-            total_carbohydrate_g = row["total_carbohydrate_g"],
-            total_carbohydrate_g_percent_daily_value = row["total_carbohydrate_g_percent_daily_value"],
-            total_sugars_g = row["total_sugars_g"],
-            added_sugars_g = row["added_sugars_g"],
-            added_sugars_g_percent_daily_value = row["added_sugars_g_percent_daily_value"],
-            dietary_fiber_g = row["dietary_fiber_g"],
-            dietary_fiber_g_percent_daily_value = row["dietary_fiber_g_percent_daily_value"],
-            protein_g = row["protein_g"],
-            protein_g_percent_daily_value = row["protein_g_percent_daily_value"],
-            potassium_mg = row["potassium_mg"],
-            potassium_mg_percent_daily_value = row["potassium_mg_percent_daily_value"],
-            calcium_mg = row["calcium_mg"],
-            calcium_mg_percent_daily_value = row["calcium_mg_percent_daily_value"],
-            iron_mg = row["iron_mg"],
-            iron_mg_percent_daily_value = row["iron_mg_percent_daily_value"],
-            vitamin_d_mcg = row["vitamin_d_mcg"],
-            vitamin_d_mcg_percent_daily_value = row["vitamin_d_mcg_percent_daily_value"]
+            calories_percent_daily_value = safe_float(row["calories_percent_daily_value"]),
+            total_fat_g = safe_float(row["total_fat_g"]),
+            total_fat_g_percent_daily_value = safe_float(row["total_fat_g_percent_daily_value"]),
+            saturated_fat_g = safe_float(row["saturated_fat_g"]),
+            saturated_fat_g_percent_daily_value = safe_float(row["saturated_fat_g_percent_daily_value"]),
+            trans_fat_g = safe_float(row["trans_fat_g"]),
+            trans_fat_g_percent_daily_value = safe_float(row["trans_fat_g_percent_daily_value"]),
+            cholesterol_mg = safe_float(row["cholesterol_mg"]),
+            cholesterol_mg_percent_daily_value = safe_float(row["cholesterol_mg_percent_daily_value"]),
+            sodium_mg = safe_float(row["sodium_mg"]),
+            sodium_mg_percent_daily_value = safe_float(row["sodium_mg_percent_daily_value"]),
+            total_carbohydrate_g = safe_float(row["total_carbohydrate_g"]),
+            total_carbohydrate_g_percent_daily_value = safe_float(row["total_carbohydrate_g_percent_daily_value"]),
+            total_sugars_g = safe_float(row["total_sugars_g"]),
+            added_sugars_g = safe_float(row["added_sugars_g"]),
+            added_sugars_g_percent_daily_value = safe_float(row["added_sugars_g_percent_daily_value"]),
+            dietary_fiber_g = safe_float(row["dietary_fiber_g"]),
+            dietary_fiber_g_percent_daily_value = safe_float(row["dietary_fiber_g_percent_daily_value"]),
+            protein_g = safe_float(row["protein_g"]),
+            protein_g_percent_daily_value = safe_float(row["protein_g_percent_daily_value"]),
+            potassium_mg = safe_float(row["potassium_mg"]),
+            potassium_mg_percent_daily_value = safe_float(row["potassium_mg_percent_daily_value"]),
+            calcium_mg = safe_float(row["calcium_mg"]),
+            calcium_mg_percent_daily_value = safe_float(row["calcium_mg_percent_daily_value"]),
+            iron_mg = safe_float(row["iron_mg"]),
+            iron_mg_percent_daily_value = safe_float(row["iron_mg_percent_daily_value"]),
+            vitamin_d_mcg = safe_float(row["vitamin_d_mcg"]),
+            vitamin_d_mcg_percent_daily_value = safe_float(row["vitamin_d_mcg_percent_daily_value"])
         )
         db.add(item)
     db.commit()
