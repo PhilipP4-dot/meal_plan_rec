@@ -1,3 +1,5 @@
+import os
+
 from sqlalchemy import Column, Integer, String, Float, UniqueConstraint
 from db.database import Base, engine
 
@@ -65,4 +67,22 @@ class RoleOverride(Base):
     __table_args__ = (
         UniqueConstraint("item_name", "final_station", name="uq_item_name_station_role"),
     )
-Base.metadata.create_all(bind=engine, tables=[Menu.__table__, StationOverride.__table__, RoleOverride.__table__])
+# `menus` is fully derived data: it is scraped and re-categorized on demand
+# whenever it's empty (see app/services/recommendations.py::fetch_items), so it
+# is always safe to drop and recreate on every startup. This guarantees the
+# table schema always matches the current Menu model and clears out any rows
+# left over from a previous schema (e.g. the old Float columns holding
+# unparseable values that were crashing the app even after PR #10's
+# safe_float() fix, because the underlying table itself was never dropped).
+Base.metadata.drop_all(bind=engine, tables=[Menu.__table__])
+Base.metadata.create_all(bind=engine, tables=[Menu.__table__])
+
+# station_overrides / role_overrides hold manually curated corrections that
+# cannot be regenerated automatically, so they are never dropped by default -
+# doing so on every deploy would silently wipe out real work. If a schema
+# mismatch ever needs to be forced for these tables too, set
+# RESET_OVERRIDE_TABLES=true for a single deploy and then unset it again.
+if os.getenv("RESET_OVERRIDE_TABLES", "false").lower() in ("1", "true", "yes"):
+    Base.metadata.drop_all(bind=engine, tables=[StationOverride.__table__, RoleOverride.__table__])
+
+Base.metadata.create_all(bind=engine, tables=[StationOverride.__table__, RoleOverride.__table__])
