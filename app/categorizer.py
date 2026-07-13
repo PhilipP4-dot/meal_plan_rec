@@ -266,7 +266,11 @@ def categorize_hall_dish():
             vitamin_d_mcg_percent_daily_value = row["vitamin_d_mcg_percent_daily_value"]
         )
         db.add(item)
-    db.commit()
+        try:
+            db.commit()
+        except Exception:
+            print(row)
+            raise
     db.close()
 
 
