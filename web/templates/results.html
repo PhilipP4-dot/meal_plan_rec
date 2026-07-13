@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Meal Plan</title>
+    <link rel="icon" href="/static/Meal%20Matrix%20Logo.png" type="image/png">
     <style>
         :root {
             --bg-1: #f6f7ff;
@@ -64,13 +65,32 @@
         }
 
         .brand-mark {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             background: rgba(255, 255, 255, 0.16);
             display: grid;
             place-items: center;
-            font-size: 1.2rem;
+            overflow: hidden;
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Standardize site logo sizing across templates */
+        .hero h2 img,
+        .brand img,
+        .hero-brand img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-left: 10px;
+            display: inline-block;
         }
 
         .brand h1 {
@@ -173,6 +193,31 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+        }
+
+        .hero-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(111, 99, 255, 0.14);
+        }
+
+        .hero-brand img {
+            width: 34px;
+            height: 34px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-brand span {
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: #2d2f5f;
         }
 
         .content {
@@ -453,8 +498,7 @@
     <div class="app-shell">
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand-mark">⌁</div>
-                <h1>Meal Matrix</h1>
+                <div class="brand-mark"><img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></div>
             </div>
 
             <nav class="nav">
@@ -474,7 +518,8 @@
             <section class="panel">
                 <div class="hero">
                     <div>
-                        <h2>Your Meal Plan ✦</h2>
+
+                        <h2>Your Meal Plan <img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></h2>
                         <p>Balanced recommendations based on your selected meals and preferences.</p>
                     </div>
                     <div class="hero-chip">⦿ Total: {{ plan.Total_calories }} cal</div>
@@ -483,11 +528,31 @@
                 <div class="content">
                     <a href="/" class="back-link">← Generate New Plan</a>
 
+                    {% if plan.MissingMeals %}
+                    <div class="warning" style="margin: 18px 0 22px;">
+                        <strong>Plan incomplete:</strong> one or more requested meals could not be satisfied under the
+                        selected constraints.
+                        <ul style="margin: 10px 0 0; padding-left: 18px;">
+                            {% for missing in plan.MissingMeals %}
+                            <li>{{ missing.Meal }}: {{ missing.Reason }}{% if missing.RequestedHall %} (preferred hall:
+                                {{ missing.RequestedHall }}){% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% elif plan.IsComplete is defined and not plan.IsComplete %}
+                    <div class="warning" style="margin: 18px 0 22px;">
+                        <strong>Plan warning:</strong> the returned plan is not fully validated against the selected
+                        constraints.
+                    </div>
+                    {% endif %}
+
                     {% for meal in plan.Plan %}
+                    {% set accent = loop.index0 % 4 %}
                     <div class="meal-section">
                         <div class="meal-header">
                             <div class="meal-title">
-                                <div class="meal-icon">☾</div>
+                                <div class="meal-icon">{% if accent == 0 %}☼{% elif accent == 1 %}◌{% elif accent == 2
+                                    %}☾{% else %}☽{% endif %}</div>
                                 <div>
                                     <h2>{{ meal.Meal }}</h2>
                                     <div style="color: var(--muted); font-size: 0.92rem;">Compare options and pick the
@@ -496,6 +561,30 @@
                             </div>
                             <div class="calorie-budget">Budget: {{ meal.Cal_budget }} cal</div>
                         </div>
+
+                        {% if meal.Status %}
+                        <div class="option-info" style="margin-bottom: 16px;">
+                            <div>
+                                {% if meal.Status.Status == 'complete' %}
+                                <span class="badge best">Complete</span>
+                                {% else %}
+                                <span class="badge closest">Needs attention</span>
+                                {% endif %}
+                            </div>
+                            <div style="color: var(--muted);">
+                                {% if meal.Status.RequestedHall %}
+                                Preferred hall: {{ meal.Status.RequestedHall }}
+                                {% endif %}
+                                {% if meal.Status.BudgetWithinBuffer is not none %}
+                                {% if meal.Status.BudgetWithinBuffer %}
+                                • within calorie buffer
+                                {% else %}
+                                • outside calorie buffer
+                                {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
 
                         <div class="options-container">
                             {% for option in meal.Options %}
@@ -508,13 +597,7 @@
                                 <div class="option-info">
                                     <div class="calories-display">{{ option.Calories }} calories</div>
                                     <div>{{ option.Time }}</div>
-                                    <div>
-                                        {% if loop.index == 1 %}
-                                        <span class="badge best">☆ Best Match</span>
-                                        {% elif loop.index == 2 %}
-                                        <span class="badge closest">⦿ Closest to Target</span>
-                                        {% endif %}
-                                    </div>
+
                                 </div>
 
                                 <div class="items-list">

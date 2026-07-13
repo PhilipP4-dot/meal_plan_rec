@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Matrix</title>
+    <link rel="icon" href="/static/Meal%20Matrix%20Logo.png" type="image/png">
     <style>
         :root {
             --bg-1: #f6f7ff;
@@ -66,14 +67,33 @@
         }
 
         .brand-mark {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             background: rgba(255, 255, 255, 0.16);
             display: grid;
             place-items: center;
-            font-size: 1.2rem;
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Standardize site logo sizing across templates */
+        .hero h2 img,
+        .brand img,
+        .hero-brand img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-left: 10px;
+            display: inline-block;
         }
 
         .brand h1 {
@@ -183,6 +203,31 @@
             box-shadow: 0 14px 30px rgba(111, 99, 255, 0.1);
         }
 
+        .hero-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(111, 99, 255, 0.14);
+        }
+
+        .hero-brand img {
+            width: 34px;
+            height: 34px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-brand span {
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: #2d2f5f;
+        }
+
         .content {
             padding: 28px 32px 34px;
         }
@@ -255,6 +300,11 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        .meal-card.selected {
+            border-color: rgba(111, 99, 255, 0.42);
+            box-shadow: 0 24px 44px rgba(72, 80, 140, 0.14);
+        }
+
         .meal-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 22px 40px rgba(72, 80, 140, 0.12);
@@ -299,6 +349,32 @@
             background: rgba(76, 124, 255, 0.12);
         }
 
+        .meal-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .meal-select {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .meal-select input {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            accent-color: var(--purple);
+        }
+
         .meal-card h4 {
             margin: 0;
             font-size: 1.02rem;
@@ -311,9 +387,6 @@
         }
 
         .meal-toggle {
-            position: absolute;
-            top: 16px;
-            right: 16px;
             width: 24px;
             height: 24px;
             border-radius: 999px;
@@ -325,14 +398,7 @@
             font-weight: 700;
         }
 
-        .meal-checkbox {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .meal-checkbox:checked+.meal-toggle {
+        .meal-card.selected .meal-toggle {
             background: linear-gradient(135deg, #7b74ff, #4a6dff);
             color: #fff;
         }
@@ -521,8 +587,7 @@
     <div class="app-shell">
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand-mark">⌁</div>
-                <h1>Meal Matrix</h1>
+                <div class="brand-mark"><img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></div>
             </div>
 
             <nav class="nav">
@@ -542,10 +607,11 @@
             <section class="panel" id="planner">
                 <div class="hero">
                     <div>
-                        <h2>Meal Matrix ✦</h2>
+
+                        <h2>Meal Matrix <img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></h2>
                         <p>Build a balanced dining plan from today’s campus menu.</p>
                     </div>
-                    <div class="hero-chip">⦿ Daily Target: 2000 cal</div>
+                    <div class="hero-chip">⦿ Daily Target: <span id="dailyTargetValue">2000</span> cal</div>
                 </div>
 
                 <div class="content">
@@ -570,10 +636,15 @@
                                 {% set accent = loop.index0 % 4 %}
                                 <div
                                     class="meal-card {% if accent == 0 %}sunrise{% elif accent == 1 %}noon{% elif accent == 2 %}orange{% else %}midnight{% endif %}">
-                                    <input class="meal-checkbox" type="checkbox" name="meal_times"
-                                        value="{{ meal.label }}" id="meal_{{ loop.index }}"
-                                        onchange="toggleMealOptions('{{ loop.index }}')">
-                                    <div class="meal-toggle">+</div>
+                                    <div class="meal-card-top">
+                                        <label class="meal-select" for="meal_{{ loop.index }}">
+                                            <input type="checkbox" name="meal_times" value="{{ meal.key }}"
+                                                id="meal_{{ loop.index }}"
+                                                onchange="toggleMealOptions('{{ loop.index }}')">
+                                            Include this meal
+                                        </label>
+                                        <div class="meal-toggle">+</div>
+                                    </div>
                                     <div class="icon">{% if accent == 0 %}☼{% elif accent == 1 %}◌{% elif accent == 2
                                         %}☾{% else %}☽{% endif %}</div>
                                     <h4>{{ meal.label.split(' (')[0] }}</h4>
@@ -584,12 +655,12 @@
                                         <div class="input-grid">
                                             <div class="field">
                                                 <label>Calorie Split (%)</label>
-                                                <input type="number" name="{{ meal.label }}_ratio" min="0" max="100"
+                                                <input type="number" name="{{ meal.key }}_ratio" min="0" max="100"
                                                     value="0" placeholder="Automatic">
                                             </div>
                                             <div class="field">
                                                 <label>Preferred Dining Hall</label>
-                                                <select name="{{ meal.label }}_hall">
+                                                <select name="{{ meal.key }}_hall">
                                                     <option value="Any">Any</option>
                                                     {% for hall in meal.halls %}
                                                     <option value="{{ hall }}">{{ hall }}</option>
@@ -618,8 +689,8 @@
                                 <div class="input-grid">
                                     <div class="field">
                                         <label>Daily Calorie Limit</label>
-                                        <input type="number" name="daily_calories" min="1000" max="4000" value="2000"
-                                            step="100" required>
+                                        <input type="number" name="daily_calories" id="daily_calories" min="1000"
+                                            max="4000" value="2000" step="100" required>
                                     </div>
                                     <div class="field">
                                         <label>Diet Style</label>
@@ -698,16 +769,38 @@
     </div>
 
     <script>
+        function updateDailyTarget() {
+            const dailyCaloriesInput = document.getElementById('daily_calories');
+            const dailyTargetValue = document.getElementById('dailyTargetValue');
+
+            if (!dailyCaloriesInput || !dailyTargetValue) {
+                return;
+            }
+
+            const value = Number(dailyCaloriesInput.value);
+            dailyTargetValue.textContent = Number.isFinite(value) && value > 0 ? value : '0';
+        }
+
         function toggleMealOptions(index) {
             const checkbox = document.getElementById(`meal_${index}`);
             const options = document.getElementById(`options_${index}`);
+            const card = checkbox.closest('.meal-card');
 
             if (checkbox.checked) {
                 options.classList.add('active');
+                card.classList.add('selected');
             } else {
                 options.classList.remove('active');
+                card.classList.remove('selected');
             }
         }
+
+        const dailyCaloriesInput = document.getElementById('daily_calories');
+        if (dailyCaloriesInput) {
+            dailyCaloriesInput.addEventListener('input', updateDailyTarget);
+            updateDailyTarget();
+        }
+
     </script>
 </body>
 

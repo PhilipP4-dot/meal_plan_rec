@@ -281,18 +281,16 @@ def build_byo_option(df_bowl, bev_pool,calorie_target, role_limits, used_dishes=
         return None
 
     chosen, total = best
-    if abs(calorie_target - total) <= fallback_buffer and total >= calorie_target * internal_calorie_fraction:
-        return {
-            "Hall": hall,
-            "Station": df_bowl["final_station"].iloc[0],
-            "Calories": int(round(total)),
-            "Nutrition": {
-                "Protein_g": round(sum(_to_float(i.get("protein_g")) for i in chosen), 2),
-                "Carbohydrate_g": round(sum(_to_float(i.get("total_carbohydrate_g")) for i in chosen), 2),
-            },
-            "Items": [{"Dish": i["item_name"], "Calories": int(round(float(i["calories"]))), "Serving Size": i["serving_size"], "Role": i["role"]} for i in chosen],
-        }
-    return None
+    return {
+        "Hall": hall,
+        "Station": df_bowl["final_station"].iloc[0],
+        "Calories": int(round(total)),
+        "Nutrition": {
+            "Protein_g": round(sum(_to_float(i.get("protein_g")) for i in chosen), 2),
+            "Carbohydrate_g": round(sum(_to_float(i.get("total_carbohydrate_g")) for i in chosen), 2),
+        },
+        "Items": [{"Dish": i["item_name"], "Calories": int(round(float(i["calories"]))), "Serving Size": i["serving_size"], "Role": i["role"]} for i in chosen],
+    }
 
 #print(build_byo_bowl_option(df[(df['hall']=='Huffman') & (df['final_station']=='byo_bowl') & (df['category'] == 'Lunch')], bev, 1000))
 
@@ -388,18 +386,16 @@ def build_entree_option(df_entrees, bev_pool, calorie_target, role_limits, used_
         return None
 
     chosen, total = best
-    if abs(calorie_target - total) <= fallback_buffer and total >= calorie_target * internal_calorie_fraction:
-        return {
-            "Hall": hall,
-            "Station": "entree",
-            "Calories": int(round(total)),
-            "Nutrition": {
-                "Protein_g": round(sum(_to_float(i.get("protein_g")) for i in chosen), 2),
-                "Carbohydrate_g": round(sum(_to_float(i.get("total_carbohydrate_g")) for i in chosen), 2),
-            },
-            "Items": [{"Dish": i["item_name"], "Calories": int(round(float(i["calories"]))), "Serving Size": i["serving_size"], "Role": i["role"]} for i in chosen],
-        }
-    return None
+    return {
+        "Hall": hall,
+        "Station": "entree",
+        "Calories": int(round(total)),
+        "Nutrition": {
+            "Protein_g": round(sum(_to_float(i.get("protein_g")) for i in chosen), 2),
+            "Carbohydrate_g": round(sum(_to_float(i.get("total_carbohydrate_g")) for i in chosen), 2),
+        },
+        "Items": [{"Dish": i["item_name"], "Calories": int(round(float(i["calories"]))), "Serving Size": i["serving_size"], "Role": i["role"]} for i in chosen],
+    }
 
 #print(build_entree_option(df[(df['hall']=='Huffman') & ((df['final_station']=='grill') | (df['final_station']=="pizza")) & (df['category'] == 'Lunch')], bev, 600, ROLE_LIMITS_ENTREES))
 # def build_entrees_option(df_entrees, calorie_target, used_dishes=None, buffer=50, max_attempts=30):
@@ -478,6 +474,8 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
     normalized_diet_preferences = _normalize_diet_preferences(diet_preferences)
 
     plan, chosen_mains, chosen_proteins, total_calories = [], set(), set(), 0
+    meal_reports = []
+    missing_meals = []
 
     for meal in normalized_meal_times:
 
@@ -491,6 +489,11 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
         meal_opts = meal_opts[meal_opts.apply(lambda row: _row_matches_diet_preferences(row, normalized_diet_preferences), axis=1)]
         meal_opts = meal_opts[meal_opts["calories"].between(10, 2000)]
         if meal_opts.empty:
+            missing_meals.append({
+                "Meal": meal,
+                "Reason": "No menu items match this meal after dietary filtering.",
+                "RequestedHall": normalized_preferred_halls.get(meal) if normalized_preferred_halls else None,
+            })
             continue
      
         halls = [normalized_preferred_halls[meal]] if (normalized_preferred_halls and meal in normalized_preferred_halls) \
@@ -501,14 +504,19 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
             m = pd.to_numeric(df_role["calories"], errors="coerce").max()
             return 0.0 if pd.isna(m) else float(m)
 
+        meal_found = False
+
         for hall in halls:
-            # time = meal_opts[meal_opts["hall"] == hall]["time"].mode()
-            # time = time.values[0] if not time.empty else ""
-            # print(f"Evaluating meal '{meal}' at hall '{hall}' during '{time}'")
-            time = df[(df['category'] == meal) & (df['hall'] == hall)]['time'].unique()[0]
             hall_items = meal_opts[meal_opts["hall"] == hall].copy()
             if hall_items.empty:
                 continue
+            meal_found = True
+            time_values = hall_items["time"].dropna().unique()
+            if len(time_values) > 0:
+                time = time_values[0]
+            else:
+                fallback_times = meal_opts["time"].dropna().unique()
+                time = fallback_times[0] if len(fallback_times) > 0 else meal
             bev = hall_items[(hall_items["role"] == "dessert") | (hall_items["role"] == "beverage")]
             bowl = hall_items[hall_items["final_station"] == "byo_bowl"]
             ent = hall_items[hall_items["final_station"].isin(["grill", "pizza", "hot_entree"])]
@@ -706,10 +714,23 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
         if candidates:
             candidates.sort(key=lambda c: c["Score"], reverse=False)
             top = candidates[:top_n]
-            plan.append({"Meal": meal, "Cal_budget": round(cal_per_meal), "Options": top})
+            first = top[0]
+            requested_hall = normalized_preferred_halls.get(meal) if normalized_preferred_halls else None
+            meal_report = {
+                "Meal": meal,
+                "RequestedHall": requested_hall,
+                "SelectedHall": first["Hall"],
+                "CalBudget": round(cal_per_meal),
+                "SelectedCalories": first["Calories"],
+                "BudgetDelta": round(first["Calories"] - cal_per_meal),
+                "BudgetWithinBuffer": abs(first["Calories"] - cal_per_meal) <= fallback_buffer,
+                "HallMatched": requested_hall is None or first["Hall"] == requested_hall,
+                "Status": "complete",
+            }
+            meal_reports.append(meal_report)
+            plan.append({"Meal": meal, "Cal_budget": round(cal_per_meal), "Options": top, "Status": meal_report})
 
             # update variety + running total using first option
-            first = top[0]
             # get all roles
             roles = []
             for i in range(len(first["Items"])):
@@ -723,8 +744,32 @@ def generate_daily_plan(menu_df, meal_times, daily_calorie_limit, top_n,
                         chosen_mains.add(top[i]["Items"][j]["Dish"])
    
             total_calories += first["Calories"]
+        else:
+            missing_meals.append({
+                "Meal": meal,
+                "Reason": "No viable plan found for the selected hall(s) after all constraints.",
+                "RequestedHall": normalized_preferred_halls.get(meal) if normalized_preferred_halls else None,
+            })
+            meal_reports.append({
+                "Meal": meal,
+                "RequestedHall": normalized_preferred_halls.get(meal) if normalized_preferred_halls else None,
+                "SelectedHall": None,
+                "CalBudget": round(cal_per_meal),
+                "SelectedCalories": None,
+                "BudgetDelta": None,
+                "BudgetWithinBuffer": False,
+                "HallMatched": False,
+                "Status": "unmet",
+                "Reason": "No viable plan found for the selected hall(s) after all constraints.",
+            })
 
-    return {"Plan": plan, "Total_calories": total_calories}
+    return {
+        "Plan": plan,
+        "Total_calories": total_calories,
+        "MealReports": meal_reports,
+        "MissingMeals": missing_meals,
+        "IsComplete": len(missing_meals) == 0 and len(plan) == len(normalized_meal_times),
+    }
 
 #=======================================================================================================================
 # Meal Generation Parameters

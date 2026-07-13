@@ -65,5 +65,4 @@ class RoleOverride(Base):
     __table_args__ = (
         UniqueConstraint("item_name", "final_station", name="uq_item_name_station_role"),
     )
-Base.metadata.drop_all(bind=engine, tables=[Menu.__table__, StationOverride.__table__, RoleOverride.__table__])
 Base.metadata.create_all(bind=engine, tables=[Menu.__table__, StationOverride.__table__, RoleOverride.__table__])

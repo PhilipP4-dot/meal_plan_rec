@@ -49,6 +49,10 @@ def _extract_time_bounds(time_range):
     return start, end
 
 
+def _meal_form_key(label):
+    return re.sub(r"[^a-z0-9]+", "_", str(label).strip().lower()).strip("_")
+
+
 def build_meal_options():
     df = fetch_meals().rename(columns={
         "Category": "category",
@@ -82,6 +86,7 @@ def build_meal_options():
 
         meals.append({
             "label": label,
+            "key": _meal_form_key(label),
             "halls": halls,
             "sort_start": earliest_start,
             "sort_end": latest_end,
@@ -107,6 +112,14 @@ def index():
 @app.post("/recommendations")
 def recommendations():
     meals = build_meal_options()
+    meal_lookup = {
+        meal.get("key", _meal_form_key(meal["label"])): meal["label"]
+        for meal in meals
+    }
+    label_lookup = {
+        meal["label"]: meal.get("key", _meal_form_key(meal["label"]))
+        for meal in meals
+    }
 
     daily_calories = int(request.form.get("daily_calories", 2000))
     top_n = int(request.form.get("top_n", 2))
@@ -120,17 +133,21 @@ def recommendations():
     required_preference = request.form.get("required_preference", "Any")
     exclude_allergens = request.form.getlist("exclude_allergens")
 
-    selected_meal_labels = request.form.getlist("meal_times")
-    if not selected_meal_labels:
+    selected_meal_tokens = request.form.getlist("meal_times")
+    if not selected_meal_tokens:
         return render_template("index.html", meals=meals, error="Please select at least one meal time.")
 
+    selected_meal_labels = [meal_lookup.get(token, token) for token in selected_meal_tokens]
     meal_times = [normalize_meal_label(meal) for meal in selected_meal_labels]
 
     # Process calorie ratios
     meal_ratios = {}
     total_ratio = 0
-    for raw_meal_label, normalized_meal in zip(selected_meal_labels, meal_times):
-        ratio = int(request.form.get(f"{raw_meal_label}_ratio", 0))
+    for raw_meal_token, raw_meal_label, normalized_meal in zip(selected_meal_tokens, selected_meal_labels, meal_times):
+        ratio_value = request.form.get(f"{raw_meal_token}_ratio")
+        if ratio_value is None:
+            ratio_value = request.form.get(f"{label_lookup.get(raw_meal_label, raw_meal_label)}_ratio", 0)
+        ratio = int(ratio_value or 0)
         meal_ratios[normalized_meal] = meal_ratios.get(normalized_meal, 0) + ratio
         total_ratio += ratio
     
@@ -144,8 +161,10 @@ def recommendations():
     
     # Process preferred halls
     preferred_halls = {}
-    for raw_meal_label, normalized_meal in zip(selected_meal_labels, meal_times):
-        hall = request.form.get(f"{raw_meal_label}_hall", "Any")
+    for raw_meal_token, raw_meal_label, normalized_meal in zip(selected_meal_tokens, selected_meal_labels, meal_times):
+        hall = request.form.get(f"{raw_meal_token}_hall")
+        if hall is None:
+            hall = request.form.get(f"{label_lookup.get(raw_meal_label, raw_meal_label)}_hall", "Any")
         if hall != "Any":
             preferred_halls[normalized_meal] = hall
 
@@ -166,6 +185,19 @@ def recommendations():
         ,diet_preferences=diet_preferences
         
     )
+
+    meal_reports = plan.get("MealReports")
+    if meal_reports is not None:
+        plan_is_satisfied = all(
+            report.get("Status") == "complete" and report.get("BudgetWithinBuffer", True)
+            for report in meal_reports
+        )
+        if not plan_is_satisfied:
+            return render_template(
+                "index.html",
+                meals=meals,
+                error="Your selected goals could not be met with the available menu. Try a lower calorie target, loosen a hall preference, or select fewer meal periods.",
+            )
 
     return render_template("results.html", plan=plan)
 

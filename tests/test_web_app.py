@@ -56,3 +56,33 @@ def test_recommendations_route_forwards_diet_preferences(monkeypatch):
     assert captured["diet_preferences"]["macro_focus"] == "protein_heavy"
     assert captured["diet_preferences"]["required_preferences"] == ["Vegetarian"]
     assert set(captured["diet_preferences"]["exclude_allergens"]) == {"milk", "egg"}
+
+
+def test_recommendations_route_prompts_when_plan_is_incomplete(monkeypatch):
+    monkeypatch.setattr(web_app, "build_meal_options", lambda: [{"label": "Lunch", "key": "Lunch", "halls": ["Curtis"]}])
+
+    def fake_fetch_plan(**kwargs):
+        return {
+            "Plan": [{"Meal": "Lunch", "Cal_budget": 1000, "Options": [], "Status": {"Status": "unmet", "BudgetWithinBuffer": False}}],
+            "Total_calories": 1000,
+            "MealReports": [{"Meal": "Lunch", "Status": "unmet", "BudgetWithinBuffer": False}],
+            "MissingMeals": [{"Meal": "Lunch", "Reason": "No viable plan found."}],
+            "IsComplete": False,
+        }
+
+    monkeypatch.setattr(web_app, "fetch_plan", fake_fetch_plan)
+
+    client = web_app.app.test_client()
+    response = client.post(
+        "/recommendations",
+        data={
+            "meal_times": "Lunch",
+            "Lunch_ratio": "100",
+            "Lunch_hall": "Curtis",
+            "daily_calories": "2000",
+            "top_n": "1",
+        },
+    )
+
+    assert response.status_code == 200
+    assert b"Your selected goals could not be met" in response.data

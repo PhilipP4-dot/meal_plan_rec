@@ -130,6 +130,24 @@ def test_frontend_meal_labels_apply_preferred_hall(monkeypatch):
     assert {option["Hall"] for option in lunch_options} == {"Huffman"}
 
 
+def test_frontend_meal_labels_report_missing_preferred_hall():
+    df = _make_test_menu()
+
+    plan = recommender.generate_daily_plan(
+        df,
+        meal_times=["Lunch"],
+        daily_calorie_limit=1200,
+        top_n=1,
+        meal_ratios=None,
+        preferred_halls={"Lunch": "Nonexistent Hall"},
+    )
+
+    assert plan["Plan"] == []
+    assert plan["IsComplete"] is False
+    assert plan["MissingMeals"]
+    assert plan["MissingMeals"][0]["Meal"] == "Lunch"
+
+
 def test_frontend_diet_preferences_exclude_allergens(monkeypatch):
     df = _make_test_menu()
 
