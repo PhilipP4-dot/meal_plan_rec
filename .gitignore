@@ -6,6 +6,7 @@ ENV/
 env/
 PROFESSIONAL_ASSESSMENT.md
 IMPLEMENTATION_SUMMARY.md
+DEPLOYMENT.md
 
 # Python
 __pycache__/

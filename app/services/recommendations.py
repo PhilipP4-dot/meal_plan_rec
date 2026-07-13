@@ -3,7 +3,7 @@ import time
 from db.database import SessionLocal
 from app.recommender import generate_daily_plan
 
-def fetch_plan(meal_times, daily_calorie_limit, meal_ratios=None, preferred_halls=None, top_n=2):
+def fetch_plan(meal_times, daily_calorie_limit, meal_ratios=None, preferred_halls=None, top_n=2, diet_preferences=None):
     """
     Generate a daily meal plan based on user preferences.
     
@@ -18,7 +18,7 @@ def fetch_plan(meal_times, daily_calorie_limit, meal_ratios=None, preferred_hall
     # Placeholder implementation
     db = SessionLocal()
     try:
-        df = fetch_items(db, time=time.strftime("%Y-%m-%d"), all_data=False)
+        df = fetch_items(db, time=time.strftime("%Y-%m-%d"))
     finally:
         db.close()
     return generate_daily_plan(
@@ -28,12 +28,13 @@ def fetch_plan(meal_times, daily_calorie_limit, meal_ratios=None, preferred_hall
         top_n=top_n,
         meal_ratios=meal_ratios,
         preferred_halls=preferred_halls,
+        diet_preferences=diet_preferences,
     )
 
 def fetch_meals():
     db = SessionLocal()
     try:
-        df = fetch_items(db, time=time.strftime("%Y-%m-%d"), all_data=True)
+        df = fetch_items(db, time=time.strftime("%Y-%m-%d"))
     finally:
         db.close()
     return df

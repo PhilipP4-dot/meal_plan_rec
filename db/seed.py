@@ -1,53 +1,52 @@
 import pandas as pd
 from db.database import SessionLocal
-from db.models import Menu, Override, BarOverride
+from db.models import Menu, RoleOverride, StationOverride
 
 
 def seed_menu(csv_path="data/menu_data_categorized.csv"):
+    """Load the categorized menu CSV into the shared database."""
     df = pd.read_csv(csv_path)
     db = SessionLocal()
 
     for _, row in df.iterrows():
         item = Menu(
-            dish=row["Dish"],
+            item_name=row["Dish"],
             category=row["Category"],
-            hall=row["Hall"],
             time=row["Time"],
+            hall=row["Hall"],
             calories=row["Calories"],
             serving_size=row["Serving Size"],
-            auto_category=row["AutoCategory"],
-            final_category=None,  # will fill after overrides
             station=row["Station"],
-            final_station=None  # will fill after overrides
+            final_station=None,
+            role=None,
+            description=None,
+            allergens=None,
+            dietary_preferences=None,
         )
         db.add(item)
-    
 
     db.commit()
     db.close()
 
 def seed_overrides(csv_path="data/manual_overrides.csv"):
+    """Load manual role overrides into the shared database."""
     df = pd.read_csv(csv_path)
     db = SessionLocal()
 
     for _, row in df.iterrows():
-        override = Override(
-            dish = row["Dish"],
-            correct_category = row["CorrectCategory"]
+        override = RoleOverride(
+            item_name=row["Dish"],
+            final_station=None,
+            correct_role=row["CorrectCategory"],
 
         )
         db.add(override)
 
     db.commit()
     db.close()
-def seed_bar_overrides():
-    # create empty table for bar overrides
-    db = SessionLocal()
-    db.query(Menu).delete()
-    db.commit()
-    db.close()
 
 
-
-seed_bar_overrides()
-print("Database seeded successfully.")
+if __name__ == "__main__":
+    seed_menu()
+    seed_overrides()
+    print("Database seeded successfully.")

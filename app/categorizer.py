@@ -1,6 +1,6 @@
 import pandas as pd
-from app.overrides import apply_overrides
-from db.models import Menu, BarOverride, RoleOverride
+from app.overrides import apply_role_overrides, apply_station_overrides, update_role_override, update_station_override
+from db.models import Menu, StationOverride, RoleOverride
 from db.database import SessionLocal
 from sentence_transformers import SentenceTransformer
 import json
@@ -59,18 +59,18 @@ def categorize_station(df):
     df = df.copy()
     bars = {}
     db = SessionLocal()
-    overrides = {o.raw_bar: o.correct_bar for o in db.query(BarOverride).all()}
+    overrides = {o.raw_station: o.correct_station for o in db.query(StationOverride).all()}
     db.close()
-    for i in df['Station'].unique().tolist():
+    for i in df['station'].unique().tolist():
         if i in overrides:
             bars[i] = overrides[i]
         else:
             bars[i] = keyword_categorize_station(i)
-    df['FinalStation'] = df['Station'].apply(lambda x: bars[x])
+    df['final_station'] = df['station'].apply(lambda x: bars[x])
     return df
 
 # df = categorize_station(df)
-# unknowns = df[df["FinalStation"] == "unknown"]["Station"].value_counts().head(20)
+# unknowns = df[df["final_station"] == "unknown"]["station"].value_counts().head(20)
 # print("Top unknown stations:\n", unknowns)
 
 
@@ -107,13 +107,13 @@ SAUCE = {
 EXTRA = {"feta","cheese","olives","parsley","cilantro","lime","lemon","pickled","crumbs","seeds","nuts"}
 
 def assign_role(row):
-    station = row.get("FinalStation")
-    dish_raw = row.get("Dish")
+    station = row.get("final_station")
+    dish_raw = row.get("item_name")
     dish = _canon(dish_raw)
 
     # check overrides first
     db = SessionLocal()
-    override = db.query(RoleOverride).filter_by(dish=dish, final_station=station).first()
+    override = db.query(RoleOverride).filter_by(item_name=dish, final_station=station).first() #check
     db.close()
     if override is not None:
         return override.role
@@ -194,15 +194,15 @@ def assign_role(row):
 # db.query(Menu).delete()  # Clear existing entries
 # for _, row in df.iterrows():
 #     item = Menu(
-#         dish=row["Dish"],
-#         category=row["Category"],
-#         hall=row["Hall"],
-#         time=row["Time"],
-#         calories=row["Calories"],
-#         serving_size=row["Serving Size"],
-#         role=row["Role"],
-#         station=row["Station"],
-#         final_station=row["FinalStation"]
+#         item_name=row["item_name"],
+#         category=row["category"],
+#         hall=row["hall"],
+#         time=row["time"],
+#         calories=row["calories"],
+#         serving_size=row["serving_size"],
+#         role=row["role"],
+#         station=row["station"],
+#         final_station=row["final_station"]
 #     )
 #     db.add(item)
 # db.commit()
@@ -214,12 +214,12 @@ def assign_role(row):
 def categorize_hall_dish():
     df = pd.read_csv("data/menu_data.csv")
     df = categorize_station(df)
-    unknowns = df[df["FinalStation"] == "unknown"]["Station"].value_counts().head(20)
+    unknowns = df[df["final_station"] == "unknown"]["station"].value_counts().head(20)
     print("Top unknown stations:\n", unknowns)
 
     # Save the result
-    df["Role"] = df.apply(lambda r: assign_role(r), axis=1)
-    print(df[df["Role"]=="unknown"].groupby("FinalStation").size())
+    df["role"] = df.apply(lambda r: assign_role(r), axis=1)
+    print(df[df["role"]=="unknown"].groupby("final_station").size())
 
     # Save the result
     df.to_csv("data/categorized_menu_data.csv", index=False)
@@ -227,15 +227,46 @@ def categorize_hall_dish():
     db.query(Menu).delete()  # Clear existing entries
     for _, row in df.iterrows():
         item = Menu(
-            dish=row["Dish"],
-            category=row["Category"],
-            hall=row["Hall"],
-            time=row["Time"],
-            calories=row["Calories"],
-            serving_size=row["Serving Size"],
-            role=row["Role"],
-            station=row["Station"],
-            final_station=row["FinalStation"]
+            item_name=row["item_name"],
+            category=row["category"],
+            hall=row["hall"],
+            time=row["time"],
+            calories=row["calories"],
+            serving_size=row["serving_size"],
+            role=row["role"],
+            station=row["station"],
+            final_station=row["final_station"],
+            description = row["description"],
+            allergens = row["allergens"],
+            dietary_preferences = row["dietary_preferences"],
+            calories_percent_daily_value = row["calories_percent_daily_value"],
+            total_fat_g = row["total_fat_g"],
+            total_fat_g_percent_daily_value = row["total_fat_g_percent_daily_value"],
+            saturated_fat_g = row["saturated_fat_g"],
+            saturated_fat_g_percent_daily_value = row["saturated_fat_g_percent_daily_value"],
+            trans_fat_g = row["trans_fat_g"],
+            trans_fat_g_percent_daily_value = row["trans_fat_g_percent_daily_value"],
+            cholesterol_mg = row["cholesterol_mg"],
+            cholesterol_mg_percent_daily_value = row["cholesterol_mg_percent_daily_value"],
+            sodium_mg = row["sodium_mg"],
+            sodium_mg_percent_daily_value = row["sodium_mg_percent_daily_value"],
+            total_carbohydrate_g = row["total_carbohydrate_g"],
+            total_carbohydrate_g_percent_daily_value = row["total_carbohydrate_g_percent_daily_value"],
+            total_sugars_g = row["total_sugars_g"],
+            added_sugars_g = row["added_sugars_g"],
+            added_sugars_g_percent_daily_value = row["added_sugars_g_percent_daily_value"],
+            dietary_fiber_g = row["dietary_fiber_g"],
+            dietary_fiber_g_percent_daily_value = row["dietary_fiber_g_percent_daily_value"],
+            protein_g = row["protein_g"],
+            protein_g_percent_daily_value = row["protein_g_percent_daily_value"],
+            potassium_mg = row["potassium_mg"],
+            potassium_mg_percent_daily_value = row["potassium_mg_percent_daily_value"],
+            calcium_mg = row["calcium_mg"],
+            calcium_mg_percent_daily_value = row["calcium_mg_percent_daily_value"],
+            iron_mg = row["iron_mg"],
+            iron_mg_percent_daily_value = row["iron_mg_percent_daily_value"],
+            vitamin_d_mcg = row["vitamin_d_mcg"],
+            vitamin_d_mcg_percent_daily_value = row["vitamin_d_mcg_percent_daily_value"]
         )
         db.add(item)
     db.commit()
