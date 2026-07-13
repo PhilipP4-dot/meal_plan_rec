@@ -61,6 +61,38 @@ def clean_text(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+def _parse_numeric_value(value):
+    """
+    Parse a numeric value out of data that may be a plain number or a
+    string containing units (e.g. "5 oz", "2.5 g").
+
+    Args:
+        value: The raw value from the external API. May be None, a
+            number, or a string with a numeric portion followed by
+            (optional) non-numeric units.
+
+    Returns:
+        float or None: The parsed numeric value, or None if no numeric
+            portion could be extracted.
+    """
+    if value is None:
+        return None
+
+    if isinstance(value, (int, float)):
+        return float(value)
+
+    if isinstance(value, str):
+        match = re.search(r"[-+]?\d*\.?\d+", value)
+        if match:
+            try:
+                return float(match.group())
+            except ValueError:
+                return None
+        return None
+
+    return None
+
+
 def fact_column_name(label, unit):
     """
     Converts nutrition labels into clean DataFrame column names.
@@ -141,10 +173,10 @@ def parse_html(load_data):
                         continue
 
                     column = fact_column_name(label, unit)
-                    row[column] = value
+                    row[column] = _parse_numeric_value(value)
 
                     if percent_drv is not None:
-                        row[f"{column}_percent_daily_value"] = percent_drv
+                        row[f"{column}_percent_daily_value"] = _parse_numeric_value(percent_drv)
 
                 rows.append(row)
 
