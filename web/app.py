@@ -1,11 +1,13 @@
 import sys
 import os
 import re
+import time
+import uuid
 
 # Add project root to Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, g, request, jsonify, render_template
 from app.services.recommendations import fetch_plan, fetch_meals
 from app.logger import setup_logging, get_logger
 
@@ -19,6 +21,29 @@ _TIME_SUFFIX_RE = re.compile(
     r"\s*(\([^)]*\)|\d{1,2}(?::\d{2})?(?:am|pm)\s*-\s*\d{1,2}(?::\d{2})?(?:am|pm))\s*$",
     re.IGNORECASE,
 )
+
+
+@app.before_request
+def start_request_timer():
+    g.request_started_at = time.perf_counter()
+    g.request_id = request.headers.get("X-Request-ID") or str(uuid.uuid4())
+
+
+@app.after_request
+def log_completed_request(response):
+    duration_ms = round((time.perf_counter() - g.request_started_at) * 1000, 2)
+    response.headers["X-Request-ID"] = g.request_id
+    logger.info(
+        "request_completed",
+        extra={
+            "request_id": g.request_id,
+            "method": request.method,
+            "path": request.path,
+            "status_code": response.status_code,
+            "duration_ms": duration_ms,
+        },
+    )
+    return response
 
 
 def normalize_meal_label(label):
