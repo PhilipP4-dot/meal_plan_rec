@@ -3,6 +3,25 @@ import pandas as pd
 from web import app as web_app
 
 
+def test_health_endpoint_reports_ready():
+    response = web_app.app.test_client().get("/health")
+
+    assert response.status_code == 200
+    assert response.get_json() == {"ok": True}
+
+
+def test_recommendations_requires_a_selected_meal(monkeypatch):
+    monkeypatch.setattr(web_app, "build_meal_options", lambda: [])
+
+    response = web_app.app.test_client().post(
+        "/recommendations",
+        data={"daily_calories": "2000", "top_n": "1"},
+    )
+
+    assert response.status_code == 200
+    assert b"Please select at least one meal time" in response.data
+
+
 def test_build_meal_options_orders_by_time(monkeypatch):
     fake_df = pd.DataFrame(
         [
