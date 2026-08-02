@@ -10,6 +10,23 @@ def test_health_endpoint_reports_ready():
     assert response.get_json() == {"ok": True}
 
 
+def test_health_endpoint_returns_request_id(caplog):
+    caplog.set_level("INFO")
+
+    response = web_app.app.test_client().get(
+        "/health",
+        headers={"X-Request-ID": "test-request-123"},
+    )
+
+    assert response.headers["X-Request-ID"] == "test-request-123"
+    record = next(record for record in caplog.records if record.message == "request_completed")
+    assert record.request_id == "test-request-123"
+    assert record.method == "GET"
+    assert record.path == "/health"
+    assert record.status_code == 200
+    assert record.duration_ms >= 0
+
+
 def test_recommendations_requires_a_selected_meal(monkeypatch):
     monkeypatch.setattr(web_app, "build_meal_options", lambda: [])
 
