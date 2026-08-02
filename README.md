@@ -112,8 +112,33 @@ meal_plan_rec/
 ### Running Tests
 
 ```bash
-pytest tests/ -v
+pip install -r requirements-dev.txt
+python -m pytest -v
 ```
+
+The test suite covers recommendation behavior, preference forwarding, form
+validation, meal ordering, override normalization, and the deployment health
+check. GitHub Actions runs the same suite with branch coverage on every push to
+`main` and on every pull request targeting `main`.
+
+### Running with Docker
+
+```bash
+docker build -t meal-plan-rec .
+docker run --rm -p 5000:5000 --env-file .env meal-plan-rec
+```
+
+Copy `.env.example` to `.env` for local configuration. Never commit `.env` or
+production credentials. In Railway, configure `DATABASE_URL` as a service
+variable and keep `FLASK_DEBUG=false`. The container runs as an unprivileged
+user and binds Gunicorn to Railway's injected `PORT` value.
+
+### Deployment checks
+
+- `GET /health` must return HTTP 200 with `{"ok": true}`.
+- CI must pass before merging into `main`.
+- Store secrets in Railway or GitHub Actions secrets, not in source files.
+- Review dependency updates and rerun the complete test suite before deploying.
 
 
 

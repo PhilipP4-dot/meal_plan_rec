@@ -1,10 +1,9 @@
 pandas
- numpy
- sqlalchemy
+numpy
+sqlalchemy
 python-dotenv
- beautifulsoup4
- requests
- pytest
- flask
+beautifulsoup4
+requests
+flask
 gunicorn
 psycopg2-binary
