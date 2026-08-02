@@ -140,6 +140,19 @@ user and binds Gunicorn to Railway's injected `PORT` value.
 - Store secrets in Railway or GitHub Actions secrets, not in source files.
 - Review dependency updates and rerun the complete test suite before deploying.
 
+### Logging and monitoring
+
+Every HTTP response includes an `X-Request-ID` header. The application writes
+one JSON log record per request containing the request ID, method, path, status
+code, and duration in milliseconds. Railway can search these fields directly,
+which makes a failing request traceable without logging form contents or other
+user-provided data.
+
+Use `https://mealplanrec-production.up.railway.app/health` as the health-check
+URL in Railway or an external uptime monitor. Alert on non-200 responses and
+review repeated 5xx responses or unusual duration increases in the Railway
+logs.
+
 
 
 ## Algorithm Overview
