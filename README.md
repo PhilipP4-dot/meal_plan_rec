@@ -2,6 +2,8 @@
 
 An intelligent meal planning system that generates personalized dining recommendations based on calorie goals, meal preferences, and dining hall availability.
 
+**Live application:** [mealplanrec-production.up.railway.app](https://mealplanrec-production.up.railway.app/)
+
 ## Features
 
 - **Smart Recommendations**: Algorithm optimizes for nutrition balance and variety
@@ -22,7 +24,7 @@ An intelligent meal planning system that generates personalized dining recommend
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/PhilipP4-dot/meal_plan_rec.git
 cd meal_plan_rec
 
 # Create virtual environment
