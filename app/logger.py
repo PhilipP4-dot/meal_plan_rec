@@ -2,8 +2,40 @@
 Logging configuration for the meal plan recommendation system.
 """
 import logging
+import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
+
+
+class JsonFormatter(logging.Formatter):
+    """Format application logs as one JSON object per line."""
+
+    _CONTEXT_FIELDS = (
+        "request_id",
+        "method",
+        "path",
+        "status_code",
+        "duration_ms",
+    )
+
+    def format(self, record):
+        event = {
+            "timestamp": datetime.fromtimestamp(record.created, timezone.utc).isoformat(),
+            "level": record.levelname,
+            "logger": record.name,
+            "message": record.getMessage(),
+        }
+        for field in self._CONTEXT_FIELDS:
+            value = getattr(record, field, None)
+            if value is not None:
+                event[field] = value
+
+        if record.exc_info:
+            event["exception"] = self.formatException(record.exc_info)
+
+        return json.dumps(event, default=str)
+
 
 def setup_logging(log_level=logging.INFO, log_file=None):
     """
@@ -17,15 +49,20 @@ def setup_logging(log_level=logging.INFO, log_file=None):
     if log_file:
         Path(log_file).parent.mkdir(parents=True, exist_ok=True)
     
-    # Configure root logger
-    logging.basicConfig(
-        level=log_level,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.StreamHandler(sys.stdout),
-            logging.FileHandler(log_file) if log_file else logging.NullHandler()
-        ]
-    )
+    handlers = [logging.StreamHandler(sys.stdout)]
+    if log_file:
+        handlers.append(logging.FileHandler(log_file))
+
+    formatter = JsonFormatter()
+    for handler in handlers:
+        handler.setFormatter(formatter)
+
+    root_logger = logging.getLogger()
+    root_logger.setLevel(log_level)
+    if not root_logger.handlers:
+        root_logger.addHandler(handlers[0])
+        for handler in handlers[1:]:
+            root_logger.addHandler(handler)
     
     # Set levels for noisy third-party libraries
     logging.getLogger('urllib3').setLevel(logging.WARNING)
