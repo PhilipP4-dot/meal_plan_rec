@@ -1,807 +1,613 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meal Matrix</title>
-    <link rel="icon" href="/static/Meal%20Matrix%20Logo.png" type="image/png">
-    <style>
-        :root {
-            --bg-1: #f6f7ff;
-            --bg-2: #eef2ff;
-            --sidebar: linear-gradient(180deg, #4a3fd9 0%, #2c2aa5 100%);
-            --panel: rgba(255, 255, 255, 0.82);
-            --panel-strong: #ffffff;
-            --text: #1f2340;
-            --muted: #6c7093;
-            --border: rgba(96, 112, 255, 0.16);
-            --shadow: 0 24px 60px rgba(42, 43, 95, 0.14);
-            --purple: #6f63ff;
-            --blue: #4c7cff;
-            --green: #3eaf6b;
-            --orange: #ff8a3d;
-            --soft: #f5f7ff;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            margin: 0;
-            min-height: 100%;
-        }
-
-        body {
-            font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at top right, rgba(111, 99, 255, 0.18), transparent 30%),
-                radial-gradient(circle at 20% 20%, rgba(76, 124, 255, 0.12), transparent 22%),
-                linear-gradient(135deg, var(--bg-1), var(--bg-2));
-        }
-
-        .app-shell {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 260px minmax(0, 1fr);
-        }
-
-        .sidebar {
-            background: var(--sidebar);
-            color: white;
-            padding: 22px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 8px 18px;
-        }
-
-        .brand-mark {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.16);
-            display: grid;
-            place-items: center;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-            overflow: hidden;
-        }
-
-        .brand-mark img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-        }
-
-        /* Standardize site logo sizing across templates */
-        .hero h2 img,
-        .brand img,
-        .hero-brand img {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-            vertical-align: middle;
-            margin-left: 10px;
-            display: inline-block;
-        }
-
-        .brand h1 {
-            margin: 0;
-            font-size: 1.1rem;
-            line-height: 1;
-        }
-
-        .nav {
-            display: grid;
-            gap: 10px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 14px;
-            border-radius: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            background: transparent;
-            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .nav-item.active,
-        .nav-item:hover {
-            background: rgba(255, 255, 255, 0.14);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-            transform: translateX(2px);
-        }
-
-        .nav-icon {
-            width: 18px;
-            text-align: center;
-            opacity: 0.95;
-        }
-
-        .sidebar-tip {
-            margin-top: auto;
-            border-radius: 18px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: rgba(255, 255, 255, 0.92);
-            font-size: 0.92rem;
-            line-height: 1.45;
-        }
-
-        .sidebar-tip strong {
-            display: block;
-            margin-bottom: 6px;
-            color: #fff4aa;
-        }
-
-        .main {
-            padding: 18px;
-        }
-
-        .panel {
-            min-height: calc(100vh - 36px);
-            border-radius: 28px;
-            background: var(--panel);
-            backdrop-filter: blur(18px);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            padding: 28px 32px;
-            background:
-                radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.68), transparent 17%),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(241, 244, 255, 0.84));
-            border-bottom: 1px solid rgba(102, 115, 255, 0.08);
-        }
-
-        .hero h2 {
-            margin: 0 0 8px;
-            font-size: clamp(2rem, 2.8vw, 3.4rem);
-            line-height: 1;
-            letter-spacing: -0.04em;
-        }
-
-        .hero p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 0.98rem;
-        }
-
-        .hero-chip {
-            min-width: 220px;
-            padding: 16px 20px;
-            border-radius: 999px;
-            background: rgba(111, 99, 255, 0.09);
-            border: 1px solid rgba(111, 99, 255, 0.16);
-            color: #3d3c7e;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 14px 30px rgba(111, 99, 255, 0.1);
-        }
-
-        .hero-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(111, 99, 255, 0.14);
-        }
-
-        .hero-brand img {
-            width: 34px;
-            height: 34px;
-            display: block;
-            object-fit: cover;
-        }
-
-        .hero-brand span {
-            font-size: 0.92rem;
-            font-weight: 800;
-            letter-spacing: 0.02em;
-            color: #2d2f5f;
-        }
-
-        .content {
-            padding: 28px 32px 34px;
-        }
-
-        .error {
-            margin-bottom: 18px;
-            padding: 14px 16px;
-            border-radius: 16px;
-            background: #fff1f2;
-            border: 1px solid rgba(244, 63, 94, 0.22);
-            color: #9f1239;
-            box-shadow: 0 10px 24px rgba(244, 63, 94, 0.08);
-        }
-
-        .section {
-            margin-bottom: 24px;
-        }
-
-        .section-head {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 14px;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .step-badge {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: #eef1ff;
-            color: var(--purple);
-            font-weight: 800;
-            box-shadow: inset 0 0 0 1px rgba(111, 99, 255, 0.08);
-        }
-
-        .section-title h3 {
-            margin: 0;
-            font-size: 1.15rem;
-        }
-
-        .section-title p {
-            margin: 4px 0 0;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .meal-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .meal-card {
-            position: relative;
-            padding: 22px 18px 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(105, 113, 255, 0.16);
-            box-shadow: 0 16px 30px rgba(72, 80, 140, 0.08);
-            min-height: 170px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .meal-card.selected {
-            border-color: rgba(111, 99, 255, 0.42);
-            box-shadow: 0 24px 44px rgba(72, 80, 140, 0.14);
-        }
-
-        .meal-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 40px rgba(72, 80, 140, 0.12);
-        }
-
-        .meal-card.sunrise {
-            border-color: rgba(145, 107, 255, 0.28);
-        }
-
-        .meal-card.noon {
-            border-color: rgba(57, 176, 96, 0.28);
-        }
-
-        .meal-card.orange {
-            border-color: rgba(255, 153, 74, 0.28);
-        }
-
-        .meal-card.midnight {
-            border-color: rgba(82, 114, 255, 0.28);
-        }
-
-        .meal-card .icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            margin-bottom: 18px;
-            font-size: 1.5rem;
-            background: rgba(110, 99, 255, 0.1);
-        }
-
-        .meal-card.noon .icon {
-            background: rgba(62, 175, 107, 0.12);
-        }
-
-        .meal-card.orange .icon {
-            background: rgba(255, 138, 61, 0.12);
-        }
-
-        .meal-card.midnight .icon {
-            background: rgba(76, 124, 255, 0.12);
-        }
-
-        .meal-card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .meal-select {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .meal-select input {
-            width: 18px;
-            height: 18px;
-            margin: 0;
-            accent-color: var(--purple);
-        }
-
-        .meal-card h4 {
-            margin: 0;
-            font-size: 1.02rem;
-        }
-
-        .meal-time {
-            margin-top: 6px;
-            color: var(--muted);
-            font-size: 0.92rem;
-        }
-
-        .meal-toggle {
-            width: 24px;
-            height: 24px;
-            border-radius: 999px;
-            display: grid;
-            place-items: center;
-            background: #eef1ff;
-            color: var(--purple);
-            font-size: 0.92rem;
-            font-weight: 700;
-        }
-
-        .meal-card.selected .meal-toggle {
-            background: linear-gradient(135deg, #7b74ff, #4a6dff);
-            color: #fff;
-        }
-
-        .meal-options {
-            display: none;
-            margin-top: 16px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(86, 98, 180, 0.08);
-        }
-
-        .meal-options.active {
-            display: block;
-        }
-
-        .input-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .field {
-            display: grid;
-            gap: 8px;
-        }
-
-        .field label {
-            font-size: 0.88rem;
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .field input,
-        .field select {
-            width: 100%;
-            border: 1px solid rgba(104, 112, 167, 0.24);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 12px 14px;
-            color: var(--text);
-            font-size: 0.96rem;
-            outline: none;
-            transition: border-color 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .field input:focus,
-        .field select:focus {
-            border-color: rgba(111, 99, 255, 0.55);
-            box-shadow: 0 0 0 4px rgba(111, 99, 255, 0.12);
-        }
-
-        .field.full {
-            grid-column: 1 / -1;
-        }
-
-        .pill-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 8px;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(111, 99, 255, 0.16);
-            background: rgba(255, 255, 255, 0.96);
-            color: #2c2e59;
-            font-size: 0.92rem;
-            box-shadow: 0 10px 18px rgba(82, 92, 168, 0.06);
-        }
-
-        .pill input {
-            width: 16px;
-            height: 16px;
-            margin: 0;
-        }
-
-        .info-text {
-            color: var(--muted);
-            font-size: 0.86rem;
-            line-height: 1.4;
-        }
-
-        .actions {
-            margin-top: 12px;
-            display: grid;
-            gap: 12px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            border: none;
-            border-radius: 16px;
-            padding: 16px 20px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: white;
-            cursor: pointer;
-            background: linear-gradient(135deg, #8d5cff 0%, #4d6eff 55%, #385ef4 100%);
-            box-shadow: 0 16px 34px rgba(76, 102, 255, 0.28);
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 38px rgba(76, 102, 255, 0.34);
-        }
-
-        .submit-note {
-            color: var(--muted);
-            font-size: 0.84rem;
-            text-align: center;
-        }
-
-        .tip-row {
-            display: flex;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .tip-icon {
-            width: 46px;
-            height: 46px;
-            flex: 0 0 46px;
-            border-radius: 16px;
-            display: grid;
-            place-items: center;
-            background: rgba(255, 255, 255, 0.16);
-            color: #fff2a8;
-            font-size: 1.2rem;
-        }
-
-        .compact-note {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 1180px) {
-            .app-shell {
-                grid-template-columns: 220px minmax(0, 1fr);
-            }
-
-            .meal-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 840px) {
-            .app-shell {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                display: none;
-            }
-
-            .main {
-                padding: 0;
-            }
-
-            .panel {
-                border-radius: 0;
-                min-height: 100vh;
-            }
-
-            .hero,
-            .content {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .meal-grid,
-            .input-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meal Matrix — Build today’s plan</title>
+  <link rel="icon" href="/static/Meal%20Matrix%20Logo.png" type="image/png">
+  <style>
+    :root {
+      --paper: #f3eddf;
+      --paper-light: #faf7ef;
+      --ink: #1e2923;
+      --muted: #697169;
+      --tomato: #d9472b;
+      --tomato-dark: #9e2e1a;
+      --green: #294f3c;
+      --rule: #b9b2a3;
+      --focus: #246a9a;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", "Gill Sans", sans-serif
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      background-image: repeating-linear-gradient(0deg, rgba(30, 41, 35, .018) 0, rgba(30, 41, 35, .018) 1px, transparent 1px, transparent 5px)
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    a {
+      color: inherit
+    }
+
+    .masthead {
+      border-bottom: 3px double var(--ink)
+    }
+
+    .masthead-inner,
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto
+    }
+
+    .masthead-inner {
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px
+    }
+
+    .edition {
+      font-size: .67rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: .14em;
+      text-transform: uppercase
+    }
+
+    .wordmark {
+      font: 700 clamp(1.35rem, 3vw, 2rem)/1 var(--serif);
+      letter-spacing: -.03em
+    }
+
+    .mast-note {
+      text-align: right;
+      color: var(--muted);
+      font-size: .82rem
+    }
+
+    .page {
+      padding: 50px 0 80px
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: 50px;
+      align-items: end;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--tomato-dark);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase
+    }
+
+    .intro h1 {
+      max-width: 780px;
+      margin: 0;
+      font: 400 clamp(3.2rem, 8vw, 7rem)/.83 var(--serif);
+      letter-spacing: -.065em
+    }
+
+    .intro h1 em {
+      color: var(--tomato);
+      font-weight: 400
+    }
+
+    .intro-aside {
+      display: grid;
+      grid-template-columns: 176px 1fr;
+      gap: 18px;
+      align-items: end
+    }
+
+    .hero-logo {
+      width: 176px;
+      height: 144px;
+      object-fit: fill;
+      border-radius: 22px;
+      box-shadow: 6px 6px 0 var(--green)
+    }
+
+    .intro-copy {
+      padding-left: 20px;
+      border-left: 4px solid var(--tomato);
+      font: 1.05rem/1.55 var(--serif)
+    }
+
+    .target {
+      margin-top: 18px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .target output {
+      font: 700 1.8rem/1 var(--serif);
+      letter-spacing: -.04em;
+      color: var(--tomato)
+    }
+
+    .error {
+      margin: 28px 0 0;
+      padding: 16px 18px;
+      border: 2px solid var(--tomato);
+      background: #fff5ed;
+      color: #7c2012
+    }
+
+    .planner {
+      counter-reset: section
+    }
+
+    .plan-section {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 42px;
+      padding: 42px 0;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .section-label {
+      position: sticky;
+      top: 20px;
+      align-self: start
+    }
+
+    .section-label span {
+      display: block;
+      color: var(--tomato);
+      font: 700 3.6rem/.8 var(--serif)
+    }
+
+    .section-label h2 {
+      margin: 12px 0 6px;
+      font: 700 1.4rem/1.05 var(--serif)
+    }
+
+    .section-label p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.45
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink)
+    }
+
+    .meal-card {
+      position: relative;
+      min-height: 172px;
+      padding: 22px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: rgba(250, 247, 239, .55);
+      transition: background .2s, color .2s
+    }
+
+    .meal-card:hover {
+      background: var(--paper-light)
+    }
+
+    .meal-card.selected {
+      background: var(--green);
+      color: var(--paper-light)
+    }
+
+    .meal-select {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .meal-select input,
+    .check input {
+      width: 19px;
+      height: 19px;
+      accent-color: var(--tomato)
+    }
+
+    .meal-number {
+      position: absolute;
+      right: 18px;
+      top: 13px;
+      font: italic 2rem/1 var(--serif);
+      color: var(--tomato)
+    }
+
+    .meal-card h3 {
+      margin: 34px 0 4px;
+      font: 400 2.2rem/1 var(--serif);
+      letter-spacing: -.04em
+    }
+
+    .meal-time {
+      color: var(--muted);
+      font-size: .88rem
+    }
+
+    .selected .meal-time {
+      color: #d8dfd8
+    }
+
+    .meal-options {
+      display: none;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(185, 178, 163, .7)
+    }
+
+    .meal-options.active {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 14px
+    }
+
+    .field {
+      display: grid;
+      gap: 7px
+    }
+
+    .field label {
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 44px;
+      padding: 9px 11px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper-light);
+      color: var(--ink)
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px
+    }
+
+    .settings {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px
+    }
+
+    .settings .field {
+      padding: 0 0 18px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .field small {
+      color: var(--muted);
+      line-height: 1.4
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink)
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 12px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: rgba(250, 247, 239, .55);
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    .check:has(input:checked) {
+      background: #e6b63c
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 132px minmax(180px, 1fr) auto;
+      align-items: center;
+      gap: 28px;
+      margin-top: 34px;
+      padding: 26px 0;
+      border-top: 3px double var(--ink);
+      border-bottom: 1px solid var(--ink)
+    }
+
+    .actions-logo {
+      width: 132px;
+      height: 108px;
+      object-fit: fill;
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--green)
+    }
+
+    .actions p {
+      max-width: 360px;
+      margin: 0;
+      color: var(--muted);
+      font: .95rem/1.5 var(--serif)
+    }
+
+    .submit {
+      border: 0;
+      border-bottom: 4px solid var(--tomato-dark);
+      padding: 17px 28px;
+      background: var(--tomato);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .15s, background .15s
+    }
+
+    .submit:hover {
+      background: var(--tomato-dark);
+      transform: translateY(-2px)
+    }
+
+    .submit:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px
+    }
+
+    @media(max-width:760px) {
+      .masthead-inner {
+        grid-template-columns: 1fr auto
+      }
+
+      .mast-note {
+        display: none
+      }
+
+      .page {
+        padding-top: 32px
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 28px
+      }
+
+      .intro-aside {
+        grid-template-columns: 122px minmax(0, 1fr);
+        max-width: 540px
+      }
+
+      .hero-logo {
+        width: 122px;
+        height: 100px
+      }
+
+      .plan-section {
+        grid-template-columns: 1fr;
+        gap: 22px
+      }
+
+      .section-label {
+        position: static;
+        display: grid;
+        grid-template-columns: 55px 1fr;
+        column-gap: 12px
+      }
+
+      .section-label p {
+        grid-column: 2
+      }
+
+      .meal-grid,
+      .settings {
+        grid-template-columns: 1fr
+      }
+
+      .checks {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:480px) {
+
+      .masthead-inner,
+      .page {
+        width: min(100% - 24px, 1180px)
+      }
+
+      .edition {
+        display: none
+      }
+
+      .intro h1 {
+        font-size: 3.4rem
+      }
+
+      .intro-aside {
+        grid-template-columns: 100px minmax(0, 1fr);
+        gap: 12px
+      }
+
+      .hero-logo {
+        width: 100px;
+        height: 82px
+      }
+
+      .intro-copy {
+        padding-left: 14px;
+        font-size: .94rem
+      }
+
+      .meal-options.active,
+      .checks {
+        grid-template-columns: 1fr
+      }
+
+      .actions {
+        grid-template-columns: 104px 1fr
+      }
+
+      .submit {
+        grid-column: 1 / -1;
+        width: 100%
+      }
+
+      .actions-logo {
+        width: 104px;
+        height: 86px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="app-shell">
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-mark"><img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></div>
-            </div>
-
-            <nav class="nav">
-                <a class="nav-item active" href="#planner"><span class="nav-icon">✦</span>Plan Your Meals</a>
-                <a class="nav-item" href="#plans"><span class="nav-icon">▣</span>My Meal Plans</a>
-                <a class="nav-item" href="#history"><span class="nav-icon">◔</span>History</a>
-                <a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>Settings</a>
-            </nav>
-
-            <div class="sidebar-tip">
-                <strong>Tip</strong>
-                Plans are generated from your selected meals, calorie target, preferences, and menu availability.
-            </div>
-        </aside>
-
-        <main class="main">
-            <section class="panel" id="planner">
-                <div class="hero">
-                    <div>
-
-                        <h2>Meal Matrix <img src="/static/Meal%20Matrix%20Logo.png" alt="Meal Matrix logo"></h2>
-                        <p>Build a balanced dining plan from today’s campus menu.</p>
-                    </div>
-                    <div class="hero-chip">⦿ Daily Target: <span id="dailyTargetValue">2000</span> cal</div>
-                </div>
-
-                <div class="content">
-                    {% if error %}
-                    <div class="error"><strong>Error:</strong> {{ error }}</div>
-                    {% endif %}
-
-                    <form action="/recommendations" method="post" id="mealForm">
-                        <section class="section">
-                            <div class="section-head">
-                                <div class="section-title">
-                                    <div class="step-badge">1</div>
-                                    <div>
-                                        <h3>Select Meal Times</h3>
-                                        <p>Choose the time windows you’d like to include in your plan.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="meal-grid">
-                                {% for meal in meals %}
-                                {% set accent = loop.index0 % 4 %}
-                                <div
-                                    class="meal-card {% if accent == 0 %}sunrise{% elif accent == 1 %}noon{% elif accent == 2 %}orange{% else %}midnight{% endif %}">
-                                    <div class="meal-card-top">
-                                        <label class="meal-select" for="meal_{{ loop.index }}">
-                                            <input type="checkbox" name="meal_times" value="{{ meal.key }}"
-                                                id="meal_{{ loop.index }}"
-                                                onchange="toggleMealOptions('{{ loop.index }}')">
-                                            Include this meal
-                                        </label>
-                                        <div class="meal-toggle">+</div>
-                                    </div>
-                                    <div class="icon">{% if accent == 0 %}☼{% elif accent == 1 %}◌{% elif accent == 2
-                                        %}☾{% else %}☽{% endif %}</div>
-                                    <h4>{{ meal.label.split(' (')[0] }}</h4>
-                                    <div class="meal-time">{{ meal.label.split(' ', 1)[1] if ' ' in meal.label else
-                                        meal.label }}</div>
-
-                                    <div class="meal-options" id="options_{{ loop.index }}">
-                                        <div class="input-grid">
-                                            <div class="field">
-                                                <label>Calorie Split (%)</label>
-                                                <input type="number" name="{{ meal.key }}_ratio" min="0" max="100"
-                                                    value="0" placeholder="Automatic">
-                                            </div>
-                                            <div class="field">
-                                                <label>Preferred Dining Hall</label>
-                                                <select name="{{ meal.key }}_hall">
-                                                    <option value="Any">Any</option>
-                                                    {% for hall in meal.halls %}
-                                                    <option value="{{ hall }}">{{ hall }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </section>
-
-                        <section class="section">
-                            <div class="section-head">
-                                <div class="section-title">
-                                    <div class="step-badge">2</div>
-                                    <div>
-                                        <h3>Your Preferences</h3>
-                                        <p>Set your nutrition goals and plan parameters.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="meal-card" style="padding: 22px;">
-                                <div class="input-grid">
-                                    <div class="field">
-                                        <label>Daily Calorie Limit</label>
-                                        <input type="number" name="daily_calories" id="daily_calories" min="1000"
-                                            max="4000" value="2000" step="100" required>
-                                    </div>
-                                    <div class="field">
-                                        <label>Diet Style</label>
-                                        <select name="required_preference">
-                                            <option value="Any">Any</option>
-                                            <option value="Vegetarian">Vegetarian</option>
-                                            <option value="Vegan">Vegan</option>
-                                            <option value="Made Without Gluten">Made Without Gluten</option>
-                                        </select>
-                                    </div>
-                                    <div class="field">
-                                        <label>Macro Focus</label>
-                                        <select name="macro_focus">
-                                            <option value="balanced">Balanced</option>
-                                            <option value="protein_heavy">Protein heavy</option>
-                                            <option value="carb_heavy">Carb heavy</option>
-                                        </select>
-                                    </div>
-                                    <div class="field">
-                                        <label>Macro Scale (kcal per score unit)</label>
-                                        <input type="number" name="macro_scale" min="1" max="1000" step="1" value="32">
-                                    </div>
-                                    <div class="field full">
-                                        <label>Number of Options per Meal</label>
-                                        <input type="number" name="top_n" min="1" max="5" value="2" required>
-                                        <div class="compact-note">How many alternative meal plans to generate for each
-                                            meal.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="section" id="settings">
-                            <div class="section-head">
-                                <div class="section-title">
-                                    <div class="step-badge">3</div>
-                                    <div>
-                                        <h3>Exclude Allergens</h3>
-                                        <p>Select any allergens you’d like to exclude from recommendations.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="meal-card" style="padding: 22px;">
-                                <div class="pill-grid">
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="egg">
-                                        Egg</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="milk">
-                                        Milk</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="soy">
-                                        Soy</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="wheat">
-                                        Wheat</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="peanut">
-                                        Peanut</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens"
-                                            value="tree_nuts"> Tree Nuts</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="fish">
-                                        Fish</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens"
-                                            value="shellfish"> Shellfish</label>
-                                    <label class="pill"><input type="checkbox" name="exclude_allergens" value="sesame">
-                                        Sesame</label>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="actions">
-                            <button type="submit" class="submit-btn">✦ Generate Meal Plan</button>
-                            <div class="submit-note">Your preferences are used only to generate your meal plan.</div>
-                        </section>
-                    </form>
-                </div>
-            </section>
-        </main>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="edition">Campus dining / daily edition</div>
+      <div class="wordmark">Meal Matrix</div>
+      <div class="mast-note">Menu-aware meal planning</div>
     </div>
-
-    <script>
-        function updateDailyTarget() {
-            const dailyCaloriesInput = document.getElementById('daily_calories');
-            const dailyTargetValue = document.getElementById('dailyTargetValue');
-
-            if (!dailyCaloriesInput || !dailyTargetValue) {
-                return;
-            }
-
-            const value = Number(dailyCaloriesInput.value);
-            dailyTargetValue.textContent = Number.isFinite(value) && value > 0 ? value : '0';
-        }
-
-        function toggleMealOptions(index) {
-            const checkbox = document.getElementById(`meal_${index}`);
-            const options = document.getElementById(`options_${index}`);
-            const card = checkbox.closest('.meal-card');
-
-            if (checkbox.checked) {
-                options.classList.add('active');
-                card.classList.add('selected');
-            } else {
-                options.classList.remove('active');
-                card.classList.remove('selected');
-            }
-        }
-
-        const dailyCaloriesInput = document.getElementById('daily_calories');
-        if (dailyCaloriesInput) {
-            dailyCaloriesInput.addEventListener('input', updateDailyTarget);
-            updateDailyTarget();
-        }
-
-    </script>
+  </header>
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="kicker">Today’s dining brief</p>
+        <h1 id="page-title">Make the menu <em>work.</em></h1>
+      </div>
+      <div class="intro-copy">Choose when you’re eating. Set the constraints that matter. We’ll match real campus menu
+        items to your day.<div class="target">Daily target<br><output id="dailyTargetValue">2,000</output> calories
+        </div>
+      </div>
+    </section>
+    {% if error %}<div class="error" role="alert"><strong>We couldn’t build that plan.</strong> {{ error }}</div>{%
+    endif %}
+    <form action="/recommendations" method="post" id="mealForm" class="planner">
+      <section class="plan-section">
+        <header class="section-label"><span>01</span>
+          <h2>When are you eating?</h2>
+          <p>Select one or more service windows. Open a meal to set its share and dining hall.</p>
+        </header>
+        <div class="meal-grid">
+          {% for meal in meals %}<article class="meal-card"><span class="meal-number">0{{ loop.index }}</span><label
+              class="meal-select" for="meal_{{ loop.index }}"><input type="checkbox" name="meal_times"
+                value="{{ meal.key }}" id="meal_{{ loop.index }}" onchange="toggleMealOptions('{{ loop.index }}')">Add
+              to plan</label>
+            <h3>{{ meal.label.split(' (')[0] }}</h3>
+            <div class="meal-time">{{ meal.label.split(' ', 1)[1] if ' ' in meal.label else meal.label }}</div>
+            <div class="meal-options" id="options_{{ loop.index }}">
+              <div class="field"><label for="ratio_{{ loop.index }}">Share (%)</label><input id="ratio_{{ loop.index }}"
+                  type="number" name="{{ meal.key }}_ratio" min="0" max="100" value="0"
+                  aria-describedby="ratio-help-{{ loop.index }}"><small id="ratio-help-{{ loop.index }}">Leave 0 for
+                  automatic.</small></div>
+              <div class="field"><label for="hall_{{ loop.index }}">Dining hall</label><select
+                  id="hall_{{ loop.index }}" name="{{ meal.key }}_hall">
+                  <option value="Any">Any available hall</option>{% for hall in meal.halls %}<option value="{{ hall }}">
+                    {{ hall }}</option>{% endfor %}
+                </select></div>
+            </div>
+          </article>{% endfor %}
+        </div>
+      </section>
+      <section class="plan-section">
+        <header class="section-label"><span>02</span>
+          <h2>What’s the goal?</h2>
+          <p>Give the planner enough direction without overfitting every plate.</p>
+        </header>
+        <div class="settings">
+          <div class="field"><label for="daily_calories">Daily calorie limit</label><input type="number"
+              name="daily_calories" id="daily_calories" min="1000" max="4000" value="2000" step="100" required></div>
+          <div class="field"><label for="required_preference">Diet style</label><select id="required_preference"
+              name="required_preference">
+              <option value="Any">No required style</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Made Without Gluten">Made without gluten</option>
+            </select></div>
+          <div class="field"><label for="macro_focus">Macro emphasis</label><select id="macro_focus" name="macro_focus">
+              <option value="balanced">Balanced</option>
+              <option value="protein_heavy">More protein</option>
+              <option value="carb_heavy">More carbohydrates</option>
+            </select></div>
+          <div class="field"><label for="top_n">Options per meal</label><input id="top_n" type="number" name="top_n"
+              min="1" max="5" value="2" required><small>Choose 1–5 alternatives.</small></div>
+          <div class="field"><label for="macro_scale">Macro sensitivity</label><input id="macro_scale" type="number"
+              name="macro_scale" min="1" max="1000" step="1" value="32"><small>Advanced: kcal per score unit. Lower
+              values weigh macros more heavily.</small></div>
+        </div>
+      </section>
+      <section class="plan-section">
+        <header class="section-label"><span>03</span>
+          <h2>Anything to avoid?</h2>
+          <p>These filters remove matching menu items. Always confirm ingredients with dining staff if you have a severe
+            allergy.</p>
+        </header>
+        <div class="checks">{% for value, label in
+          [('egg','Egg'),('milk','Milk'),('soy','Soy'),('wheat','Wheat'),('peanut','Peanut'),('tree_nuts','Tree
+          nuts'),('fish','Fish'),('shellfish','Shellfish'),('sesame','Sesame')] %}<label class="check"><input
+              type="checkbox" name="exclude_allergens" value="{{ value }}">{{ label }}</label>{% endfor %}</div>
+      </section>
+      <div class="actions">
+        <img class="actions-logo" src="/static/meal-matrix-editorial.png" alt="Meal Matrix logo">
+        <p>Your choices are used to calculate this plan. Menu and nutrition data may change.</p><button class="submit"
+          type="submit">Build today’s plan →</button>
+      </div>
+    </form>
+  </main>
+  <script>
+    const calories = document.getElementById('daily_calories'), target = document.getElementById('dailyTargetValue');
+    function updateDailyTarget() { const value = Number(calories.value); target.textContent = Number.isFinite(value) && value > 0 ? value.toLocaleString() : '0' }
+    function toggleMealOptions(index) { const box = document.getElementById(`meal_${index}`), options = document.getElementById(`options_${index}`), card = box.closest('.meal-card'); options.classList.toggle('active', box.checked); card.classList.toggle('selected', box.checked) }
+    calories.addEventListener('input', updateDailyTarget); updateDailyTarget();
+  </script>
 </body>
 
 </html>
