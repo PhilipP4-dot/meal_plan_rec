@@ -178,9 +178,6 @@ The recommendation system uses a multi-stage approach:
 - [ ] Social features (share plans, ratings)
 - [ ] Integration with campus meal plan systems
 
-
-
-
 ## Author
 
 Philip Perry Pearce-Pearson and IyiOluwa Adaramola
