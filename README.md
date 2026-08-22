@@ -177,6 +177,7 @@ The recommendation system uses a multi-stage approach:
 - [ ] Mobile app
 - [ ] Social features (share plans, ratings)
 - [ ] Integration with campus meal plan systems
+- [ ] Deep learning capabilities to improve classification
 
 ## Author
 
